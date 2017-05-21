@@ -84,8 +84,8 @@ FLAGS = None
 
 # 모든 파라미터들은 특정한 모델 architecture와 묶여(tied) 있다.
 # 우리는 Inception v3를 사용할 것이다. 이는 tensor 이름이나 사이즈들을 포함하고 있다.
-# If you want to adapt this script to work with another model, you will
-# need to update these to reflect the values in the network you're using.
+# 만약 당신이 이 스크립트를 다른 모델에 사용하고 싶다면, 
+# 당신이 사용하는 network를 반영하도록 tensor 이름이나 사이즈들을 변경해야만 할 것이다.
 DATA_URL = 'http://download.tensorflow.org/models/image/imagenet/inception-2015-12-05.tgz'
 BOTTLENECK_TENSOR_NAME = 'pool_3/_reshape:0'
 BOTTLENECK_TENSOR_SIZE = 2048
@@ -98,13 +98,12 @@ MAX_NUM_IMAGES_PER_CLASS = 2 ** 27 - 1  # ~134M
 
 
 def create_image_lists(image_dir, testing_percentage, validation_percentage):
-  """Builds a list of training images from the file system.
+  """file system으로부터 training 이미지들의 list를 만든다.
 
-  Analyzes the sub folders in the image directory, splits them into stable
-  training, testing, and validation sets, and returns a data structure
-  describing the lists of images for each label and their paths.
+  이미지 디렉토리로부터 sub folder들을 분석하고, 그들을 training, testing, validation sets으로 나눈다.
+  그리고 각각의 label을 위한 이미지 list와 그들의 경로(path)를 나타내는 자료구조(data structure)를 반환한다.
 
-  Args:
+  인수들(Args):
     image_dir: String path to a folder containing subfolders of images.
     testing_percentage: Integer percentage of the images to reserve for tests.
     validation_percentage: Integer percentage of images reserved for validation.
