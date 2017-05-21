@@ -43,8 +43,8 @@ labelsFullPath = '/tmp/output_labels.txt'
 
 
 def create_graph():
-    """Creates a graph from saved GraphDef file and returns a saver."""
-    # Creates graph from saved graph_def.pb.
+    """저장된(saved) GraphDef 파일로부터 graph를 생성하고 saver를 반환한다."""
+    # 저장된(saved) graph_def.pb로부터 graph를 생성한다.
     with tf.gfile.FastGFile(modelFullPath, 'rb') as f:
         graph_def = tf.GraphDef()
         graph_def.ParseFromString(f.read())
@@ -60,7 +60,7 @@ def run_inference_on_image():
 
     image_data = tf.gfile.FastGFile(imagePath, 'rb').read()
 
-    # Creates graph from saved GraphDef.
+    # 장된(saved) GraphDef 파일로부터 graph를 생성한다.
     create_graph()
 
     with tf.Session() as sess:
@@ -70,7 +70,7 @@ def run_inference_on_image():
                                {'DecodeJpeg/contents:0': image_data})
         predictions = np.squeeze(predictions)
 
-        top_k = predictions.argsort()[-5:][::-1]  # Getting top 5 predictions
+        top_k = predictions.argsort()[-5:][::-1]  # 가장 높은 확률을 가진 5개(top 5)의 예측값(predictions)을 얻는다.
         f = open(labelsFullPath, 'rb')
         lines = f.readlines()
         labels = [str(w).replace("\n", "") for w in lines]
