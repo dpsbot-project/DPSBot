@@ -5,9 +5,9 @@ import numpy as np
 import tensorflow as tf
 
 #imagePath = '/tmp/imagenet/flower.jpg'
-imagePath = '/Users/jinhoyang/cat_photos/chartreux/funny_chartreux.jpg'
-modelFullPath = '/tmp/output_graph.pb'
-labelsFullPath = '/tmp/output_labels.txt'
+imagePath = '/Users/jinhoyang/cat_photos/chartreux/funny_chartreux.jpg'     # 추론을 진행할 이미지 경로
+modelFullPath = '/tmp/output_graph.pb'                                      # 읽어들일 graph 파일 경로
+labelsFullPath = '/tmp/output_labels.txt'                                   # 읽어들일 labels 파일 경로
 
 
 def create_graph():
