@@ -1,11 +1,11 @@
+# -*- coding: utf-8 -*-
 
 """Inception v3 architecture 모델을 retraining한 모델을 이용해서 이미지에 대한 추론(inference)을 진행하는 예제"""
 
 import numpy as np
 import tensorflow as tf
 
-#imagePath = '/tmp/imagenet/flower.jpg'
-imagePath = '/Users/jinhoyang/cat_photos/chartreux/funny_chartreux.jpg'     # 추론을 진행할 이미지 경로
+imagePath = '~/cat_photos/chartreux/funny_chartreux.jpg'                    # 추론을 진행할 이미지 경로
 modelFullPath = '/tmp/output_graph.pb'                                      # 읽어들일 graph 파일 경로
 labelsFullPath = '/tmp/output_labels.txt'                                   # 읽어들일 labels 파일 경로
 
