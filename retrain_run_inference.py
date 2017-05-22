@@ -5,7 +5,7 @@
 import numpy as np
 import tensorflow as tf
 
-imagePath = '~/cat_photos/chartreux/funny_chartreux.jpg'                    # 추론을 진행할 이미지 경로
+imagePath = '/tmp/test_chartreux.jpg'                                      # 추론을 진행할 이미지 경로
 modelFullPath = '/tmp/output_graph.pb'                                      # 읽어들일 graph 파일 경로
 labelsFullPath = '/tmp/output_labels.txt'                                   # 읽어들일 labels 파일 경로
 
