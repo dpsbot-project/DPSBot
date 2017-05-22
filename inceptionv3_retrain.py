@@ -825,17 +825,17 @@ def main(_):
                         FLAGS.bottleneck_dir, jpeg_data_tensor,
                         bottleneck_tensor)
 
-    # Add the new layer that we'll be training.
+    # 우리가 학습시킬(training) 새로운 layer를 추가한다.
     (train_step, cross_entropy, bottleneck_input, ground_truth_input,
      final_tensor) = add_final_training_ops(len(image_lists.keys()),
                                             FLAGS.final_tensor_name,
                                             bottleneck_tensor)
 
-    # Create the operations we need to evaluate the accuracy of our new layer.
+    # 우리의 새로운 layer의 정확도를 평가(evalute)하기 위한 새로운 operation들을 생성한다.
     evaluation_step, prediction = add_evaluation_step(
         final_tensor, ground_truth_input)
 
-    # Merge all the summaries and write them out to the summaries_dir
+    # 모든 summaries를 합치고(merge) summaries_dir에 쓴다.(write)
     merged = tf.summary.merge_all()
     train_writer = tf.summary.FileWriter(FLAGS.summaries_dir + '/train',
                                          sess.graph)
@@ -843,14 +843,14 @@ def main(_):
     validation_writer = tf.summary.FileWriter(
         FLAGS.summaries_dir + '/validation')
 
-    # Set up all our weights to their initial default values.
+    # 우리의 모든 가중치들(weights)과 그들의 초기값들을 설정한다.
     init = tf.global_variables_initializer()
     sess.run(init)
 
-    # Run the training for as many cycles as requested on the command line.
+    # 커맨드 라인에서 지정한 횟수만큼 학습을 진행한다.
     for i in range(FLAGS.how_many_training_steps):
-      # Get a batch of input bottleneck values, either calculated fresh every
-      # time with distortions applied, or from the cache stored on disk.
+      # bottleneck 값들의 batch를 얻는다. 이는 매번 distortion을 적용하고 계산하거나,
+      # disk에 저장된 chache로부터 얻을 수 있다.
       if do_distort_images:
         (train_bottlenecks,
          train_ground_truth) = get_random_distorted_bottlenecks(
