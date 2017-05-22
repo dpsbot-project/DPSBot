@@ -28,7 +28,7 @@ def run_inference_on_image():
 
     image_data = tf.gfile.FastGFile(imagePath, 'rb').read()
 
-    # 장된(saved) GraphDef 파일로부터 graph를 생성한다.
+    # 저장된(saved) GraphDef 파일로부터 graph를 생성한다.
     create_graph()
 
     with tf.Session() as sess:
