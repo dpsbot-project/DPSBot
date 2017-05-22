@@ -104,20 +104,20 @@ def create_image_lists(image_dir, testing_percentage, validation_percentage):
   그리고 각각의 label을 위한 이미지 list와 그들의 경로(path)를 나타내는 자료구조(data structure)를 반환한다.
 
   인수들(Args):
-    image_dir: String path to a folder containing subfolders of images.
-    testing_percentage: Integer percentage of the images to reserve for tests.
-    validation_percentage: Integer percentage of images reserved for validation.
+    image_dir: 이미지들의 subfolder들을 포함한 folder의 String path.
+    testing_percentage: 전체 이미지중 테스트를 위해 사용되는 비율을 나타내는 Integer.
+    validation_percentage: 전체 이미지중 validation을 위해 사용되는 비율을 나타내는 Integer.
 
-  Returns:
-    A dictionary containing an entry for each label subfolder, with images split
-    into training, testing, and validation sets within each label.
+  반환값들(Returns):
+    각각의 label subfolder를 위한 enrtry를 포함한 dictionary A dictionary 
+    (각각의 label에서 이미지드릉ㄴ training, testing, validation sets으로 나뉘어져 있다.)
   """
   if not gfile.Exists(image_dir):
     print("Image directory '" + image_dir + "' not found.")
     return None
   result = {}
   sub_dirs = [x[0] for x in gfile.Walk(image_dir)]
-  # The root directory comes first, so skip it.
+  # root directory는 처음에 온다. 따라서 이를 skip한다.
   is_root_dir = True
   for sub_dir in sub_dirs:
     if is_root_dir:
@@ -783,17 +783,17 @@ def add_evaluation_step(result_tensor, ground_truth_tensor):
 
 
 def main(_):
-  # Setup the directory we'll write summaries to for TensorBoard
+  # TensorBoard의 summaries를 write할 directory를 설정한다.
   if tf.gfile.Exists(FLAGS.summaries_dir):
     tf.gfile.DeleteRecursively(FLAGS.summaries_dir)
   tf.gfile.MakeDirs(FLAGS.summaries_dir)
 
-  # Set up the pre-trained graph.
+  # pre-trained graph를 생성한다.
   maybe_download_and_extract()
   graph, bottleneck_tensor, jpeg_data_tensor, resized_image_tensor = (
       create_inception_graph())
 
-  # Look at the folder structure, and create lists of all the images.
+  # 폴더 구조를 살펴보고, 모든 이미지에 대한 lists를 생성한다.
   image_lists = create_image_lists(FLAGS.image_dir, FLAGS.testing_percentage,
                                    FLAGS.validation_percentage)
   class_count = len(image_lists.keys())
@@ -805,7 +805,7 @@ def main(_):
           ' - multiple classes are needed for classification.')
     return -1
 
-  # See if the command-line flags mean we're applying any distortions.
+  # 커맨드라인 flag에 distortion에 관련된 설정이 있으면 distortion들을 적용한다.
   do_distort_images = should_distort_images(
       FLAGS.flip_left_right, FLAGS.random_crop, FLAGS.random_scale,
       FLAGS.random_brightness)
@@ -813,14 +813,14 @@ def main(_):
   with tf.Session(graph=graph) as sess:
 
     if do_distort_images:
-      # We will be applying distortions, so setup the operations we'll need.
+      # 우리는 distortion들을 적용할것이다. 따라서 필요한 연산들(operations)을 설정한다.
       (distorted_jpeg_data_tensor,
        distorted_image_tensor) = add_input_distortions(
            FLAGS.flip_left_right, FLAGS.random_crop,
            FLAGS.random_scale, FLAGS.random_brightness)
     else:
-      # We'll make sure we've calculated the 'bottleneck' image summaries and
-      # cached them on disk.
+      # 우리는 계산된 'bottleneck' 이미지 summaries를 가지고 있다. 
+      # 이를 disk에 캐싱(caching)할 것이다. 
       cache_bottlenecks(sess, image_lists, FLAGS.image_dir,
                         FLAGS.bottleneck_dir, jpeg_data_tensor,
                         bottleneck_tensor)
