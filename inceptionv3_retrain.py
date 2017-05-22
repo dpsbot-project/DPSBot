@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 """Inception v3 architecture 모델을 이용한 간단한 Transfer Learning (TensorBoard 포함)
 
@@ -951,7 +952,7 @@ if __name__ == '__main__':
   parser.add_argument(
       '--how_many_training_steps',
       type=int,
-      default=4000,
+      default=1000,
       help='How many training steps to run before ending.'
   )
   parser.add_argument(
