@@ -146,19 +146,14 @@ def create_image_lists(image_dir, testing_percentage, validation_percentage):
     validation_images = []
     for file_name in file_list:
       base_name = os.path.basename(file_name)
-      # We want to ignore anything after '_nohash_' in the file name when
-      # deciding which set to put an image in, the data set creator has a way of
-      # grouping photos that are close variations of each other. For example
-      # this is used in the plant disease data set to group multiple pictures of
-      # the same leaf.
+      # 어떤 이미지로 리스트를 만들지 결정할때 파일 이름에 "_nohash_"가 포함되어 있으면 이를 무시할 수 있다.
+      # 이를 이용해서, 데이터셋을 만드는 사람은 서로 비슷한 사진들을 grouping할 수있다.
+      # 예를 들어, plant disease를 데이터셋을 만들기 위해서, 여러 장의 같은 잎사귀(leaf)를 grouping할 수 있다.
       hash_name = re.sub(r'_nohash_.*$', '', file_name)
-      # This looks a bit magical, but we need to decide whether this file should
-      # go into the training, testing, or validation sets, and we want to keep
-      # existing files in the same set even if more files are subsequently
-      # added.
-      # To do that, we need a stable way of deciding based on just the file name
-      # itself, so we do a hash of that and then use that to generate a
-      # probability value that we use to assign it.
+      # 이는 일종의 마법처럼 보일 수 있다. 하지만, 우리는 이 파일이 training sets로 갈지, testing sets로 갈지, validation sets로 갈지 결정해야만 한다.
+      # 그리고 우리는 더많은 파일들이 추가되더라도, 같은 set에 이미 존재하는 파일들이 유지되길 원한다.
+      # 그렇게 하기 위해서는, 우리는 파일 이름 그자체로부터 결정하는 안정적인 방법이 있어야만 한다.
+      # 따라서, 우리는 파일 이름을 hash하고, 이를 이를 할당하는데 사용하는 확률을 결정하는데 사용한다.
       hash_name_hashed = hashlib.sha1(compat.as_bytes(hash_name)).hexdigest()
       percentage_hash = ((int(hash_name_hashed, 16) %
                           (MAX_NUM_IMAGES_PER_CLASS + 1)) *
@@ -179,20 +174,18 @@ def create_image_lists(image_dir, testing_percentage, validation_percentage):
 
 
 def get_image_path(image_lists, label_name, index, image_dir, category):
-  """"Returns a path to an image for a label at the given index.
+  """"주어진 index에 대한 이미지 경로(path)를 리턴한다.
 
-  Args:
-    image_lists: Dictionary of training images for each label.
-    label_name: Label string we want to get an image for.
-    index: Int offset of the image we want. This will be moduloed by the
-    available number of images for the label, so it can be arbitrarily large.
-    image_dir: Root folder string of the subfolders containing the training
-    images.
-    category: Name string of set to pull images from - training, testing, or
-    validation.
+  인수들(Args):
+    image_lists: 각각의 label에 대한 training image들의 Dictionary.
+    label_name: 우리가 얻고자하는 이미지의 Label string.
+    index: 우리가 얻고자하는 이미지의 Int offset. 이는 레이블에 대한 가능한 이미지의 개수에 따라 moduloed 될 것이다.
+    따라서 임의의 큰값이 될 수도 있다.
+    image_dir: training 이미지들의 subfolder들을 포함하고 있는 Root folder string
+    category: training, testing, 또는 validation sets으로부터 이미지에 pull할 Name string
 
-  Returns:
-    File system path string to an image that meets the requested parameters.
+  반환값(Returns):
+    요청된 파라미터들이 만나게 될 이미지에 대한 파일 시스템 경로(file system path) string
 
   """
   if label_name not in image_lists:
@@ -863,8 +856,8 @@ def main(_):
              sess, image_lists, FLAGS.train_batch_size, 'training',
              FLAGS.bottleneck_dir, FLAGS.image_dir, jpeg_data_tensor,
              bottleneck_tensor)
-      # Feed the bottlenecks and ground truth into the graph, and run a training
-      # step. Capture training summaries for TensorBoard with the `merged` op.
+      # grpah에 bottleneck과 ground truth를 feed하고, training step을 진행한다.
+      # TensorBoard를 위한 'merged' op을 이용해서 training summaries을 capture한다.
 
       train_summary, _ = sess.run(
           [merged, train_step],
@@ -872,7 +865,7 @@ def main(_):
                      ground_truth_input: train_ground_truth})
       train_writer.add_summary(train_summary, i)
 
-      # Every so often, print out how well the graph is training.
+      # 일정 step마다 graph의 training이 얼마나 잘 되고 있는지 출력한다.
       is_last_step = (i + 1 == FLAGS.how_many_training_steps)
       if (i % FLAGS.eval_step_interval) == 0 or is_last_step:
         train_accuracy, cross_entropy_value = sess.run(
@@ -888,8 +881,8 @@ def main(_):
                 sess, image_lists, FLAGS.validation_batch_size, 'validation',
                 FLAGS.bottleneck_dir, FLAGS.image_dir, jpeg_data_tensor,
                 bottleneck_tensor))
-        # Run a validation step and capture training summaries for TensorBoard
-        # with the `merged` op.
+        # validation step을 진행한다.
+        # TensorBoard를 위한 'merged' op을 이용해서 training summaries을 capture한다.
         validation_summary, validation_accuracy = sess.run(
             [merged, evaluation_step],
             feed_dict={bottleneck_input: validation_bottlenecks,
@@ -899,8 +892,8 @@ def main(_):
               (datetime.now(), i, validation_accuracy * 100,
                len(validation_bottlenecks)))
 
-    # We've completed all our training, so run a final test evaluation on
-    # some new images we haven't used before.
+    # 트레이닝 과정이 모두 끝났다.
+    # 따라서 이전에 보지 못했던 이미지를 통해 마지막 test 평가(evalution)을 진행한다.
     test_bottlenecks, test_ground_truth, test_filenames = (
         get_random_cached_bottlenecks(sess, image_lists, FLAGS.test_batch_size,
                                       'testing', FLAGS.bottleneck_dir,
@@ -920,8 +913,7 @@ def main(_):
           print('%70s  %s' % (test_filename,
                               list(image_lists.keys())[predictions[i]]))
 
-    # Write out the trained graph and labels with the weights stored as
-    # constants.
+    # 학습된 graph와 weights들을 포함한 labels를 쓴다.(write)
     output_graph_def = graph_util.convert_variables_to_constants(
         sess, graph.as_graph_def(), [FLAGS.final_tensor_name])
     with gfile.FastGFile(FLAGS.output_graph, 'wb') as f:
