@@ -7,7 +7,7 @@ archiveis == 0.0.4
 
 # Main.py: 6
 # distribution.py: 6
-cryptography == 2.0.3
+cryptography == 2.3
 
 # Main.py: 2,3
 # distribution.py: 2,3
