@@ -12,4 +12,6 @@ my discord id:316553064087552001
 
 DPS#0340
 
+or just come to my server! https://discord.gg/TjKB42S
+
 bot status may be offline while my PC is offline.(sorry!)
