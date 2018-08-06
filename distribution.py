@@ -119,6 +119,7 @@ async def 오스(ctx, *user):
             username += str(word)
         else:
             username += str(word) + ' '
+    # put your osu api key
     api = OsuApi("", connector=ReqConnector())
     results = api.get_user(username)
     userid = results[0].user_id
