@@ -17,11 +17,12 @@ import pickle
 import pickle_mixin
 import os
 import copy
+import re
+import sqlite3
+
 
 # put some server on proxystring #
 proxyString = "127.0.0.1:8080"
-# edit it #
-path = "path/to/file"
 desired_capability = webdriver.DesiredCapabilities.FIREFOX
 desired_capability['proxy'] = {
             "proxyType": "manual",
@@ -54,41 +55,32 @@ async def on_ready():
 
 @client.event
 async def 태그로드():
-    namelist = []
-    bodylist = []
-    with open('%sfunckey.txt' % path, 'r') as a:
-        while True:
-            name1 = a.readline()
-            if name1:
-                name1 = name1.replace('\n', '')
-                namelist.append(name1)
-                print(name1)
-            else:
-                break
-    print(namelist)
-    for name2 in namelist:
-        with open('%sdata\\%s.txt' % (path, name2), 'r') as look:
-            body = ''
-            while True:
-                line = look.readline()
-                if line:
-                    print(line)
-                    body += line
-                else:
-                    bodylist.append(body)
-                    break
-    print(bodylist)
-    i = 0
-    while True:
-        try:
-            name = copy.deepcopy(namelist[i])
-            message = copy.deepcopy(bodylist[i])
-        except:
-            break
-        print(name)
-        print(message)
+    conn = sqlite3.connect("data\\data.db")
+    cur = conn.cursor()
+    cur.execute("select * from tag")
+    rows = cur.fetchall()
+    for row in rows:
+        name = row[0]
+        message = row[1]
         await taginit(name, message)
-        i += 1
+
+@client.event
+async def alohinsert(table, num, head, body):
+    conn = sqlite3.connect("data\\data.db")
+    cur = conn.cursor()
+    sql = "insert into {0} (num,head,body) values (?, ?, ?)".format(table)
+    cur.execute(sql, (int(num), str(head), str(body)))
+    conn.commit()
+    conn.close()
+
+@client.event
+async def taginsert(table, name, body):
+    conn = sqlite3.connect("data\\data.db")
+    cur = conn.cursor()
+    sql = "insert into {0} (name,body) values (?, ?)".format(table)
+    cur.execute(sql, (str(name), str(body)))
+    conn.commit()
+    conn.close()
 
 @client.event
 async def taginit(name, message):
@@ -102,8 +94,8 @@ async def taginit(name, message):
 
 doinglist = ['주인님 드릴 드립 커피를 내리고 있어요!', '두둥! 밴드부 활동 중이랍니다!', '요리 중이에요☆', '놀이터에서 꼬마들이랑 노는 중이랍니다!\n동심이란...후훗',
              '주인님의 블로그에 들일 가구들을 고르고 있어요!', '공부 중이랍니다!', 'PUBG 플레이 중! 오늘은 진짜 치킨이에요!', '도서관에 왔어요! 현실속의 아카이브 저장소랍니다!']
-# bot's id #
-self = ''
+# put it
+self = 'bot_id'
 
 @client.command(pass_context=True)
 async def 안녕(ctx):
@@ -116,6 +108,7 @@ async def 블라인드(ctx):
     await client.say("---------------블라인드가 끝났습니다---------------")
 
 
+
 @client.command(pass_context=True)
 async def 오스(ctx, *user):
     username = ''
@@ -126,7 +119,7 @@ async def 오스(ctx, *user):
             username += str(word)
         else:
             username += str(word) + ' '
-    api = OsuApi("your osu api", connector=ReqConnector())
+    api = OsuApi("", connector=ReqConnector())
     results = api.get_user(username)
     userid = results[0].user_id
     thumbnail = "https://s.ppy.sh/a/" + str(userid)
@@ -145,16 +138,16 @@ async def 태그(ctx, name, *args):
             body += str(word)
         else:
             body += str(word) + ' '
-    @client.command(pass_context=True, name="t" + name)
-    async def tag(ctx):
-        await client.send_message(ctx.message.channel, body)
-        print(name)
-        print(body)
-    with open('%sdata\\%s.txt' % (path, name), 'w') as w:
-        w.write(body)
-    with open('funckey.txt', 'a') as a:
-        a.write(name + '\n')
-
+    if not body == '':
+        @client.command(pass_context=True, name="t" + name)
+        async def tag(ctx):
+            await client.send_message(ctx.message.channel, body)
+            print(name)
+            print(body)
+        await taginsert("tag", name, body)
+        await client.send_message(ctx.message.channel, "등록되었습니다.")
+    else:
+        await client.send_message(ctx.message.channel, "공백은 안돼요!")
 @client.command(pass_context=True)
 async def 사진(ctx):
     await client.send_message(ctx.message.channel, "https://sge17th.xyz/upload/")
@@ -178,6 +171,37 @@ async def 아카이브(ctx, url):
         await client.send_message(ctx.message.channel, "오류가 발생했어요!")
     finally:
         driver.close()
+
+@client.event
+async def Aloh(ctx):
+    with open("data/Alohbackup.txt", "r", encoding="utf-8") as a:
+        body = ''
+        while True:
+            sayd = a.readline()
+            if sayd == "0.5배라는 건가요" or sayd == "Speed 0.5는":
+                body += sayd + '\n'
+            else:
+                if sayd:
+                    sayd = sayd.replace('\n', '')
+                    checker = bool(re.match('[0-9]+[.]', sayd))
+                    if checker is True:
+                        if body == '':
+                            body += sayd + '\n'
+                        num = re.match('[0-9]+[.]', sayd).group().replace('.', '')
+                        await alohinsert("alohsayd", int(num) - 1, "Alohsayd " + str(int(num) - 1), body)
+                        body = sayd + '\n'
+                        print(num)
+                        print(sayd)
+                    else:
+                        body += sayd + '\n'
+                else:
+                    body += '\n' + sayd + '\n'
+                    await alohinsert("alohsayd", int(1172), "Alohsayd " + str(1172), body)
+                    body = ''
+                    print(num)
+                    print(sayd)
+                    break
+
 @client.command(pass_context=True)
 async def 귓속말(ctx):
     await client.send_message(ctx.message.channel, "DM을 봐주세요!")
@@ -195,7 +219,7 @@ async def 도움(ctx):
                               "\n\n종료\nDM을 종료합니다."
                               "\n\n디피 태그 (제목) (내용)\nDPS봇이 태그를 만들어줘요!"
                               "\n\n디피 t(제목)\nDPS봇이 태그를 보여준답니다!"
-                              "\n\n디피 스위트룸\nDPS봇이 개발자의 홈페이지로 가는 링크를 알려줍니다.") 
+                              "\n\n디피 스위트룸\nDPS봇이 개발자의 홈페이지로 가는 링크를 알려줍니다.")
 
 @client.command(pass_context=True)
 async def 이팔(ctx):
@@ -260,16 +284,17 @@ async def 내가누구(ctx):
 
 @client.command(pass_context=True)
 async def 건의(ctx, msg):
+    # my id and my channel. if you want to change it, do it!
     me = await client.get_user_info('316553064087552001')
     channel = client.get_channel('474732217340264448')
     mention = ctx.message.author.name
     await client.send_message(channel, '%s 님이 ' % (mention) + msg + ' (이)라고 건의했습니다.')
-    await client.send_message(me, '존경하는 주인님♡\n소식이 있어요!\n %s 님이 ' % (mention) + msg + ' (이)라고 건의했습니다.')
+    await client.send_message(me, '소식이 있어요!\n %s 님이 ' % (mention) + msg + ' (이)라고 건의했습니다.')
 
 @client.command(pass_context=True)
 async def 써줘(ctx, *heads):
     try:
-        with open("data/num.txt", "r") as w:
+        with open("data/num.txt", "r", encoding="utf-8") as w:
             num = w.readline()
             num = int(num)
     except ValueError:
@@ -293,20 +318,42 @@ async def 써줘(ctx, *heads):
         author = ctx.message.author.name
         embed = discord.Embed(title="%s" % head, description="\nby %s\n%s" % (author, body), color=0xE0FFFF)
         await client.send_message(ctx.message.channel, embed=embed)
-        with open("data/head%d.txt" % num, "a") as w:
+        with open("data/head%d.txt" % num, "a", encoding="utf-8") as w:
             w.write(head + '\n')
-        with open("data/author%d.txt" % num, "a") as w:
+        with open("data/author%d.txt" % num, "a", encoding="utf-8") as w:
             w.write(author + '\n')
-        with open("data/body%d.txt" % num, "a") as w:
+        with open("data/body%d.txt" % num, "a", encoding="utf-8") as w:
             w.write(body + '\n')
     with open("data/num.txt", "w") as w:
         w.write(str(num))
 
+@client.command(pass_context=True)
+async def 알로세이드(ctx, num: int):
+    await client.send_message(ctx.message.channel, "알로세이드는 1172번까지 있습니다.")
+    if 0 <= num <= 1172:
+        conn = sqlite3.connect("data\\data.db")
+        with conn:
+            try:
+                cur = conn.cursor()
+                cur.execute("select * from alohsayd where num={0}".format(num))
+                rows = cur.fetchall()
+                row = rows[0]
+                print(row)
+                num = row[0]
+                head = row[1]
+                body = row[2]
+                head = head.replace("\n", "")
+                embed = discord.Embed(title="%s" % head, description="\n%s" % (body), color=0xE0FFFF)
+                await client.send_message(ctx.message.channel, embed=embed)
+            except:
+                raise
+                await client.send_message(ctx.message.channel, "파일을 찾지 못했어요!")
+                pass
 
 @client.command(pass_context=True)
 async def 보여줘(ctx):
     try:
-        with open("data/num.txt", "r") as w:
+        with open("data/num.txt", "r", encoding="utf-8") as w:
             num = w.readline()
             num = int(num)
     except ValueError:
@@ -314,70 +361,59 @@ async def 보여줘(ctx):
     heads = []
     bodies = []
     authors = []
-    for i in range(1, num + 1):
+    for i in range(1172 + 1, num + 1):
         head = ''
         body = ''
         author = ''
-        with open("data/head%d.txt" % i, "r") as look:
+        postnumber = copy.deepcopy(i)
+        with open("data/head%d.txt" % postnumber, "r", encoding="utf-8") as look:
             while True:
                 line = look.readline()
                 if line:
                     head += line
                 else:
                     break
-        with open("data/author%d.txt" % i, "r") as look:
+        with open("data/author%d.txt" % postnumber, "r", encoding="utf-8") as look:
             while True:
                 line = look.readline()
                 if line:
                     author += line
                 else:
                     break
-        with open("data/body%d.txt" % i, "r") as look:
-            while True:
-                line = look.readline()
-                if line:
-                    body += line
-                else:
-                    break
-        heads.append(head)
-        authors.append(author)
-        bodies.append(body)
-    for i in range(len(heads)):
-        head = heads[i]
-        body = bodies[i]
-        author = authors[i]
         head = head.replace("\n", "")
-        await client.send_message(ctx.message.channel, "%s. %s - by %s\n" % ((i + 1), head, author))
+        postnumber -= 1172
+        await client.send_message(ctx.message.channel, "%s. %s - by %s\n" % ((postnumber), head, author))
     await client.send_message(ctx.message.channel, "디피 글 (번호)를 입력하시면 글을 보실수 있어요!")
 
 @client.command(pass_context=True)
 async def 글(ctx, select: int):
     try:
-        with open("data/num.txt", "r") as w:
+        with open("data/num.txt", "r", encoding="utf-8") as w:
             num = w.readline()
             num = int(num)
     except ValueError:
         num = 0
+    select += 1172
     for i in range(1, num + 1):
         head = ''
         body = ''
         author = ''
         if i == select:
-            with open("data/head%d.txt" % i, "r") as look:
+            with open("data/head%d.txt" % i, "r", encoding="utf-8") as look:
                 while True:
                     line = look.readline()
                     if line:
                         head += line
                     else:
                         break
-            with open("data/author%d.txt" % i, "r") as look:
+            with open("data/author%d.txt" % i, "r", encoding="utf-8") as look:
                 while True:
                     line = look.readline()
                     if line:
                         author += line
                     else:
                         break
-            with open("data/body%d.txt" % i, "r") as look:
+            with open("data/body%d.txt" % i, "r", encoding="utf-8") as look:
                 while True:
                     line = look.readline()
                     if line:
@@ -546,7 +582,6 @@ async def log(message, key):
     except AttributeError:
         pass
 
-# logging. #
 @client.event
 async def bot_log(message):
     with open("log.txt", 'a') as log:
