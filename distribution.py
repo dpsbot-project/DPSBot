@@ -198,6 +198,8 @@ async def 아카이브(ctx, url):
     try:
         if not "http" in url:
             url = "http://" + url
+        # you can use porked library and put proxystring for now
+        # https://github.com/DPS0340/archiveis
         archive_url = archiveis.capture(url)
         await bot.send_message(ctx.message.channel, "아카이브 중입니다...\n"
                                                        "조금만 기다려 주세요!")
