@@ -6,6 +6,9 @@ import random
 from cryptography.fernet import Fernet
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 # IMPORTANT! #
 # if you want to use proxy server when you use archiveis. edit this library. #
 # or use this:https://github.com/DPS0340/archiveis #
@@ -208,7 +211,8 @@ async def 아카이브(ctx, url):
         await bot.send_message(ctx.message.channel, "아카이브 중입니다...\n"
                                                        "조금만 기다려 주세요!")
         driver.get(url)
-        await asyncio.sleep(3)
+        wait = WebDriverWait(driver, 10)
+        wait.until(EC.presence_of_element_located((By.ID, 'html')))
         driver.maximize_window()
         driver.find_element_by_tag_name('html').screenshot('screenshot.png')
         await bot.send_file(ctx.message.channel, 'screenshot.png')
