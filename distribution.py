@@ -521,7 +521,7 @@ async def pong(message, A, B):
 async def log(message, key):
     listener = message.author
     try:
-        body = await bot.wait_for_message(timeout=2000000)
+        body = await bot.wait_for_message(timeout=2000000, channel=message.channel)
         if body is None:
             await bot.send_message(listener, '응답이 없어서 종료되었습니다.')
             pass
