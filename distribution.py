@@ -115,6 +115,32 @@ async def 블라인드(ctx):
     await bot.say(".\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.\n.")
     await bot.say("---------------블라인드가 끝났습니다---------------")
 
+@bot.command(pass_context=True)
+async def 암호화(ctx, *words):
+    plaintext = ''
+    i = 0
+    for word in words:
+        i += 1
+        if word == words[-1] and len(words) == i:
+            plaintext += str(word)
+        else:
+            plaintext += str(word) + ' '
+    encryptedtext = cipher_suite.encrypt(plaintext.encode("utf-8")).decode()
+    await bot.send_message(ctx.message.channel, encryptedtext)
+
+@bot.command(pass_context=True)
+async def 복호화(ctx, encryptedtext):
+    plaintext = cipher_suite.decrypt(encryptedtext.encode("utf-8")).decode()
+    await bot.send_message(ctx.message.channel, plaintext)
+
+@bot.command(pass_context=True)
+async def 그라바타(ctx, plaintext):
+    plaintext = ''
+    h = hashlib.md5()
+    h.update(plaintext.encode("utf-8").lower())
+    encryptedtext = h.hexdigest()
+    await bot.send_message(ctx.message.channel, encryptedtext)
+    await bot.send_message(ctx.message.channel, "http://www.gravatar.com/avatar/" + encryptedtext)
 
 
 @bot.command(pass_context=True)
