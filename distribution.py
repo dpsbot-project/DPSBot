@@ -208,6 +208,7 @@ async def 아카이브(ctx, url):
         await bot.send_message(ctx.message.channel, "아카이브 중입니다...\n"
                                                        "조금만 기다려 주세요!")
         driver.get(url)
+        await asyncio.sleep(3)
         driver.maximize_window()
         driver.find_element_by_tag_name('html').screenshot('screenshot.png')
         await bot.send_file(ctx.message.channel, 'screenshot.png')
