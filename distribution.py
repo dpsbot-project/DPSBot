@@ -8,7 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 # IMPORTANT! #
 # if you want to use proxy server when you use archiveis. edit this library. #
-# or use this:https://github.com/DPS0340/archiveis
+# or use this:https://github.com/DPS0340/archiveis #
 # or others can view your ip address. #
 import archiveis
 from osuapi import OsuApi, ReqConnector
@@ -25,6 +25,9 @@ import sqlite3
 # put some server on proxystring #
 proxyString = "127.0.0.1:8080"
 desired_capability = webdriver.DesiredCapabilities.FIREFOX
+# this line just debug some errors #
+# like UnexpectedAlertPresentException: Alert Text: None #
+desired_capability["unexpectedAlertBehaviour"] = "accept"
 desired_capability['proxy'] = {
             "proxyType": "manual",
             "httpProxy": proxyString,
