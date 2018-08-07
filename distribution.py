@@ -211,7 +211,7 @@ async def 아카이브(ctx, url):
         await bot.send_message(ctx.message.channel, "아카이브 중입니다...\n"
                                                        "조금만 기다려 주세요!")
         driver.get(url)
-        wait = WebDriverWait(driver, 10)
+        wait = WebDriverWait(driver, 3)
         wait.until(EC.presence_of_element_located((By.ID, 'html')))
         driver.maximize_window()
         driver.find_element_by_tag_name('html').screenshot('screenshot.png')
