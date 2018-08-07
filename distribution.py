@@ -8,6 +8,7 @@ from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
 # IMPORTANT! #
 # if you want to use proxy server when you use archiveis. edit this library. #
+# or use this:https://github.com/DPS0340/archiveis
 # or others can view your ip address. #
 import archiveis
 from osuapi import OsuApi, ReqConnector
