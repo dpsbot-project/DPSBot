@@ -95,6 +95,7 @@ async def taginsert(table, name, body):
 async def taginit(name, message):
     nameclone = copy.deepcopy(name)
     messageclone = copy.deepcopy(message)
+    # making some functions
     @bot.command(name = "t" + name, pass_context=True)
     async def tag(ctx):
         await bot.send_message(ctx.message.channel, messageclone)
@@ -103,6 +104,7 @@ async def taginit(name, message):
 
 doinglist = ['주인님 드릴 드립 커피를 내리고 있어요!', '두둥! 밴드부 활동 중이랍니다!', '요리 중이에요☆', '놀이터에서 꼬마들이랑 노는 중이랍니다!\n동심이란...후훗',
              '주인님의 블로그에 들일 가구들을 고르고 있어요!', '공부 중이랍니다!', 'PUBG 플레이 중! 오늘은 진짜 치킨이에요!', '도서관에 왔어요! 현실속의 아카이브 저장소랍니다!']
+#write this.
 self = 'your_bot_id'
 
 @bot.command(pass_context=True)
@@ -176,6 +178,7 @@ async def 태그(ctx, *names):
     await bot.send_message(ctx.message.channel, "주의! 제목에는 띄어쓰기가 불가능합니다.")
     body = await bot.wait_for_message(timeout=100.0, author=ctx.message.author)
     if not body == '':
+        # making some functions
         @bot.command(name="t" + name, pass_context=True)
         async def tag(ctx):
             await bot.send_message(ctx.message.channel, body.content)
