@@ -46,7 +46,8 @@ profile.set_preference("media.volume_scale", "0.0")
 profile.set_preference("intl.accept_languages", "ko")
 driver = webdriver.Firefox(profile, firefox_options=options)
 options.add_argument(
-    "user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/61.0.3163.100 Safari/537.36")
+    {'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13F69 Safari/601.1', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+     'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3', 'Accept-Encoding': 'none', 'Accept-Language': 'en-US,en;q=0.8', 'Connection': 'keep-alive'})
 bot = commands.Bot(command_prefix="디피 ")
 global privatekey, cipher_suite, funckey
 privatekey = Fernet.generate_key()
