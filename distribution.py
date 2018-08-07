@@ -135,7 +135,6 @@ async def 복호화(ctx, encryptedtext):
 
 @bot.command(pass_context=True)
 async def 그라바타(ctx, plaintext):
-    plaintext = ''
     h = hashlib.md5()
     h.update(plaintext.encode("utf-8").lower())
     encryptedtext = h.hexdigest()
