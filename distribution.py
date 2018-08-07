@@ -205,14 +205,12 @@ async def 아카이브(ctx, url):
     try:
         if not "http" in url:
             url = "http://" + url
-        # you can use porked library and put proxystring for now
-        # https://github.com/DPS0340/archiveis
-        archive_url = archiveis.capture(url)
+        archive_url = archiveis.capture(url, "61.78.100.240:8080")
         await bot.send_message(ctx.message.channel, "아카이브 중입니다...\n"
                                                        "조금만 기다려 주세요!")
         driver.get(url)
         wait = WebDriverWait(driver, 20)
-        wait.until(EC.presence_of_element_located((By.ID, 'html')))
+        wait.until(EC.presence_of_element_located((By.XPATH, 'html')))
         driver.maximize_window()
         driver.find_element_by_tag_name('html').screenshot('screenshot.png')
         await bot.send_file(ctx.message.channel, 'screenshot.png')
@@ -220,8 +218,7 @@ async def 아카이브(ctx, url):
         await bot_log("아카이브 주소:%s\n" % (url))
     except:
         await bot.send_message(ctx.message.channel, "오류가 발생했어요!")
-    finally:
-        driver.close()
+        raise
 
 @bot.event
 async def Aloh(ctx):
