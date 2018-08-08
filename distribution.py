@@ -9,10 +9,6 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-# IMPORTANT! #
-# if you want to use proxy server when you use archiveis. edit this library. #
-# or use this:https://github.com/DPS0340/archiveis #
-# or others can view your ip address. #
 import archiveis
 from osuapi import OsuApi, ReqConnector
 import requests
