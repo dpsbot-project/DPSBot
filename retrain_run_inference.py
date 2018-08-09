@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 """Inception v3 architecture 모델을 retraining한 모델을 이용해서 이미지에 대한 추론(inference)을 진행하는 예제"""
-# 를 디스코드 봇에 쓰려고 수정 모듈
+# 를 디스코드 봇에 쓰려고 수정한 모듈
 
 import numpy as np
 import tensorflow as tf
