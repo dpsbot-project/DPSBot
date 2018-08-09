@@ -111,7 +111,7 @@ def create_image_lists(image_dir, testing_percentage, validation_percentage):
 
   반환값들(Returns):
     각각의 label subfolder를 위한 enrtry를 포함한 dictionary A dictionary 
-    (각각의 label에서 이미지드릉ㄴ training, testing, validation sets으로 나뉘어져 있다.)
+    (각각의 label에서 이미지들은 training, testing, validation sets으로 나뉘어져 있다.)
   """
   if not gfile.Exists(image_dir):
     print("Image directory '" + image_dir + "' not found.")
@@ -124,7 +124,7 @@ def create_image_lists(image_dir, testing_percentage, validation_percentage):
     if is_root_dir:
       is_root_dir = False
       continue
-    extensions = ['jpg', 'jpeg', 'JPG', 'JPEG']
+    extensions = ['jpg', 'jpeg', 'JPG', 'JPEG', "png", "PNG"]
     file_list = []
     dir_name = os.path.basename(sub_dir)
     if dir_name == image_dir:
