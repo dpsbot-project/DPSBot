@@ -19,6 +19,12 @@ import os
 import copy
 import re
 import sqlite3
+import hashlib
+from time import localtime, strftime
+import aiohttp
+import predict
+import urllib3
+import cv2
 
 
 # put some server on proxystring #
@@ -67,6 +73,45 @@ async def 태그로드():
         name = row[0]
         message = row[1]
         await taginit(name, message)
+
+
+@bot.command(pass_context=True)
+async def 그림추론(ctx):
+    await bot.send_message(ctx.message.channel, "사진을 올려주세요!\n기계학습 라이브러리 텐서플로우 & inception v3 모델 기반.\n현재 가능한 캐릭터: 뮤즈 9인, 츠시마 요시코, 하츠네 미쿠,  시부야 린,  와타나베 요우, 시마무라 우즈키, 타카미 치카, IWS-2000, 요네바야시 사이코.\n사진을 업로드하시면, 이용자는 업로드한 사진을 기계학습 목적을 위해서 제작자에게 제공하는 것에 동의하신걸로 간주됩니다.")
+    body = await bot.wait_for_message(author=ctx.message.author)
+    if body:
+        try:
+            url = body.attachments[0]['url']
+            async def get(url):
+                async with aiohttp.get(url) as r:
+                    if r.status == 200:
+                        return await r.read()
+                    else:
+                        return None
+            file = await get(url)
+            if file:
+                if ".jpg" or ".JPG" or ".jpeg" or ".JPEG" in url:
+                    ext = "jpg"
+                elif ".png" or ".PNG" in url:
+                    ext = "png"
+                else:
+                    await bot.send_message(ctx.message.channel, "지원하지 않는 확장자입니다.")
+                with open("%s.%s" % (body.attachments[0]['id'], ext), 'wb') as picture:
+                    picture.write(file)
+                prediction = await runinception("%s.%s" % (body.attachments[0]['id'], ext), str(body.attachments[0]['id']))
+                if prediction is not None:
+                    for characterlist in prediction:
+                        await bot.send_file(ctx.message.channel, characterlist[3])
+                        await bot.send_message(ctx.message.channel, "으음...\n제 생각에는 %s퍼센트로 %s일것 같네요!" % (characterlist[2], characterlist[1]))
+                    with open("D:/retrain/pending/%s.%s" % (body.attachments[0]['id'], ext), 'wb') as picture:
+                        picture.write(file)
+                    await bot.send_file(ctx.message.channel, "out.png")
+                else:
+                    await bot.send_message(ctx.message.channel, "이런! 인식에 실패했어요!")
+        except:
+            await bot.send_message(ctx.message.channel, "사진이 없는듯 하네요?")
+            raise
+
 
 @bot.event
 async def alohinsert(table, num, head, body):
