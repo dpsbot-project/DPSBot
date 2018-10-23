@@ -1,5 +1,7 @@
 a discord bot for multiple purposes.
 
+invite link: https://discordbots.org/bot/474551852093145089
+
 distribution.py is the main file.
 
 you have to edit distribution.py for write osu api and discord token.
