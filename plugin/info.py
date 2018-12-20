@@ -12,9 +12,9 @@ class infoclass():
         self.bot = bot
     
 
-    @commands.command
-    async def 사용자정보(self, message):
-        person = message.mentions[0].id
+    @commands.command(pass_context=True)
+    async def 사용자정보(self, ctx):
+        person = ctx.message.mentions[0].id
         person = await self.bot.get_user_info(person)
         name = person.name
         discriminator = person.discriminator
@@ -23,7 +23,7 @@ class infoclass():
         embed = discord.Embed(title="%s#%s" % (
             name, discriminator), description="id:%s" % (id), color=0xE0FFFF)
         embed.set_thumbnail(url=avatar)
-        await self.bot.send_message(message.channel, embed=embed)
+        await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
     @commands.command(pass_context=True)
