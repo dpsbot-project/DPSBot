@@ -23,7 +23,7 @@ class cryptoclass():
     async def 복호화(self, ctx):
         await self.bot.say('암호를 말해주세요.')
         encryptedtext = await self.bot.wait_for_message(author=ctx.message.author)
-        if plaintext:
+        if encryptedtext:
             plaintext = self.cipher_suite.decrypt(encryptedtext.content.encode("utf-8")).decode()
             await self.bot.say(plaintext)
         else:
