@@ -17,7 +17,7 @@ class etcclass():
     @commands.command(pass_context=True)
     async def 블라인드(self, ctx):
         await self.bot.say("---------------블라인드 중입니다---------------")
-        await self.bot.say("\n" * 50)
+        await self.bot.say(".\n" * 50)
         await self.bot.say("---------------블라인드가 끝났습니다---------------")
 
     @commands.command(pass_context=True)
