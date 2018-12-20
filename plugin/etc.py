@@ -30,10 +30,8 @@ class etcclass():
     @commands.command(pass_context=True)
     async def 도움(self, ctx):
         await self.bot.say("DM을 봐주세요!")
-        await self.bot.send_message(ctx.message.author,
-                            ""
-                            )
-
+        embed=discord.Embed(title="DPSBot 가이드", url="https://gist.github.com/DPS0340/eb66ac681a5ea73313c8f55607a1a866", color=0x1dfff5)
+        await self.bot.send_message(ctx.message.author, embed=embed)
     @commands.command(pass_context=True)
     async def 죽어(self, ctx):
         await self.bot.send_message(ctx.message.channel, '싫어요!')
