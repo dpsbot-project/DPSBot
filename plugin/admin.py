@@ -127,8 +127,12 @@ class adminclass():
             embed = discord.Embed(title="**경고**", description="현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다.", color=0xff0000)
             await self.bot.send_message(ctx.message.channel, embed=embed)
             for function in functions:
-                self.bot.remove_command(function)
-                await self.bot.say("%s 명령어 삭제 완료.")
+                try:
+                    self.bot.remove_command(function)
+                    await self.bot.say("%s 명령어 삭제 완료." % function)
+                except Exception as e:
+                    await self.bot.say("오류가 발생했습니다." % function)
+                    await self.bot.say(e)
         else:
             await self.bot.say('권한이 없습니다.\n운영자만 사용 가능합니다.')
 
@@ -139,8 +143,12 @@ class adminclass():
             embed = discord.Embed(title="**경고**", description="현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다.", color=0xff0000)
             await self.bot.send_message(ctx.message.channel, embed=embed)
             for function in functions:
-                self.bot.add_command(function)
-                await self.bot.say("%s 명령어 복구 완료.")
+                try:
+                    self.bot.add_command(function)
+                    await self.bot.say("%s 명령어 복구 완료." % function)
+                except Exception as e:
+                    await self.bot.say("오류가 발생했습니다." % function)
+                    await self.bot.say(e)
         else:
             await self.bot.say('권한이 없습니다.\n운영자만 사용 가능합니다.')
 
