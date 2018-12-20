@@ -12,14 +12,14 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
-    await splash()
+    await splash_rotate()
 
 @bot.event
-async def splash():
+async def splash_rotate():
     while True:
-        gamename.get()
-        for game in gamename:
-            await bot.change_presence(game=discord.Game(name=game))
+        splashes = gamename.get()
+        for splash in splashes:
+            await bot.change_presence(game=discord.Game(name=splash))
             asyncio.sleep(1.5)
 
 
