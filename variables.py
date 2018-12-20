@@ -31,14 +31,14 @@ class Instructions():
     def set(self, value):
         self.value = value
 class Game():
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, splashlist):
+        self.list = splashlist
 
     def get(self):
-        return self.value
+        return self.splashlist
 
-    def set(self, value):
-        self.value = value
+    def set(self, splash):
+        self.list.append(splash)
 class Prefix():
     def __init__(self, value):
         self.value = value

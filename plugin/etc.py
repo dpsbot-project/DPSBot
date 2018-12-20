@@ -17,7 +17,7 @@ class etcclass():
     @commands.command(pass_context=True)
     async def 블라인드(self, ctx):
         await self.bot.say("---------------블라인드 중입니다---------------")
-        await self.bot.say(".\n" * 20)
+        await self.bot.say("\n" * 50)
         await self.bot.say("---------------블라인드가 끝났습니다---------------")
 
     @commands.command(pass_context=True)
@@ -31,11 +31,7 @@ class etcclass():
     async def 도움(self, ctx):
         await self.bot.say("DM을 봐주세요!")
         await self.bot.send_message(ctx.message.author,
-                            "설명입니다.\n\n디피 안녕\nDPS봇이 인사합니다.\n\n디피 귓속말\nDPS봇이 DM을 합니다. 명령어를 사용하실 수 있습니다.\n\n"
-                            "디피 로그켜\n봇이 로깅을 시작합나다.\n\n디피 전해줘 (멘션) (내용)\n특정 사용자에게 DM을 대신 보내줍니다.\n\n디피 익명 (16자리 ID)\n익명으로 DM을 대신 보내줍니다.\n\n디피 답장 (암호)\n익명으로 온 DM에 답장합니다."
-                            "\n\n디피 아카이브 (url)\nDPS봇이 아카이브를 떠줘요! 사진과 url로 저장된답니다!\n주의:아카이브의 모든 책임은 본인에게 있답니다."
-                            "\n\n디피 maketag (제목) (내용)\n태그를 만듭니다. 디피 t제목을 입력하면 실행됩니다. 디피스크립트 가이드: https://gist.github.com/DPS0340/fa7d1e1333e6c5bcabcc0c5cd03003f5"
-                            "\n\n종료\nDM을 종료합니다."
+                            ""
                             )
 
     @commands.command(pass_context=True)
