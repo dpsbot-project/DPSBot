@@ -12,8 +12,16 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
-    await bot.change_presence(game=discord.Game(name=gamename.get()))
     await splash()
+
+@bot.event
+async def splash():
+    while True:
+        gamename.get()
+        for game in gamename:
+            await bot.change_presence(game=discord.Game(name=game))
+            asyncio.sleep(1.5)
+
 
 if __name__ == '__main__':
     print("------")

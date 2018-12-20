@@ -31,13 +31,13 @@ class Instructions():
     def set(self, value):
         self.value = value
 class Game():
-    def __init__(self, splashlist):
-        self.list = splashlist
+    def __init__(self):
+        self.list = []
 
     def get(self):
-        return self.splashlist
+        return self.list
 
-    def set(self, splash):
+    def append(self, splash):
         self.list.append(splash)
 class Prefix():
     def __init__(self, value):
@@ -49,5 +49,12 @@ class Prefix():
     def set(self, value):
         self.value = value
 instructions = Instructions(instructionsvalue)
-gamename = Game(gamevalue)
+gamename = Game()
+gamename.append("DPSBot!")
+gamename.append("github.com/DPS0340/DPSbot")
+gamename.append("디피 도움을 쳐보세요!")
+gamename.append("디피 정보를 쳐보세요!")
+gamename.append("제작자: DPS0340")
+gamename.append("Powered by Team ttakkku")
+
 prefix = Prefix(prefixvalue)
