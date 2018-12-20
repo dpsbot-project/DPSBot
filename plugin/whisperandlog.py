@@ -138,7 +138,7 @@ class whisperclass():
 
     async def bot_log(self, message):
         print(message)
-            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
         sql = """insert into log (body) values (%s)"""
         cur.execute(sql, (message, ))
