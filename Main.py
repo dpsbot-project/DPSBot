@@ -12,9 +12,8 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print('------')
-    await splash_rotate()
+    bot.loop.create_task(splash_rotate())
 
-@bot.event
 async def splash_rotate():
     while True:
         splashes = gamename.get()
