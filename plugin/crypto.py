@@ -11,8 +11,8 @@ class cryptoclass():
 
     @commands.command(pass_context=True)
     async def 암호화(self, ctx):
-        plaintext = await self.bot.wait_for_message(channel=ctx.message.channel)
         await self.bot.say('암호화시킬 내용을 말해주세요.')
+        plaintext = await self.bot.wait_for_message(author=ctx.message.author)
         if plaintext:
             encryptedtext = self.cipher_suite.encrypt(plaintext.content.encode("utf-8")).decode()
             await self.bot.say(encryptedtext)
@@ -21,8 +21,8 @@ class cryptoclass():
 
     @commands.command(pass_context=True)
     async def 복호화(self, ctx):
-        encryptedtext = await self.bot.wait_for_message(channel=ctx.message.channel)
         await self.bot.say('암호를 말해주세요.')
+        encryptedtext = await self.bot.wait_for_message(author=ctx.message.author)
         if plaintext:
             plaintext = self.cipher_suite.decrypt(encryptedtext.content.encode("utf-8")).decode()
             await self.bot.say(plaintext)
