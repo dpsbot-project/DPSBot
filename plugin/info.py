@@ -45,7 +45,7 @@ class infoclass():
         dday = date(2018, 8, 6)
         result = now - dday
         embed=discord.Embed(title="%s 정보" % self.bot.user.name, description=instructions.get(), color=0x1ef7fa)
-        embed.set_image(url=self.bot.user.avatar_url)
+        embed.set_image(url=self.bot.user   .avatar_url)
         embed.add_field(name="봇 운영자", value=ownername, inline=True)
         embed.add_field(name="봇 부운영자", value=modstring, inline=True)
         embed.add_field(name="서버 수", value=len(self.bot.servers), inline=True)
