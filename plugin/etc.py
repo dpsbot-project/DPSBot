@@ -77,7 +77,7 @@ class etcclass():
     @commands.command(pass_context=True)
     async def 건의(self, ctx, msg):
         me = await self.bot.get_user_info(owner)
-        channel = self.bot.get_channel(channel)
+        channel = self.bot.get_channel(int(channel))
         mention = ctx.message.author.name
         await self.bot.send_message(channel, '%s 님이 ' % (mention) + msg + ' (이)라고 건의했습니다.')
         await self.bot.send_message(me, '존경하는 주인님♡\n소식이 있어요!\n %s 님이 ' % (mention) + msg + ' (이)라고 건의했습니다.')
