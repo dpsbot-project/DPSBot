@@ -1,6 +1,3 @@
-<<<<<<< HEAD
- 
-=======
 # DPSBot-한국어 다용도 디스코드 봇
 
 한국어 다용도 디스코드 봇입니다.
@@ -22,4 +19,3 @@
 제작자가 활동하는 곳:http://ttakkku.tk/
 
 Proudly Powered by Team ttakkku
->>>>>>> 2902e710d2c9e904eec7d49637dfd4f29564bb14
