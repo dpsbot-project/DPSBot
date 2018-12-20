@@ -10,7 +10,13 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 class infoclass():
     def __init__(self, bot):
         self.bot = bot
-    
+
+
+    @commands.command(pass_context=True)
+    async def 도움(self, ctx):
+        embed=discord.Embed(title="가이드 홈페이지", url="https://dpsbot.tk", color=0x1dfff5)
+        await self.bot.send_message(ctx.message.channel, embed=embed)
+
 
     @commands.command(pass_context=True)
     async def 사용자정보(self, ctx):
