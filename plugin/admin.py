@@ -85,7 +85,7 @@ class adminclass():
 
 
     @commands.command(hidden=True, pass_context=True)
-    async def 플레이중변경(self, ctx):
+    async def 플레이중추가(self, ctx):
         if ctx.message.author.id == owner:
             await self.bot.say("변경할 내용을 말해주세요.")
             msg = await self.bot.wait_for_message(author=ctx.message.author)
@@ -95,7 +95,7 @@ class adminclass():
                 cur = conn.cursor()
                 cur.execute("update settings set body = '%s' where name='game'" % msg.content)
                 conn.close()
-                gamename.set(msg.content)
+                gamename.append(msg.content)
                 await self.bot.change_presence(game=discord.Game(name=gamename.get()))
                 await self.bot.say("%s로 변경되었습니다." % msg.content)
         else:
