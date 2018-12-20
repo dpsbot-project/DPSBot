@@ -11,6 +11,21 @@ class infoclass():
     def __init__(self, bot):
         self.bot = bot
     
+
+    @commands.command
+    async def 사용자정보(self, message):
+        person = message.mentions[0].id
+        person = await self.bot.get_user_info(person)
+        name = person.name
+        discriminator = person.discriminator
+        avatar = person.avatar_url
+        id = person.id
+        embed = discord.Embed(title="%s#%s" % (
+            name, discriminator), description="id:%s" % (id), color=0xE0FFFF)
+        embed.set_thumbnail(url=avatar)
+        await self.bot.send_message(message.channel, embed=embed)
+
+
     @commands.command(pass_context=True)
     async def 정보(self, ctx):
         ownername = await self.bot.get_user_info(owner)
@@ -30,6 +45,7 @@ class infoclass():
         dday = date(2018, 8, 6)
         result = now - dday
         embed=discord.Embed(title="%s 정보" % self.bot.user.name, description=instructions.get(), color=0x1ef7fa)
+        embed.set_image(url=self.bot.avatar_url)
         embed.add_field(name="봇 운영자", value=ownername, inline=True)
         embed.add_field(name="봇 부운영자", value=modstring, inline=True)
         embed.add_field(name="서버 수", value=len(self.bot.servers), inline=True)

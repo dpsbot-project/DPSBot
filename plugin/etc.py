@@ -72,19 +72,6 @@ class etcclass():
         await self.bot.send_message(ctx.message.channel, mention + '\n님을 찍겠습니다☆')
 
 
-    
-    async def 사용자정보(self, message):
-        person = message.mentions[0].id
-        person = await self.bot.get_user_info(person)
-        name = person.name
-        discriminator = person.discriminator
-        avatar = person.avatar_url
-        id = person.id
-        embed = discord.Embed(title="%s#%s" % (
-            name, discriminator), description="id:%s" % (id), color=0xE0FFFF)
-        embed.set_thumbnail(url=avatar)
-        await self.bot.send_message(message.channel, embed=embed)
-
     @commands.command(pass_context=True)
     async def 내성위키(self, ctx):
         embed = discord.Embed(
