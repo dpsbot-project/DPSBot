@@ -14,8 +14,9 @@ class modclass():
         print('------')
         for row in rows:
             try:
-                name = row[0]
-                mod.append(str(name))
+                id = row[0]
+                mod.append(str(id))
+                name = await self.bot.get_user_info(id)
                 print(name)
             except:
                 print('부운영자 로드 실패!')
