@@ -3,7 +3,7 @@ from discord.ext import commands
 import asyncio
 import discord
 from discord.embeds import EmptyEmbed
-class Embedtrans(discord.embeds.Embed):
+class Embed(discord.embeds.Embed):
     def __init__(self, **kwargs):
         # swap the colour/color aliases
         try:
@@ -60,4 +60,3 @@ class Embedtrans(discord.embeds.Embed):
             self._fields = [field]
 
         return self
-Embed = Embedtrans()
