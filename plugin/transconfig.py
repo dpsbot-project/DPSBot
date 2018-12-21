@@ -7,11 +7,11 @@ class transconfig():
         self.bot = bot
 
     @commands.command(pass_context=True)
-    async def 번역(self, ctx, lang):
+    async def 번역(self, ctx, src, dest):
         await self.bot.say('번역할 내용을 말해주세요.')
         plaintext = await self.bot.wait_for_message(author=ctx.message.author)
         if plaintext:
-            await self.bot.say(trans.temprun(plaintext, lang))
+            await self.bot.say(trans.temprun(plaintext, src, dest))
         else:
             await self.bot.say('내용이 없습니다.')
 

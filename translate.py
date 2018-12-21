@@ -13,9 +13,7 @@ class Trans():
             return text
         return self.translator.translate(text, dest=self.outputlang).text
     
-    def temprun(self, text: str, lang:str):
-        if lang == 'kr':
-            return text
-        return self.translator.translate(text, dest=lang).text   
+    def temprun(self, text: str, src:str, dest:str):
+        return self.translator.translate(text, src=src, dest=dest).text   
 
 trans = Trans()
