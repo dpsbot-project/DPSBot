@@ -12,7 +12,7 @@ class transconfig():
         plaintext = await self.bot.wait_for_message(author=ctx.message.author)
         if plaintext:
             try:
-                await self.bot.say(trans.temprun(plaintext.text, src, dest))
+                await self.bot.say(trans.temprun(plaintext.content, src, dest))
             except:
                 await self.bot.say('잘못된 언어코드입니다.')
         else:
