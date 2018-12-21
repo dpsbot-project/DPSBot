@@ -11,7 +11,10 @@ class transconfig():
         await self.bot.say('번역할 내용을 말해주세요.')
         plaintext = await self.bot.wait_for_message(author=ctx.message.author)
         if plaintext:
-            await self.bot.say(trans.temprun(plaintext, src, dest))
+            try:
+                await self.bot.say(trans.temprun(plaintext, src, dest))
+            except:
+                await self.bot.say('잘못된 언어코드입니다.')
         else:
             await self.bot.say('내용이 없습니다.')
 
