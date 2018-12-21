@@ -4,7 +4,6 @@ from variables import token, pluginfolder, gamename, prefix, owner
 from pluginlist import lst as initial_extensions
 from bot import DPSBot
 bot = DPSBot(command_prefix=prefix.get())
-
 @bot.event
 async def on_ready():
     print('로그인 되었습니다.')

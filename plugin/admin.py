@@ -6,6 +6,7 @@ import psycopg2
 import os
 import discord
 import sys
+from embed import Embed
 DATABASE_URL = os.environ['DATABASE_URL']
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
@@ -124,7 +125,7 @@ class adminclass():
     @commands.command(hidden=True, pass_context=True)
     async def 명령어삭제(self, ctx, *functions):
         if ctx.message.author.id == owner:
-            embed = discord.Embed(title="**경고**", description="현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다.", color=0xff0000)
+            embed = Embed(title="**경고**", description="현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다.", color=0xff0000)
             await self.bot.send_message(ctx.message.channel, embed=embed)
             for function in functions:
                 try:
@@ -140,7 +141,7 @@ class adminclass():
     @commands.command(hidden=True, pass_context=True)
     async def 명령어복구(self, ctx, *functions):
         if ctx.message.author.id == owner:
-            embed = discord.Embed(title="**경고**", description="현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다.", color=0xff0000)
+            embed = Embed(title="**경고**", description="현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다.", color=0xff0000)
             await self.bot.send_message(ctx.message.channel, embed=embed)
             for function in functions:
                 try:

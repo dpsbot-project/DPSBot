@@ -2,6 +2,7 @@ from discord.ext import commands
 import asyncio
 import discord
 from pluginlist import lst, alllst
+from embed import Embed
 
 class pluginclass():
     def __init__(self, bot):
@@ -16,7 +17,7 @@ class pluginclass():
             body += plugin + " "
             if i % 5 == 0:
                 body += '\n'
-        embed = discord.Embed(title="사용 가능한 모듈 리스트", description=body, color=0x00FFFF)
+        embed = Embed(title="사용 가능한 모듈 리스트", description=body, color=0x00FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
         i = 0
         body = ""
@@ -25,7 +26,7 @@ class pluginclass():
             body += plugin + " "
             if i % 5 == 0:
                 body += '\n'
-        embed = discord.Embed(title="현재 작동중인 모듈 리스트",
+        embed = Embed(title="현재 작동중인 모듈 리스트",
                               description=body, color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 

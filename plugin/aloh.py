@@ -4,7 +4,7 @@ import random
 import discord
 import re
 from discord.ext import commands
-
+from embed import Embed
 
 class alohclass():
     def __init__(self, bot):
@@ -38,7 +38,7 @@ class alohclass():
                 head = row[1]
                 body = row[2]
                 head = head.replace("\n", "")
-                embed = discord.Embed(
+                embed = Embed(
                     title="%s" % head, description="\n%s" % (body), color=0xE0FFFF)
                 await self.bot.send_message(ctx.message.channel, embed=embed)
             except:

@@ -3,7 +3,7 @@ import psycopg2
 import discord
 from variables import DATABASE_URL, owner, mod
 from discord.ext import commands
-
+from embed import Embed
 class postclass():
     def __init__(self, bot):
         self.bot = bot
@@ -37,7 +37,7 @@ class postclass():
             body = await self.bot.wait_for_message(timeout=600, author=ctx.message.author)
             body = body.content
             author = ctx.message.author.name
-            embed = discord.Embed(title="%s" % head, description="\nby %s\n%s" % (
+            embed = Embed(title="%s" % head, description="\nby %s\n%s" % (
                 author, body), color=0xE0FFFF)
             await self.bot.send_message(ctx.message.channel, embed=embed)
             await self.postinsert("post", num, author, head, body)
@@ -69,7 +69,7 @@ class postclass():
         head = row[2]
         body = row[3]
         conn.close()
-        embed = discord.Embed(title="%s. %s" % (
+        embed = Embed(title="%s. %s" % (
             num, head), description="\nby %s\n%s" % (author, body), color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 

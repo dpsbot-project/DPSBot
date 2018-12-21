@@ -6,6 +6,8 @@ import discord
 import os
 import sys
 from datetime import date, datetime
+from embed import Embed
+
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 class infoclass():
     def __init__(self, bot):
@@ -14,7 +16,7 @@ class infoclass():
 
     @commands.command(pass_context=True)
     async def 도움(self, ctx):
-        embed=discord.Embed(title="가이드 홈페이지", url="https://dpsbot.tk", color=0x1dfff5)
+        embed=Embed(title="가이드 홈페이지", url="https://dpsbot.tk", color=0x1dfff5)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
@@ -26,7 +28,7 @@ class infoclass():
         discriminator = person.discriminator
         avatar = person.avatar_url
         id = person.id
-        embed = discord.Embed(title="%s#%s" % (
+        embed = Embed(title="%s#%s" % (
             name, discriminator), description="id:%s" % (id), color=0xE0FFFF)
         embed.set_thumbnail(url=avatar)
         await self.bot.send_message(ctx.message.channel, embed=embed)
@@ -50,7 +52,7 @@ class infoclass():
         now = datetime.now().date()
         dday = date(2018, 8, 6)
         result = now - dday
-        embed=discord.Embed(title="%s 정보" % self.bot.user.name, description=instructions.get(), color=0x1ef7fa)
+        embed=Embed(title="%s 정보" % self.bot.user.name, description=instructions.get(), color=0x1ef7fa)
         embed.set_thumbnail(url=self.bot.user.avatar_url)
         embed.add_field(name="봇 운영자", value=ownername, inline=True)
         embed.add_field(name="봇 부운영자", value=modstring, inline=True)

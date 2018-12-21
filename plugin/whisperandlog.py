@@ -5,6 +5,7 @@ from variables import DATABASE_URL, owner, mod
 from discord.ext import commands
 from cryptography.fernet import Fernet
 import random
+from embed import Embed
 
 class whisperclass():
     def __init__(self, bot):
@@ -128,7 +129,7 @@ class whisperclass():
                     pass
                 else:
                     await self.bot_log('\n서버:%s\n채널:%s\n작성자:%s\n%s\n' % (body.server, body.channel, body.author, body.content))
-                    embed = discord.Embed(title="log", description='\n서버:%s\n\n채널:%s\n\n작성자:%s\n\n%s' % (
+                    embed = Embed(title="log", description='\n서버:%s\n\n채널:%s\n\n작성자:%s\n\n%s' % (
                         body.server, body.channel, body.author, body.content), color=0xE0FFFF)
                     await self.bot.send_message(message.author, embed=embed)
                     await self.log(message, channel, key)

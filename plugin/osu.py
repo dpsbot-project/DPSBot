@@ -3,7 +3,7 @@ import asyncio
 from variables import osuapikey
 import discord
 from discord.ext import commands
-
+from embed import Embed
 
 class osuclass():
     def __init__(self, bot):
@@ -23,7 +23,7 @@ class osuclass():
         results = api.get_user(username)
         userid = results[0].user_id
         thumbnail = "https://s.ppy.sh/a/" + str(userid)
-        embed = discord.Embed(title="%s" % (username),
+        embed = Embed(title="%s" % (username),
                             description="id:%s" % (userid), color=0xE0FFFF)
         embed.set_thumbnail(url=thumbnail)
         await self.bot.send_message(ctx.message.channel, embed=embed)

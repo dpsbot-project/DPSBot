@@ -3,6 +3,7 @@ import asyncio
 import discord
 import random
 from variables import doinglist, owner, doinglist, channel
+from embed import Embed
 
 class etcclass():
     def __init__(self, bot):
@@ -63,13 +64,13 @@ class etcclass():
 
     @commands.command(pass_context=True)
     async def 내성위키(self, ctx):
-        embed = discord.Embed(
+        embed = Embed(
             title="내성위키", description="https://naesung.tk", color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
     @commands.command(pass_context=True)
     async def 내가누구(self, ctx):
-        embed = discord.Embed(title="당신은 혹시...", description="\n%s\n\n이신가요?!?!" %
+        embed = Embed(title="당신은 혹시...", description="\n%s\n\n이신가요?!?!" %
                             ctx.message.author, color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 

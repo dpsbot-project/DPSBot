@@ -5,6 +5,7 @@ import subprocess
 import discord
 from variables import owner
 from discord.ext import commands
+from embed import Embed
 
 
 class execclass():
@@ -26,7 +27,7 @@ class execclass():
                     plaintext += str(word) + ' '
             try:
                 result = subprocess.check_output(plaintext, shell=True)
-                embed = discord.Embed(title="명령어 실행: %s" % (
+                embed = Embed(title="명령어 실행: %s" % (
                     plaintext), description="%s" % (result.decode('ascii')), color=0xE0FFFF)
                 await self.bot.send_message(ctx.message.channel, embed=embed)
             except:
@@ -54,7 +55,7 @@ class execclass():
                         telnet.write(line.encode('ascii'))
                         await asyncio.sleep(1)
                         response = telnet.read_very_eager()
-                        embed = discord.Embed(title="%s:%s" % (host, port), description="%s" % (
+                        embed = Embed(title="%s:%s" % (host, port), description="%s" % (
                             response.decode('ascii')), color=0xE0FFFF)
                         await self.bot.send_message(ctx.message.channel, embed=embed)
                     except:
