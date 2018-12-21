@@ -35,11 +35,11 @@ Produced by: DPS0340
 
 Bot invite link:https://discordbots.org/bot/523785272693882880
 
-Bot official git: https://github.com/DPS0340/DPSBot
+Bot official git:https://github.com/DPS0340/DPSBot
 
-Creator's personal homepage: https://dps0340.xyz
+Creator's personal homepage:https://dps0340.xyz
 
-Where the creator works: http://ttakkku.tk/
+Where the creator works:http://ttakkku.tk/
 
 Proudly Powered by Team ttakkku
 
