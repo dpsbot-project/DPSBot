@@ -2,7 +2,7 @@ from translate import trans
 from discord.ext import commands
 import asyncio
 import discord
-
+from discord.embeds import EmptyEmbed
 class Embedtrans(discord.embeds):
     def __init__(self, **kwargs):
         # swap the colour/color aliases
