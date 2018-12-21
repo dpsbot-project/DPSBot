@@ -83,7 +83,7 @@ class whisperclass():
                                     '익명으로 메시지가 왔어요! ' + body.content + ' (이)라고 전해달라고 말하던데요?')
                 await self.bot.send_message(A, '메시지가 전해졌습니다.')
                 await self.anonpong(message, A, B)
-
+    
 
     async def anonpong(self, message, A, B):
         body = await self.bot.wait_for_message(timeout=60.0, author=A)
