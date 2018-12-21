@@ -56,6 +56,7 @@ gamename.append("%s정보를 쳐보세요!" % prefixvalue)
 gamename.append("제작자: DPS0340")
 gamename.append("dpsbot.tk")
 gamename.append("github.com/DPS0340/DPSbot")
+gamename.append("teamttakkku.tk")
 gamename.append("Proudly Powered by Team ttakkku")
 
 prefix = Prefix(prefixvalue)
