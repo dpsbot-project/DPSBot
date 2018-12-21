@@ -21,7 +21,7 @@ class transconfig():
     @commands.command(pass_context=True)
     async def 언어변경(self, ctx, lang):
         trans.setlang(lang)
-        await self.bot.say('%s로 변경되었습니다.' % lang)
+        await self.bot.raw_send_message(ctx.message.author, '%s로 변경되었습니다.' % lang)
 
 
 def setup(bot):
