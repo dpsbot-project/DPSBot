@@ -12,7 +12,7 @@ class transconfig():
         plaintext = await self.bot.wait_for_message(author=ctx.message.author)
         if plaintext:
             try:
-                await self.bot.say(trans.temprun(plaintext.content, src, dest))
+                await self.bot.raw_send_message(ctx.message.channel, trans.temprun(plaintext.content, src, dest))
             except:
                 await self.bot.say('잘못된 언어코드입니다.')
         else:
@@ -21,7 +21,7 @@ class transconfig():
     @commands.command(pass_context=True)
     async def 언어변경(self, ctx, lang):
         trans.setlang(lang)
-        await self.bot.raw_send_message(ctx.message.author, '%s로 변경되었습니다.' % lang)
+        await self.bot.say('%s로 변경되었습니다.' % lang)
 
 
 def setup(bot):
