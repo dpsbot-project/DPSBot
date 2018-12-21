@@ -51,10 +51,11 @@ class Prefix():
 instructions = Instructions(instructionsvalue)
 gamename = Game()
 gamename.append("DPSBot!")
-gamename.append("github.com/DPS0340/DPSbot")
 gamename.append("%s도움을 쳐보세요!" % prefixvalue)
 gamename.append("%s정보를 쳐보세요!" % prefixvalue)
 gamename.append("제작자: DPS0340")
-gamename.append("Powered by Team ttakkku")
+gamename.append("dpsbot.tk")
+gamename.append("github.com/DPS0340/DPSbot")
+gamename.append("Proudly Powered by Team ttakkku")
 
 prefix = Prefix(prefixvalue)
