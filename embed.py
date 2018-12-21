@@ -47,26 +47,17 @@ class Embedtrans(discord.embeds):
 
         return self
 
-        def add_field(self, *, name, value, inline=True):
-        """Adds a field to the embed object.
-
-        This function returns the class instance to allow for fluent-style
-        chaining.
-
-        Parameters
-        -----------
-        name: str
-            The name of the field.
-        value: str
-            The value of the field.
-        inline: bool
-            Whether the field should be displayed inline.
-        """
-
+    def add_field(self, *, name, value, inline=True):
         field = {
             'inline': inline,
-            'name': trans.gettext(str(name)),
+            'name': trans.gettext((str(name))),
             'value': trans.gettext((str(value)))
         }
 
+        try:
+            self._fields.append(field)
+        except AttributeError:
+            self._fields = [field]
+
+        return self
 Embed = Embedtrans()
