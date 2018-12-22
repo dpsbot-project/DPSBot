@@ -1,3 +1,3 @@
 # Manual
 
-Sorry! manual is being prepared.
+Sorry! manual is work in progress.
