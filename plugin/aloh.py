@@ -5,6 +5,8 @@ import discord
 import re
 from discord.ext import commands
 from embed import Embed
+import os
+DATABASE_URL = os.environ['DATABASE_URL']
 
 class alohclass():
     def __init__(self, bot):
@@ -12,7 +14,7 @@ class alohclass():
 
     @commands.command(pass_context=True)
     async def 알로세이드(self, ctx, num: int):
-        await self.bot.send_message(ctx.message.channel, "알로세이드는 1172번까지 있습니다.")
+        await self.bot.send_message(ctx.message.channel, _("알로세이드는 1172번까지 있습니다."))
         if 0 <= num <= 1172:
             await self.alohsaydCore(ctx, num)
 
@@ -20,13 +22,12 @@ class alohclass():
     @commands.command(pass_context=True)
     async def 알로세이드랜덤(self, ctx):
         num = random.randrange(0, 1173)
-        await self.bot.send_message(ctx.message.channel, "랜덤 알로세이드")
+        await self.bot.send_message(ctx.message.channel, _("랜덤 알로세이드"))
         await self.alohsaydCore(ctx, num)
 
 
     async def alohsaydCore(self, ctx, num: int):
-        conn = psycopg2.connect(database=database, user=user,
-                                password=password, host=host, port=port)
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         with conn:
             try:
                 cur = conn.cursor()
@@ -42,7 +43,7 @@ class alohclass():
                     title="%s" % head, description="\n%s" % (body), color=0xE0FFFF)
                 await self.bot.send_message(ctx.message.channel, embed=embed)
             except:
-                await self.bot.send_message(ctx.message.channel, "파일을 찾지 못했어요!")
+                await self.bot.send_message(ctx.message.channel, _("파일을 찾지 못했어요!"))
                 pass
 
 def setup(bot):

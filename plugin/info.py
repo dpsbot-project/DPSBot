@@ -7,7 +7,7 @@ import os
 import sys
 from datetime import date, datetime
 from embed import Embed
-
+import gettext
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 class infoclass():
     def __init__(self, bot):
@@ -16,7 +16,7 @@ class infoclass():
 
     @commands.command(pass_context=True)
     async def 도움(self, ctx):
-        embed=Embed(title="가이드 홈페이지", url="https://dpsbot.tk", color=0x1dfff5)
+        embed=Embed(title=_("가이드 홈페이지"), url="https://dpsbot.tk", color=0x1dfff5)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
@@ -52,16 +52,16 @@ class infoclass():
         now = datetime.now().date()
         dday = date(2018, 8, 6)
         result = now - dday
-        embed=Embed(title="%s 정보" % self.bot.user.name, description=instructions.get(), color=0x1ef7fa)
+        embed=Embed(title=_("%s 정보") % self.bot.user.name, description=instructions.get(), color=0x1ef7fa)
         embed.set_thumbnail(url=self.bot.user.avatar_url)
-        embed.add_field(name="봇 운영자", value=ownername, inline=True)
-        embed.add_field(name="봇 부운영자", value=modstring, inline=True)
-        embed.add_field(name="서버 수", value=len(self.bot.servers), inline=True)
-        embed.add_field(name="사용자 수", value=users, inline=True)
-        embed.add_field(name="접두사", value=prefix.get(), inline=True)
-        embed.add_field(name="지금 플레이 중", value="%s 플레이 중\n" % gamename.get(), inline=True)
-        embed.add_field(name="DPSBot의 나이", value="최초 공개로부터 " + str(result.days) + "일 지났습니다.", inline=True)
-        embed.set_footer(text="Powered by Team ttakkku")
+        embed.add_field(name=_("봇 운영자"), value=ownername, inline=True)
+        embed.add_field(name=_("봇 부운영자"), value=modstring, inline=True)
+        embed.add_field(name=_("서버 수"), value=len(self.bot.servers), inline=True)
+        embed.add_field(name=_("사용자 수"), value=users, inline=True)
+        embed.add_field(name=_("접두사"), value=prefix.get(), inline=True)
+        embed.add_field(name=_("지금 플레이 중"), value=_("%s 플레이 중\n" % gamename.get()), inline=True)
+        embed.add_field(name=_("DPSBot의 나이"), value=_("최초 공개로부터 %s일 지났습니다." % str(result.days)), inline=True)
+        embed.set_footer(text=_("Powered by Team ttakkku"))
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
