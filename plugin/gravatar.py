@@ -1,12 +1,14 @@
 import hashlib
 import asyncio
 from discord.ext import commands
+from trans_open import opentrans
+_ = opentrans._
 
 class gravatarclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name=_("gravatar"), pass_context=True)
+    @commands.command(name=_("그라바타"), pass_context=True)
     async def gravatar(self, ctx, plaintext):
         h = hashlib.md5()
         h.update(plaintext.encode("utf-8").lower())

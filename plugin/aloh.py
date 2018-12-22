@@ -7,6 +7,9 @@ from discord.ext import commands
 from embed import Embed
 from trans_open import _, refresh
 import os
+from trans_open import opentrans
+_ = opentrans._
+
 DATABASE_URL = os.environ['DATABASE_URL']
 
 class alohclass():
