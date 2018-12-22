@@ -4,8 +4,6 @@ import discord
 import random
 from variables import doinglist, owner, doinglist, channel
 from embed import Embed
-import gettext
-_ = gettext.gettext
 class etcclass():
     def __init__(self, bot):
         self.bot = bot
@@ -76,7 +74,7 @@ class etcclass():
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
-    @commands.command(pname=_("건의 "), ass_context=True)
+    @commands.command(pname=_("건의"), ass_context=True)
     async def ticket(self, ctx, msg):
         me = await self.bot.get_user_info(owner)
         channel = self.bot.get_channel(int(channel))
