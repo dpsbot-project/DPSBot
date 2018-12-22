@@ -76,7 +76,7 @@ class etcclass():
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
-    @commands.command(pname=_("건의"), ass_context=True)
+    @commands.command(pname=_("건의 "), ass_context=True)
     async def ticket(self, ctx, msg):
         me = await self.bot.get_user_info(owner)
         channel = self.bot.get_channel(int(channel))

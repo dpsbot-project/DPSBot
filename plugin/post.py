@@ -1,7 +1,7 @@
 import asyncio
 import psycopg2
 import discord
-from variables import DATABASE_URL, owner, mod
+from variables import DATABASE_URL, owner, mod, prefix
 from discord.ext import commands
 from embed import Embed
 import gettext
@@ -56,7 +56,7 @@ class postclass():
             head = row[2]
             await self.bot.send_message(ctx.message.channel, "%s. %s - by %s\n" % (num, head, author))
         conn.close()
-        await self.bot.send_message(ctx.message.channel, _("디피 글 (번호)를 입력하시면 글을 보실수 있어요!"))
+        await self.bot.send_message(ctx.message.channel, _("%s글 (번호)를 입력하시면 글을 보실수 있어요!") % prefix.get())
 
 
     @commands.command(name=_("글"), pass_context=True)
