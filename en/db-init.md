@@ -1,3 +1,3 @@
 # DB initialization guide
 
-Sorry! DB initialization guide is being prepared.
+Sorry! DB initialization guide is work in progress.
