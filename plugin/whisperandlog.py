@@ -59,8 +59,7 @@ class whisperclass():
         if message.content.startswith(_('종료')):
             await self.bot.send_message(A, _('종료되었습니다.'))
         else:
-            await self.bot.send_message(B,
-                                _('%s 씨가 %s(이)라고 전해달라고 말하던데요?') % (name, body))
+            await self.bot.send_message(B, _('%s 씨가 %s(이)라고 전해달라고 말하던데요?') % (name, body))
             await self.bot.send_message(message.channel, _('메시지가 전해졌습니다.'))
             await self.pong(message, A, B)
 
