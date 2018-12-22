@@ -1,3 +1,10 @@
+# DPSBot - Korean Discord bot
+
+[english](README-en.md)
+
+[korean](README-ko.md)
+
+
 # DPSBot - 한국어 다용도 디스코드 봇
 
 한국어 다용도 디스코드 봇입니다.
