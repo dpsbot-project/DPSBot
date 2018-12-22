@@ -359,7 +359,7 @@ class tagclass():
         self.tagload()
 
     def taginit(self, name, line):
-        @commands.command(name="t" + name, pass_context=True)
+        @commands.command(name=_("t%s") % name, pass_context=True)
         async def tag(self, ctx):
             await self.bot.send_message(ctx.message.channel, ctx.message.content)
             inputline = ctx.message.content.replace("디피 t" + name + " ", "")
@@ -390,7 +390,7 @@ class tagclass():
         print(_('태그 로드 완료!'))
 
 
-    @commands.command(pass_context=True, name="maketag")
+    @commands.command(pass_context=True, name=_("maketag"))
     async def maketag(self, ctx, *words):
         name = nameParse(ctx.message.content)
         line = ctx.message.content
@@ -398,7 +398,7 @@ class tagclass():
             await taginsert("tag", name, line)
             await self.bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
 
-            @commands.command(name="t" + name, pass_context=True)
+            @commands.command(name=_("t%s") % name, pass_context=True)
             async def tag(self, ctx):
                 await self.bot.send_message(ctx.message.channel, line)
                 inputline = ctx.message.content.replace(_("디피 t%s") % name, "")

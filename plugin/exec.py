@@ -14,8 +14,8 @@ class execclass():
         self.bot = bot
 
 
-    @commands.command(pass_context=True)
-    async def 실행(self, ctx, *words):
+    @commands.command(name=_("exec"), pass_context=True)
+    async def exec(self, ctx, *words):
         me = await self.bot.get_user_info(owner)
         if ctx.message.author == me:
             plaintext = ''
@@ -37,8 +37,8 @@ class execclass():
             await self.bot.send_message(ctx.message.channel, _('권한이 없습니다!\n개발자만 접근 가능합니다.'))
 
 
-    @commands.command(pass_context=True)
-    async def 텔넷(self, ctx, host: str, port: int):
+    @commands.command(name=_("telnet"), pass_context=True)
+    async def telnet(self, ctx, host: str, port: int):
         telnet = telnetlib.Telnet(host, port)
         await self.bot.send_message(ctx.message.channel, _('%s:%s에 연결 중...') % (host, port))
         while True:

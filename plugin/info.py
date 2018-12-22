@@ -15,14 +15,14 @@ class infoclass():
         self.bot = bot
 
 
-    @commands.command(pass_context=True)
-    async def 도움(self, ctx):
+    @commands.command(name=_("도움"), pass_context=True)
+    async def help(self, ctx):
         embed=Embed(title=_("가이드 홈페이지"), url="https://dpsbot.tk", color=0x1dfff5)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
-    @commands.command(pass_context=True)
-    async def 사용자정보(self, ctx):
+    @commands.command(name=_("사용자정보"), pass_context=True)
+    async def userinfo(self, ctx):
         person = ctx.message.mentions[0].id
         person = await self.bot.get_user_info(person)
         name = person.name
@@ -35,8 +35,8 @@ class infoclass():
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
-    @commands.command(pass_context=True)
-    async def 정보(self, ctx):
+    @commands.command(name=_("정보"), pass_context=True)
+    async def info(self, ctx):
         ownername = await self.bot.get_user_info(owner)
         ownername = ownername.name
         modstring = ""

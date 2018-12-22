@@ -11,8 +11,8 @@ class postclass():
         self.bot = bot
 
 
-    @commands.command(pass_context=True)
-    async def 써줘(self, ctx, *heads):
+    @commands.command(name=_("써줘"), pass_context=True)
+    async def write(self, ctx, *heads):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         with conn:
             try:
@@ -44,8 +44,8 @@ class postclass():
             await self.postinsert("post", num, author, head, body)
 
 
-    @commands.command(pass_context=True)
-    async def 보여줘(self, ctx):
+    @commands.command(name=_("보여줘"), pass_context=True)
+    async def show(self, ctx):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
         cur.execute('select * from post')
@@ -59,8 +59,8 @@ class postclass():
         await self.bot.send_message(ctx.message.channel, _("디피 글 (번호)를 입력하시면 글을 보실수 있어요!"))
 
 
-    @commands.command(pass_context=True)
-    async def 글(self, ctx, select: int):
+    @commands.command(name=_("글"), pass_context=True)
+    async def post(self, ctx, select: int):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
         cur.execute('select * from post where num = {0}'.format(select))
@@ -74,8 +74,8 @@ class postclass():
             num, head), description="\nby %s\n%s" % (author, body), color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
-    @commands.command(pass_context=True)
-    async def 글삭제(self, ctx, select: int):
+    @commands.command(name=_("글삭제"), pass_context=True)
+    async def deletepost(self, ctx, select: int):
         if ctx.message.author.id == owner or ctx.message.author.id in mod:
             conn = psycopg2.connect(DATABASE_URL, sslmode='require')
             cur = conn.cursor()

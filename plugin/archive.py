@@ -35,8 +35,8 @@ class archiveclass():
                 'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3', 'Accept-Encoding': 'none', 'Accept-Language': 'en-US,en;q=0.8', 'Connection': 'keep-alive'})
 
 
-    @commands.command(pass_context=True)
-    async def 아카이브(self, ctx, url):
+    @commands.command(name=_("아카이브"), pass_context=True)
+    async def archive(self, ctx, url):
         await bot_log(_("%s가 %s를(을) 아카이브 했습니다.\n") % (ctx.message.author, url))
         try:
             if not "http" in url:
