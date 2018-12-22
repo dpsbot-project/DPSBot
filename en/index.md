@@ -2,7 +2,7 @@
 
 It is a Korean Discord bot.
 
-Multi language supports by tranlator, but [open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/) 
+Multi language supports by tranlator, but [open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/) in progress.
 
 Some DB setup is required for the user to turn the bots directly.
 
