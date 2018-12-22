@@ -2,6 +2,8 @@
 
 It is a Korean Discord bot.
 
+Multi language support is work in progeess.
+
 Some DB setup is required for the user to turn the bots directly.
 
 [DB Initialization guide](db-init.md)
