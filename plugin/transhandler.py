@@ -22,7 +22,7 @@ class transconfig():
     @commands.command(pass_context=True)
     async def 언어변경(self, ctx, lang):
         trans.setlang(lang)
-        refresh()
+        opentrans.refresh()
         await self.bot.say(_('%s로 변경되었습니다.') % lang)
 
 

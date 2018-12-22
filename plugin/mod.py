@@ -25,7 +25,7 @@ class modclass():
         print(_('------'))
         print(_('부운영자 로드 완료!'))
 
-    @commands.command(name=_("부운영자삭제"), pass_context=True)
+    @commands.command(name=_("부운영자추가"), pass_context=True)
     async def addmod(self, ctx):
         if ctx.message.author.id == owner or ctx.message.author.id in mod:
             userid = ctx.message.mentions[0].id
