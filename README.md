@@ -1,5 +1,5 @@
 # DPSBot - Korean Discord bot
 
-[english](README-en.md)
+[english](/en/index.md)
 
-[korean](README-ko.md)
+[korean](/ko/index.md)
