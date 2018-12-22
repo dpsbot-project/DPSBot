@@ -6,6 +6,7 @@ import discord
 import os
 import sys
 from datetime import date, datetime
+from embed import Embed
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 class infoclass():
     def __init__(self, bot):
