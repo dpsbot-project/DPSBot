@@ -2,7 +2,8 @@ import psycopg2
 from variables import DATABASE_URL, owner, mod
 import asyncio
 from discord.ext import commands
-from trans_open import _, refresh
+from trans_open import opentrans
+_ = opentrans._
 class modclass():
     def __init__(self, bot):
         self.bot = bot

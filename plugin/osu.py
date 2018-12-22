@@ -4,7 +4,8 @@ from variables import osuapikey
 import discord
 from discord.ext import commands
 from embed import Embed
-from trans_open import _, refresh
+from trans_open import opentrans
+_ = opentrans._
 class osuclass():
     def __init__(self, bot):
         self.bot = bot

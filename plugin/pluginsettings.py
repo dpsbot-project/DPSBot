@@ -3,7 +3,8 @@ import asyncio
 import discord
 from pluginlist import lst, alllst
 from embed import Embed
-from trans_open import _, refresh
+from trans_open import opentrans
+_ = opentrans._
 class pluginclass():
     def __init__(self, bot):
         self.bot = bot

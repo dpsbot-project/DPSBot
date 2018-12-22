@@ -5,7 +5,8 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from variables import DATABASE_URL, owner, mod, prefix
 from discord.ext import commands
-from trans_open import _, refresh
+from trans_open import opentrans
+_ = opentrans._
 class tag:
     def __init__(self, name: str, command: str, context: str, argsdict: dict):
         self.name = name
