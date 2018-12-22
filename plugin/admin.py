@@ -41,7 +41,7 @@ class adminclass():
                     try:
                         if module in pluginlist:
                             pluginlist.remove(module)
-                            self.bot.load_extension(pluginfolder + module)
+                            self.bot.unload_extension(pluginfolder + module)
                             await self.bot.say(_('%s 모듈 해제 완료!') % module)
                         else:
                             await self.bot.say(_('이미 해제된 모듈입니다.'))
