@@ -3,8 +3,7 @@ import asyncio
 from variables import token, pluginfolder, gamename, prefix, owner
 from pluginlist import lst as initial_extensions
 from bot import DPSBot
-import gettext
-_ = gettext.gettext
+from trans_open import _, refresh
 bot = DPSBot(command_prefix=prefix.get())
 @bot.event  
 async def on_ready():

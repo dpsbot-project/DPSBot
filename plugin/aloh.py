@@ -5,8 +5,7 @@ import discord
 import re
 from discord.ext import commands
 from embed import Embed
-import gettext
-_ = gettext.gettext
+from trans_open import _, refresh
 import os
 DATABASE_URL = os.environ['DATABASE_URL']
 

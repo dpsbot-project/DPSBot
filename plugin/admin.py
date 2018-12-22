@@ -7,8 +7,7 @@ import os
 import discord
 import sys
 from embed import Embed
-import gettext
-_ = gettext.gettext
+from trans_open import _, refresh
 DATABASE_URL = os.environ['DATABASE_URL']
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 

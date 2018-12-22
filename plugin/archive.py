@@ -9,8 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from plugin.whisperandlog import bot_log
-import gettext
-_ = gettext.gettext
+from trans_open import _, refresh
 class archiveclass():
     def __init__(self, bot):
         self.bot = bot

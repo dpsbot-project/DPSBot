@@ -4,6 +4,7 @@ import discord
 import random
 from variables import doinglist, owner, doinglist, channel
 from embed import Embed
+from trans_open import _, refresh
 class etcclass():
     def __init__(self, bot):
         self.bot = bot

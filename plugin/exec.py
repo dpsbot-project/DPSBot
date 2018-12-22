@@ -6,8 +6,7 @@ import discord
 from variables import owner
 from discord.ext import commands
 from embed import Embed
-import gettext
-_ = gettext.gettext
+from trans_open import _, refresh
 
 class execclass():
     def __init__(self, bot):
