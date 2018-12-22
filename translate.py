@@ -9,6 +9,8 @@ class Trans():
         self.outputlang = lang
 
     def gettext(self, text: str):
+        if self.outputlang == 'ko-KR':
+            return text
         return self.translator.translate(text, dest=self.outputlang).text
     
     def temprun(self, text: str, src:str, dest:str):
