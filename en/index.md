@@ -4,7 +4,9 @@ It is a Korean Discord bot.
 
 Some DB setup is required for the user to turn the bots directly.
 
-The manual is being prepared.
+[DB Initialization guide](db-init.md)
+
+[Manual](manual.md)
 
 The functionality provided by the bot is modularized into plug-ins.
 
