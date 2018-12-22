@@ -44,16 +44,16 @@ class archiveclass():
             if not "http" in url:
                 url = "http://" + url
             archive_url = archiveis.capture(url, self.proxyString)
-            await bot.send_message(ctx.message.channel, "아카이브 중입니다...\n"
+            await self.bot.send_message(ctx.message.channel, "아카이브 중입니다...\n"
                                                         "조금만 기다려 주세요!")
             self.driver.get(url)
             wait = WebdriverWait(driver, 2)
             wait.until(EC.presence_of_element_located((By.XPATH, 'html')))
             self.driver.maximize_window()
             self.driver.find_element_by_tag_name('html').screenshot('screenshot.png')
-            await bot.send_file(ctx.message.channel, 'screenshot.png')
-            await bot.send_message(ctx.message.channel, archive_url)
-            await bot_log("아카이브 주소:%s\n" % (url))
+            await self.bot.send_file(ctx.message.channel, 'screenshot.png')
+            await self.bot.send_message(ctx.message.channel, archive_url)
+            await self.bot.log("아카이브 주소:%s\n" % (url))
             os.remove('screenshot.png')
         except:
             try:
