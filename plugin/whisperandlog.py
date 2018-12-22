@@ -129,8 +129,7 @@ class whisperclass():
                     pass
                 else:
                     await bot_log(_('\n서버:%s\n채널:%s\n작성자:%s\n%s\n') % (body.server, body.channel, body.author, body.content))
-                    embed = Embed(title=_("log"), description=_('\n서버:%s\n\n채널:%s\n\n작성자:%s\n\n%s') % (
-                        body.server, body.channel, body.author, body.content), color=0xE0FFFF)
+                    embed = Embed(title=_("log"), description=_('\n서버:%s\n\n채널:%s\n\n작성자:%s\n\n%s') % (body.server, body.channel, body.author, body.content), color=0xE0FFFF)
                     await self.bot.send_message(message.author, embed=embed)
                     await self.log(message, channel, key)
         except Exception as e:
