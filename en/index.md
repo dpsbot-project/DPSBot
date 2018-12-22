@@ -6,21 +6,21 @@ Multi language support is work in progeess.
 
 Some DB setup is required for the user to turn the bots directly.
 
+The functionality provided by the bot is modularized into plug-ins.
+
 [DB Initialization guide](db-init.md)
 
 [Manual](manual.md)
 
-The functionality provided by the bot is modularized into plug-ins.
+[Bot invite link](https://discordbots.org/bot/523785272693882880)
+
+[Bot official git](https://github.com/DPS0340/DPSBot)
+
+[Creator's personal homepage\(https://dps0340.xyz)
+
+[Our crew](http://ttakkku.tk/)
 
 Produced by: DPS0340
-
-Bot invite link:https://discordbots.org/bot/523785272693882880
-
-Bot official git:https://github.com/DPS0340/DPSBot
-
-Creator's personal homepage:https://dps0340.xyz
-
-Our crew:http://ttakkku.tk/
 
 Proudly Powered by Team ttakkku
 
