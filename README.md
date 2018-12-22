@@ -1,4 +1,4 @@
-# DPSBot-한국어 다용도 디스코드 봇
+# DPSBot- 한국어 디스코드 
 
 한국어 다용도 디스코드 봇입니다.
 
@@ -16,6 +16,31 @@
 
 제작자의 개인 홈페이지:https://dps0340.xyz
 
-제작자가 활동하는 곳:http://ttakkku.tk/
+저희 :http://ttakkku.tk/
 
-Proudly Powered by Team ttakkku 
+Proudly Powered by Team ttakkku
+
+
+DPSBot - Korean Discord bot
+
+It is a Korean Discord bot.
+
+Some DB setup is required for the user to turn the bots directly.
+
+The manual is being prepared.
+
+The functionality provided by the bot is modularized into plug-ins.
+
+Produced by: DPS0340
+
+Bot invite link:https://discordbots.org/bot/523785272693882880
+
+Bot official git:https://github.com/DPS0340/DPSBot
+
+Creator's personal homepage:https://dps0340.xyz
+
+Our crew:http://ttakkku.tk/
+
+Proudly Powered by Team ttakkku
+
+(sorry! bad english skills)
