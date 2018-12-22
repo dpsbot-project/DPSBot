@@ -1,5 +1,5 @@
 # DPSBot - Korean Discord bot
 
-[english](/en/index.md)
+[English](/en/index.md)
 
-[korean](/ko/index.md)
+[Korean](/ko/index.md)
