@@ -35,7 +35,7 @@ class whisperclass():
         B_looks_A = B_looks_A.replace("d'", "")
         B_looks_A = B_looks_A.replace("'", "")
         await self.bot.send_message(ctx.message.author, towhisperperson)
-        await self.bot.send_message(towhisperperson, _("누군가가 익명으로 대화를 시작합니다!\n 답장하시려면 %s답장과 암호를 한번에 쳐주세요. 암호:\n" % prefix.get()))
+        await self.bot.send_message(towhisperperson, _("누군가가 익명으로 대화를 시작합니다!\n 답장하시려면 %s답장과 암호를 한번에 쳐주세요. 암호:\n" % prefix.get())
         await self.bot.send_message(towhisperperson, "%s" % B_looks_A)
         await self.anonping(ctx.message, ctx.message.author, towhisperperson)
 

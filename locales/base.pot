@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-23 02:18+0900\n"
+"POT-Creation-Date: 2018-12-23 02:26+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -312,7 +312,7 @@ msgid "당신은 혹시..."
 msgstr ""
 
 #: ./plugin/etc.py:79
-msgid "건의"
+msgid "건의 "
 msgstr ""
 
 #: ./plugin/etc.py:84
@@ -351,21 +351,21 @@ msgstr ""
 msgid "%s:%s에 연결 중..."
 msgstr ""
 
-#: ./plugin/exec.py:47 ./plugin/whisperandlog.py:77
-#: ./plugin/whisperandlog.py:93 ./plugin/whisperandlog.py:108
-#: ./plugin/whisperandlog.py:124
+#: ./plugin/exec.py:47 ./plugin/whisperandlog.py:76
+#: ./plugin/whisperandlog.py:92 ./plugin/whisperandlog.py:107
+#: ./plugin/whisperandlog.py:123
 msgid "응답이 없어서 종료되었습니다."
 msgstr ""
 
 #: ./plugin/exec.py:50 ./plugin/whisperandlog.py:59
-#: ./plugin/whisperandlog.py:80 ./plugin/whisperandlog.py:96
-#: ./plugin/whisperandlog.py:110
+#: ./plugin/whisperandlog.py:79 ./plugin/whisperandlog.py:95
+#: ./plugin/whisperandlog.py:109
 msgid "종료"
 msgstr ""
 
 #: ./plugin/exec.py:51 ./plugin/whisperandlog.py:60
-#: ./plugin/whisperandlog.py:81 ./plugin/whisperandlog.py:97
-#: ./plugin/whisperandlog.py:111
+#: ./plugin/whisperandlog.py:80 ./plugin/whisperandlog.py:96
+#: ./plugin/whisperandlog.py:110
 msgid "종료되었습니다."
 msgstr ""
 
@@ -506,7 +506,7 @@ msgid "보여줘"
 msgstr ""
 
 #: ./plugin/post.py:59
-msgid "디피 글 (번호)를 입력하시면 글을 보실수 있어요!"
+msgid "%s글 (번호)를 입력하시면 글을 보실수 있어요!"
 msgstr ""
 
 #: ./plugin/post.py:62
@@ -527,7 +527,7 @@ msgid ""
 "당신이 봇의 소유자거나 관리자인지 확인해 보세요."
 msgstr ""
 
-#: ./plugin/tag.py:362 ./plugin/tag.py:401
+#: ./plugin/tag.py:362 ./plugin/tag.py:400
 msgid "t%s"
 msgstr ""
 
@@ -551,11 +551,11 @@ msgstr ""
 msgid "태그 생성 완료!"
 msgstr ""
 
-#: ./plugin/tag.py:404
+#: ./plugin/tag.py:403
 msgid "디피 t%s"
 msgstr ""
 
-#: ./plugin/tag.py:410
+#: ./plugin/tag.py:409
 msgid "이미 있는 태그입니다."
 msgstr ""
 
@@ -579,12 +579,6 @@ msgstr ""
 msgid "익명"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:38
-msgid ""
-"누군가가 익명으로 대화를 시작합니다!\n"
-" 답장하시려면 디피 답장과 암호를 한번에 쳐주세요. 암호:\n"
-msgstr ""
-
 #: ./plugin/whisperandlog.py:45
 msgid "암호가 확인되었습니다."
 msgstr ""
@@ -598,43 +592,39 @@ msgstr ""
 msgid "%s님이 %s님에게 %s라 말합니다."
 msgstr ""
 
-#: ./plugin/whisperandlog.py:63
+#: ./plugin/whisperandlog.py:62 ./plugin/whisperandlog.py:113
 msgid "%s 씨가 %s(이)라고 전해달라고 말하던데요?"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:64 ./plugin/whisperandlog.py:86
-#: ./plugin/whisperandlog.py:101 ./plugin/whisperandlog.py:115
+#: ./plugin/whisperandlog.py:63 ./plugin/whisperandlog.py:85
+#: ./plugin/whisperandlog.py:100 ./plugin/whisperandlog.py:114
 msgid "메시지가 전해졌습니다."
 msgstr ""
 
-#: ./plugin/whisperandlog.py:70
+#: ./plugin/whisperandlog.py:69
 msgid ""
 "익명 채팅을 시도합니다.\n"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:83 ./plugin/whisperandlog.py:99
+#: ./plugin/whisperandlog.py:82 ./plugin/whisperandlog.py:98
 msgid ""
 "%s가 %s에게 %s라 말합니다.(익명)\n"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:85 ./plugin/whisperandlog.py:100
+#: ./plugin/whisperandlog.py:84 ./plugin/whisperandlog.py:99
 msgid "익명으로 메시지가 왔어요! %s(이)라고 전해달라고 말하던데요?"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:113
+#: ./plugin/whisperandlog.py:112
 msgid ""
 "%s가 %s에게 %s라 말합니다.\n"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:114
-msgid "%s 씨가 %s이)라고 전해달라고 말하던데요?"
-msgstr ""
-
-#: ./plugin/whisperandlog.py:128
+#: ./plugin/whisperandlog.py:127
 msgid "비밀번호 입력으로 인해 종료되었습니다."
 msgstr ""
 
-#: ./plugin/whisperandlog.py:132
+#: ./plugin/whisperandlog.py:131
 msgid ""
 "\n"
 "서버:%s\n"
@@ -643,7 +633,7 @@ msgid ""
 "%s\n"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:133
+#: ./plugin/whisperandlog.py:132
 msgid ""
 "\n"
 "서버:%s\n"
@@ -655,19 +645,19 @@ msgid ""
 "%s"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:133
+#: ./plugin/whisperandlog.py:132
 msgid "log"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:141
+#: ./plugin/whisperandlog.py:140
 msgid "로그켜"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:145
+#: ./plugin/whisperandlog.py:144
 msgid "종료 코드를 봇이 있는 채널이나 DM에 입력하면 꺼집니다. 종료 코드:"
 msgstr ""
 
-#: ./plugin/whisperandlog.py:147
+#: ./plugin/whisperandlog.py:146
 msgid ""
 "\n"
 "listener is: %s\n"
