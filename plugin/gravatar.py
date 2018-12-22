@@ -1,8 +1,6 @@
 import hashlib
 import asyncio
 from discord.ext import commands
-from trans_open import opentrans
-_ = opentrans._
 
 class gravatarclass():
     def __init__(self, bot):

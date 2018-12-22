@@ -7,8 +7,6 @@ import os
 import discord
 import sys
 from embed import Embed
-from trans_open import opentrans
-_ = opentrans._
 
 DATABASE_URL = os.environ['DATABASE_URL']
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
