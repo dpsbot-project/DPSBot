@@ -6,7 +6,7 @@ from bot import DPSBot
 import gettext
 _ = gettext.gettext
 bot = DPSBot(command_prefix=prefix.get())
-@bot.event
+@bot.event  
 async def on_ready():
     print(_('로그인 되었습니다.'))
     print(_('------'))
@@ -28,9 +28,9 @@ if __name__ == '__main__':
     for extension in initial_extensions:
         try:
             bot.load_extension(pluginfolder + extension)
-            print(_("%s 확장 기능을 불러왔습니다." % extension))
+            print(_("%s 확장 기능을 불러왔습니다.") % extension)
         except Exception as e:
-            print(_('%s 확장 기능을 불러오는데 실패했습니다.' % extension))
+            print(_('%s 확장 기능을 불러오는데 실패했습니다.') % extension)
             print(e)
             pass
     print(_("------"))

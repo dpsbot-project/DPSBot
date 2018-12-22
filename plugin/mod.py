@@ -36,7 +36,7 @@ class modclass():
             conn.commit()
             conn.close()
             person = await self.bot.get_user_info(userid)
-            await self.bot.send_message(ctx.message.channel, _("%s 부운영자 등록 완료!" % person.name))
+            await self.bot.send_message(ctx.message.channel, _("%s 부운영자 등록 완료!") % person.name)
         else:
             await self.bot.send_message(ctx.message.channel, _("당신은 권한이 없습니다.\n당신이 봇의 운영자거나 부운영자인지 확인해 보세요."))
 
@@ -51,7 +51,7 @@ class modclass():
             conn.commit()
             conn.close()
             person = await self.bot.get_user_info(userid)
-            await self.bot.send_message(ctx.message.channel, _("%s 부운영자 삭제 완료!" % person.name))
+            await self.bot.send_message(ctx.message.channel, _("%s 부운영자 삭제 완료!") % person.name)
         else:
             await self.bot.send_message(ctx.message.channel, _("당신은 권한이 없습니다.\n당신이 봇의 운영자거나 부운영자인지 확인해 보세요."))
 

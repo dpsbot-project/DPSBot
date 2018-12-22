@@ -60,7 +60,7 @@ class whisperclass():
             await self.bot.send_message(A, _('종료되었습니다.'))
         else:
             await self.bot.send_message(B,
-                                _('%s 씨가 ' % Aname + body + ' (이)라고 전해달라고 말하던데요?'))
+                                _('%s 씨가 %s(이)라고 전해달라고 말하던데요?') % name, body)
             await self.bot.send_message(message.channel, _('메시지가 전해졌습니다.'))
             await self.pong(message, A, B)
 
@@ -80,9 +80,9 @@ class whisperclass():
             if body.content.startswith(_('종료')):
                 await self.bot.send_message(A, _('종료되었습니다.'))
             else:
-                await bot_log(_("%s가 %s에게 %s라 말합니다.(익명)\n" % (Author, towhisperperson, body.content)))
+                await bot_log(_("%s가 %s에게 %s라 말합니다.(익명)\n") % (Author, towhisperperson, body.content))
                 await self.bot.send_message(B,
-                                    _('익명으로 메시지가 왔어요! ' + body.content + ' (이)라고 전해달라고 말하던데요?'))
+                                    _('익명으로 메시지가 왔어요! %s(이)라고 전해달라고 말하던데요?') % body.content)
                 await self.bot.send_message(A, _('메시지가 전해졌습니다.'))
                 await self.anonpong(message, A, B)
     
@@ -96,8 +96,8 @@ class whisperclass():
             if body.content.startswith(_('종료')):
                 await self.bot.send_message(A, _('종료되었습니다.'))
             else:
-                await bot_log(_("%s가 %s에게 %s라 말합니다.(익명)\n" % (A, B, body.content)))
-                await self.bot.send_message(B, _('익명으로 메시지가 왔어요! ' + body.content + ' (이)라고 전해달라고 말하던데요?'))
+                await bot_log(_("%s가 %s에게 %s라 말합니다.(익명)\n") % (A, B, body.content))
+                await self.bot.send_message(B, _('익명으로 메시지가 왔어요! %s(이)라고 전해달라고 말하던데요?' % body.content))
                 await self.bot.send_message(A, _('메시지가 전해졌습니다.'))
                 await self.anonpong(message, A, B)
 
@@ -110,8 +110,8 @@ class whisperclass():
             if body.content.startswith(_('종료')):
                 await self.bot.send_message(A, _('종료되었습니다.'))
             else:
-                await bot_log(_("%s가 %s에게 %s라 말합니다.\n" % (A, B, body.content)))
-                await self.bot.send_message(B, _('%s 씨가 ' % (A) + body.content + ' (이)라고 전해달라고 말하던데요?'))
+                await bot_log(_("%s가 %s에게 %s라 말합니다.\n") % (A, B, body.content))
+                await self.bot.send_message(B, _('%s 씨가 %s이)라고 전해달라고 말하던데요?') % (A, body.content))
                 await self.bot.send_message(A, _('메시지가 전해졌습니다.'))
                 await self.pong(message, A, B)
 
@@ -124,14 +124,14 @@ class whisperclass():
                 await self.bot.send_message(listener, _('응답이 없어서 종료되었습니다.'))
                 pass
             else:
-                if str(body.content) == str(key) and body.author.name != bot.user.name:
+                if str(body.content) == str(key) and body.author.name != self.bot.user.name:
                     await self.bot.send_message(listener, _('비밀번호 입력으로 인해 종료되었습니다.'))
                 elif body.server == None:
                     pass
                 else:
-                    await bot_log(_('\n서버:%s\n채널:%s\n작성자:%s\n%s\n' % (body.server, body.channel, body.author, body.content)))
-                    embed = Embed(title=_("log"), description=_('\n서버:%s\n\n채널:%s\n\n작성자:%s\n\n%s' % (
-                        body.server, body.channel, body.author, body.content)), color=0xE0FFFF)
+                    await bot_log(_('\n서버:%s\n채널:%s\n작성자:%s\n%s\n') % (body.server, body.channel, body.author, body.content))
+                    embed = Embed(title=_("log"), description=_('\n서버:%s\n\n채널:%s\n\n작성자:%s\n\n%s') % (
+                        body.server, body.channel, body.author, body.content), color=0xE0FFFF)
                     await self.bot.send_message(message.author, embed=embed)
                     await self.log(message, channel, key)
         except Exception as e:
@@ -144,7 +144,7 @@ class whisperclass():
         key = random.randint(1, 1000000000000000)
         await self.bot.send_message(ctx.message.author, _('종료 코드를 봇이 있는 채널이나 DM에 입력하면 꺼집니다. 종료 코드:'))
         await self.bot.send_message(ctx.message.author, key)
-        await bot_log(_("\nlistener is: %s\n" % ctx.message.author))
+        await bot_log(_("\nlistener is: %s\n") % ctx.message.author)
         try:
             await self.log(ctx.message, channel, key)
         except AttributeError:

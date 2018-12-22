@@ -28,8 +28,8 @@ class execclass():
                     plaintext += str(word) + ' '
             try:
                 result = subprocess.check_output(plaintext, shell=True)
-                embed = Embed(title=_("명령어 실행: %s" % (
-                    plaintext)), description=_("%s" % (result.decode('ascii'))), color=0xE0FFFF)
+                embed = Embed(title=_("명령어 실행: %s") % (
+                    plaintext), description="%s" % (result.decode('ascii')), color=0xE0FFFF)
                 await self.bot.send_message(ctx.message.channel, embed=embed)
             except:
                 await self.bot.send_message(ctx.message.channel, _('오류가 발생했습니다!'))
@@ -40,7 +40,7 @@ class execclass():
     @commands.command(pass_context=True)
     async def 텔넷(self, ctx, host: str, port: int):
         telnet = telnetlib.Telnet(host, port)
-        await self.bot.send_message(ctx.message.channel, _('%s:%s에 연결 중...' % (host, port)))
+        await self.bot.send_message(ctx.message.channel, _('%s:%s에 연결 중...') % (host, port))
         while True:
             body = await self.bot.wait_for_message(timeout=60.0, author=ctx.message.author)
             if body is None:

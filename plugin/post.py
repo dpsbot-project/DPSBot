@@ -82,7 +82,7 @@ class postclass():
             cur.execute("""delete from post where num = %d""" % select)
             conn.commit()
             conn.close()
-            await self.bot.send_message(ctx.message.channel, _("%d 글 삭제 완료!" % select))
+            await self.bot.send_message(ctx.message.channel, _("%d 글 삭제 완료!") % select)
         else:
             await self.bot.send_message(ctx.message.channel, _("당신은 권한이 없습니다.\n당신이 봇의 소유자거나 관리자인지 확인해 보세요."))
 

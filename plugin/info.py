@@ -60,8 +60,8 @@ class infoclass():
         embed.add_field(name=_("서버 수"), value=len(self.bot.servers), inline=True)
         embed.add_field(name=_("사용자 수"), value=users, inline=True)
         embed.add_field(name=_("접두사"), value=prefix.get(), inline=True)
-        embed.add_field(name=_("지금 플레이 중"), value=_("%s 플레이 중\n" % gamename.get()), inline=True)
-        embed.add_field(name=_("DPSBot의 나이"), value=_("최초 공개로부터 %s일 지났습니다." % str(result.days)), inline=True)
+        embed.add_field(name=_("지금 플레이 중"), value=_("%s 플레이 중\n") % gamename.get(), inline=True)
+        embed.add_field(name=_("DPSBot의 나이"), value=_("최초 공개로부터 %s일 지났습니다.") % str(result.days), inline=True)
         embed.set_footer(text=_("Powered by Team ttakkku"))
         await self.bot.send_message(ctx.message.channel, embed=embed)
 

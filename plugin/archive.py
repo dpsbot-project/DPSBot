@@ -37,7 +37,7 @@ class archiveclass():
 
     @commands.command(pass_context=True)
     async def 아카이브(self, ctx, url):
-        await bot_log("%s가 %s를(을) 아카이브 했습니다.\n" % (ctx.message.author, url))
+        await bot_log(_("%s가 %s를(을) 아카이브 했습니다.\n") % (ctx.message.author, url))
         try:
             if not "http" in url:
                 url = "http://" + url
@@ -50,7 +50,7 @@ class archiveclass():
             self.driver.find_element_by_tag_name('html').screenshot('screenshot.png')
             await self.bot.send_file(ctx.message.channel, 'screenshot.png')
             await self.bot.send_message(ctx.message.channel, archive_url)
-            await self.bot.log(_("아카이브 주소:%s\n" % (url)))
+            await self.bot.log(_("아카이브 주소:%s\n") % (url))
             os.remove('screenshot.png')
         except:
             try:

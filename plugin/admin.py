@@ -24,11 +24,11 @@ class adminclass():
                     if not module in pluginlist:
                         pluginlist.append(module)
                         self.bot.load_extension(pluginfolder + module)
-                        await self.bot.say(_('%s 모듈 로드 완료!' % module))
+                        await self.bot.say(_('%s 모듈 로드 완료!') % module)
                     else:
                         await self.bot.say(_('이미 로드된 모듈입니다.'))
                 except Exception as e:
-                    await self.bot.say(_('오류 발생!\n%s' % e)
+                    await self.bot.say(_('오류 발생!\n%s') % e)
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
@@ -43,11 +43,11 @@ class adminclass():
                         if module in pluginlist:
                             pluginlist.remove(module)
                             self.bot.load_extension(pluginfolder + module)
-                            await self.bot.say(_('%s 모듈 해제 완료!' % module))
+                            await self.bot.say(_('%s 모듈 해제 완료!') % module)
                         else:
                             await self.bot.say(_('이미 해제된 모듈입니다.'))
                     except Exception as e:
-                        await self.bot.say(_('오류 발생!\n%s' % e)
+                        await self.bot.say(_('오류 발생!\n%s') % e)
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
@@ -63,9 +63,9 @@ class adminclass():
                         self.bot.load_extension(pluginfolder + module)
                         if not module in pluginlist:
                             pluginlist.append(module)
-                        await self.bot.say(_('%s 모듈 재로드 완료!' % module))
+                        await self.bot.say(_('%s 모듈 재로드 완료!') % module)
                     except Exception as e:
-                        await self.bot.say(_('오류 발생!\n%s' % e))
+                        await self.bot.say(_('오류 발생!\n%s') % e)
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
@@ -100,7 +100,7 @@ class adminclass():
                 conn.close()
                 gamename.append(msg.content)
                 await self.bot.change_presence(game=discord.Game(name=gamename.get()))
-                await self.bot.say(_("%s로 변경되었습니다." % msg.content))
+                await self.bot.say(_("%s로 변경되었습니다.") % msg.content)
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
@@ -119,7 +119,7 @@ class adminclass():
                 cur.execute("update settings set body = '%s' where name='prefix'" % new_prefix)
                 conn.close()
                 prefix.set(new_prefix)
-                await self.bot.say(_("%s로 접두사가 변경되었습니다.\n봇을 재시작시켜주세요." % new_prefix))
+                await self.bot.say(_("%s로 접두사가 변경되었습니다.\n봇을 재시작시켜주세요.") % new_prefix)
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
@@ -132,9 +132,9 @@ class adminclass():
             for function in functions:
                 try:
                     self.bot.remove_command(function)
-                    await self.bot.say(_("%s 명령어 삭제 완료." % function))
+                    await self.bot.say(_("%s 명령어 삭제 완료.") % function)
                 except Exception as e:
-                    await self.bot.say(_("오류가 발생했습니다." % function))
+                    await self.bot.say(_("오류가 발생했습니다.") % function)
                     await self.bot.say(e)
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
@@ -148,9 +148,9 @@ class adminclass():
             for function in functions:
                 try:
                     self.bot.add_command(function)
-                    await self.bot.say(_("%s 명령어 복구 완료." % function))
+                    await self.bot.say(_("%s 명령어 복구 완료.") % function)
                 except Exception as e:
-                    await self.bot.say(_("오류가 발생했습니다." % function))
+                    await self.bot.say(_("오류가 발생했습니다.") % function)
                     await self.bot.say(_(e)
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
