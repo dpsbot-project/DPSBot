@@ -8,6 +8,9 @@ class Trans():
     def setlang(self, lang: str):
         self.outputlang = lang
 
+    def get(self):
+        return self.outputlang
+
     def gettext(self, text: str):
         if self.outputlang == 'ko_KR':
             return text
