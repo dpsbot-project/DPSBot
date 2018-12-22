@@ -39,7 +39,7 @@ class whisperclass():
         await self.bot.send_message(towhisperperson, "%s" % B_looks_A)
         await self.anonping(ctx.message, ctx.message.author, towhisperperson)
 
-    @commands.command(name=_("암호화"), pass_context=True)
+    @commands.command(name=_("답장"), pass_context=True)
     async def reply(self, ctx, text):
         Author_decrypt = await self.bot.get_user_info(self.cipher_suite.decrypt(text.encode("utf-8")).decode())
         await self.bot.send_message(ctx.message.author, _("암호가 확인되었습니다."))
