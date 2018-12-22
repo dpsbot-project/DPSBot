@@ -2,6 +2,8 @@ import asyncio
 from discord.ext import commands
 from translate import trans
 from trans_open import opentrans
+from pluginlist import lst
+from variables import pluginfolder
 class transconfig():
     def __init__(self, bot):
         self.bot = bot
@@ -22,6 +24,14 @@ class transconfig():
     async def 언어변경(self, ctx, lang):
         trans.setlang(lang)
         opentrans.refresh()
+        for extension in lst:
+            try:
+                self.bot.unload_extension(pluginfolder + extension)
+                print(_("%s 확장 기능을 불러왔습니다.") % extension)
+            except Exception as e:
+                print(_('%s 확장 기능을 불러오는데 실패했습니다.') % extension)
+                print(e)
+                pass
         await self.bot.say(_('%s로 변경되었습니다.') % lang)
 
 
