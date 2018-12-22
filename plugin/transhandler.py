@@ -27,7 +27,7 @@ class transconfig():
         for extension in lst:
             try:
                 self.bot.unload_extension(pluginfolder + extension)
-                self.bot.unload_extension(pluginfolder + extension)
+                self.bot.load_extension(pluginfolder + extension)
                 print(_("%s 확장 기능을 불러왔습니다.") % extension)
             except Exception as e:
                 print(_('%s 확장 기능을 불러오는데 실패했습니다.') % extension)
