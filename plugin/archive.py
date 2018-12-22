@@ -8,7 +8,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-
+from whisperandlog import bot_log
 
 class archiveclass():
     def __init__(self, bot):
@@ -60,7 +60,7 @@ class archiveclass():
                 driver.close()
             except:
                 pass
-            await bot.send_message(ctx.message.channel, "오류가 발생했어요!")
+            await self.bot.send_message(ctx.message.channel, "오류가 발생했어요!")
             raise
 
 

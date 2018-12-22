@@ -50,11 +50,11 @@ class whisperclass():
         B = user
         Aname = A.name
         Bname = B.name
-        await self.bot_log("채팅을 시도합니다.\n")
-        await self.bot_log(Aname + "\n")
-        await self.bot_log(Bname + "\n")
+        await bot_log("채팅을 시도합니다.\n")
+        await bot_log(Aname + "\n")
+        await bot_log(Bname + "\n")
         await self.bot.send_message(message.channel, Bname)
-        await self.bot_log("%s님이 %s님에게 %s라 말합니다." % (Aname, Bname, message))
+        await bot_log("%s님이 %s님에게 %s라 말합니다." % (Aname, Bname, message))
         if message.content.startswith('종료'):
             await self.bot.send_message(A, '종료되었습니다.')
         else:
@@ -66,9 +66,9 @@ class whisperclass():
 
 
     async def anonping(self, message, Author, towhisperperson):
-        await self.bot_log("익명 채팅을 시도합니다.\n")
-        await self.bot_log("%s" % Author + "\n")
-        await self.bot_log("%s" % towhisperperson + "\n")
+        await bot_log("익명 채팅을 시도합니다.\n")
+        await bot_log("%s" % Author + "\n")
+        await bot_log("%s" % towhisperperson + "\n")
         body = await self.bot.wait_for_message(timeout=60.0, author=Author)
         B = towhisperperson
         A = Author
@@ -79,7 +79,7 @@ class whisperclass():
             if body.content.startswith('종료'):
                 await self.bot.send_message(A, '종료되었습니다.')
             else:
-                await self.bot_log("%s가 %s에게 %s라 말합니다.(익명)\n" % (Author, towhisperperson, body.content))
+                await bot_log("%s가 %s에게 %s라 말합니다.(익명)\n" % (Author, towhisperperson, body.content))
                 await self.bot.send_message(B,
                                     '익명으로 메시지가 왔어요! ' + body.content + ' (이)라고 전해달라고 말하던데요?')
                 await self.bot.send_message(A, '메시지가 전해졌습니다.')
@@ -95,7 +95,7 @@ class whisperclass():
             if body.content.startswith('종료'):
                 await self.bot.send_message(A, '종료되었습니다.')
             else:
-                await self.bot_log("%s가 %s에게 %s라 말합니다.(익명)\n" % (A, B, body.content))
+                await bot_log("%s가 %s에게 %s라 말합니다.(익명)\n" % (A, B, body.content))
                 await self.bot.send_message(B, '익명으로 메시지가 왔어요! ' + body.content + ' (이)라고 전해달라고 말하던데요?')
                 await self.bot.send_message(A, '메시지가 전해졌습니다.')
                 await self.anonpong(message, A, B)
@@ -109,7 +109,7 @@ class whisperclass():
             if body.content.startswith('종료'):
                 await self.bot.send_message(A, '종료되었습니다.')
             else:
-                await self.bot_log("%s가 %s에게 %s라 말합니다.\n" % (A, B, body.content))
+                await bot_log("%s가 %s에게 %s라 말합니다.\n" % (A, B, body.content))
                 await self.bot.send_message(B, '%s 씨가 ' % (A) + body.content + ' (이)라고 전해달라고 말하던데요?')
                 await self.bot.send_message(A, '메시지가 전해졌습니다.')
                 await self.pong(message, A, B)
@@ -128,7 +128,7 @@ class whisperclass():
                 elif body.server == None:
                     pass
                 else:
-                    await self.bot_log('\n서버:%s\n채널:%s\n작성자:%s\n%s\n' % (body.server, body.channel, body.author, body.content))
+                    await bot_log('\n서버:%s\n채널:%s\n작성자:%s\n%s\n' % (body.server, body.channel, body.author, body.content))
                     embed = Embed(title="log", description='\n서버:%s\n\n채널:%s\n\n작성자:%s\n\n%s' % (
                         body.server, body.channel, body.author, body.content), color=0xE0FFFF)
                     await self.bot.send_message(message.author, embed=embed)
@@ -137,27 +137,26 @@ class whisperclass():
             print(e)
 
 
-    async def bot_log(self, message):
-        print(message)
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-        cur = conn.cursor()
-        sql = """insert into log (body) values (%s)"""
-        cur.execute(sql, (message, ))
-        conn.commit()
-        conn.close()
-
     @commands.command(pass_context=True)
     async def 로그켜(self, ctx, channelid):
         channel = self.bot.get_channel(channelid)
         key = random.randint(1, 1000000000000000)
         await self.bot.send_message(ctx.message.author, '종료 코드를 봇이 있는 채널이나 DM에 입력하면 꺼집니다. 종료 코드:')
         await self.bot.send_message(ctx.message.author, key)
-        await self.bot_log("\nlistener is: %s\n" % ctx.message.author)
+        await bot_log("\nlistener is: %s\n" % ctx.message.author)
         try:
             await self.log(ctx.message, channel, key)
         except AttributeError:
             return
 
+async def bot_log(message):
+    print(message)
+    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    cur = conn.cursor()
+    sql = """insert into log (body) values (%s)"""
+    cur.execute(sql, (message, ))
+    conn.commit()
+    conn.close()
 
 def setup(bot):
     bot.add_cog(whisperclass(bot))
