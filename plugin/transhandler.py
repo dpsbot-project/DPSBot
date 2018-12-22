@@ -8,8 +8,8 @@ class transconfig():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(pass_context=True)
-    async def 번역(self, ctx, src, dest):
+    @commands.command(name=_("번역"), pass_context=True)
+    async def translate(self, ctx, src, dest):
         await self.bot.say(_('번역할 내용을 말해주세요.'))
         plaintext = await self.bot.wait_for_message(author=ctx.message.author)
         if plaintext:
@@ -20,8 +20,8 @@ class transconfig():
         else:
             await self.bot.say(_('내용이 없습니다.'))
 
-    @commands.command(pass_context=True)
-    async def 언어변경(self, ctx, lang):
+    @commands.command(name=_("언어변경"), pass_context=True)
+    async def changelang(self, ctx, lang):
         trans.setlang(lang)
         opentrans.refresh()
         for extension in lst:
