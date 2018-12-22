@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-23 02:04+0900\n"
+"POT-Creation-Date: 2018-12-23 02:18+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -194,8 +194,7 @@ msgstr ""
 msgid "오류가 발생했어요!"
 msgstr ""
 
-#: ./plugin/crypto.py:13 ./plugin/crypto.py:23 ./plugin/etc.py:79
-#: ./plugin/whisperandlog.py:42
+#: ./plugin/crypto.py:13 ./plugin/crypto.py:23 ./plugin/whisperandlog.py:42
 msgid "암호화"
 msgstr ""
 
@@ -310,6 +309,10 @@ msgstr ""
 
 #: ./plugin/etc.py:74
 msgid "당신은 혹시..."
+msgstr ""
+
+#: ./plugin/etc.py:79
+msgid "건의"
 msgstr ""
 
 #: ./plugin/etc.py:84
