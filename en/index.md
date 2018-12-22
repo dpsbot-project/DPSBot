@@ -2,7 +2,7 @@
 
 It is a Korean Discord bot.
 
-Multi language support is work in progeess.
+Multi language supports by tranlator, but [open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/) 
 
 Some DB setup is required for the user to turn the bots directly.
 
