@@ -8,7 +8,7 @@ from selenium.webdriver.firefox.options import Options
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from whisperandlog import bot_log
+from plugin import bot_log
 
 class archiveclass():
     def __init__(self, bot):
@@ -35,7 +35,6 @@ class archiveclass():
                 'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3', 'Accept-Encoding': 'none', 'Accept-Language': 'en-US,en;q=0.8', 'Connection': 'keep-alive'})
         except:
             pass
-
 
 
     @commands.command(pass_context=True)
