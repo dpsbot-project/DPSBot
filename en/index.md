@@ -23,5 +23,3 @@ The functionality provided by the bot is modularized into plug-ins.
 Produced by: DPS0340
 
 Proudly Powered by Team ttakkku
-
-(sorry! bad english skills)
