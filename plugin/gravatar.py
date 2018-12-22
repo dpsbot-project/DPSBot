@@ -6,8 +6,8 @@ class gravatarclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(pass_context=True)
-    async def 그라바타(self, ctx, plaintext):
+    @commands.command(name=_("gravatar"), pass_context=True)
+    async def gravatar(self, ctx, plaintext):
         h = hashlib.md5()
         h.update(plaintext.encode("utf-8").lower())
         encryptedtext = h.hexdigest()

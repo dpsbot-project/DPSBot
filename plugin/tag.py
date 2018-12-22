@@ -3,11 +3,9 @@ import psycopg2
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-from variables import DATABASE_URL, owner, mod
+from variables import DATABASE_URL, owner, mod, prefix
 from discord.ext import commands
-import random
-
-
+from trans_open import _, refresh
 class tag:
     def __init__(self, name: str, command: str, context: str, argsdict: dict):
         self.name = name
@@ -276,7 +274,7 @@ class tag:
 
 
 def nameParse(rawline):
-    rawline = rawline.replace("디피 maketag ", "", 1)
+    rawline = rawline.replace("%s maketag " % prefix.get(), "", 1)
     name = rawline.split()[0]
     return name
 
@@ -311,8 +309,8 @@ def run(rawline: str, args="", argsdict={}):
     if len(rawline.split()) <= 1:
         return rawline
     else:
-        if rawline.find("디피 maketag ") != -1:
-            rawline = rawline.replace("디피 maketag ", "", 1)
+        if rawline.find("%s maketag " % prefix.get()) != -1:
+            rawline = rawline.replace("%s maketag " % prefix.get(), "", 1)
             Name = nameParse(rawline)
             rawline = rawline.replace(Name + " ", "", 1)
             rawline = rawline.replace("rawinput", args)
@@ -358,10 +356,10 @@ class tagclass():
         self.tagload()
 
     def taginit(self, name, line):
-        @commands.command(name="t" + name, pass_context=True)
+        @commands.command(name=_("t%s") % name, pass_context=True)
         async def tag(self, ctx):
             await self.bot.send_message(ctx.message.channel, ctx.message.content)
-            inputline = ctx.message.content.replace("디피 t" + name + " ", "")
+            inputline = ctx.message.content.replace("%s t%s " % (prefix.get(), name), "")
             result = run(line, inputline)
             await self.bot.send_message(ctx.message.channel, result)
             print(name)
@@ -372,8 +370,8 @@ class tagclass():
         cur = conn.cursor()
         cur.execute('select * from tag')
         rows = cur.fetchall()
-        print('태그 로드중...')
-        print('------')
+        print(_('태그 로드중...'))
+        print(_('------'))
         for row in rows:
             try:
                 name = row[0]
@@ -381,32 +379,31 @@ class tagclass():
                 self.taginit(name, line)
                 print(line)
             except Exception as e:
-                print('태그 로드 실패!')
+                print(_('태그 로드 실패!'))
                 print(e)
                 pass
         conn.close()
-        print('------')
-        print('태그 로드 완료!')
+        print(_('------'))
+        print(_('태그 로드 완료!'))
 
 
-    @commands.command(pass_context=True, name="maketag")
+    @commands.command(pass_context=True, name=_("maketag"))
     async def maketag(self, ctx, *words):
         name = nameParse(ctx.message.content)
         line = ctx.message.content
         try:
             await taginsert("tag", name, line)
-            await self.bot.send_message(ctx.message.channel, "태그 생성 완료!")
-
-            @commands.command(name="t" + name, pass_context=True)
+            await self.bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
+            @commands.command(name=_("t%s") % name, pass_context=True)
             async def tag(self, ctx):
                 await self.bot.send_message(ctx.message.channel, line)
-                inputline = ctx.message.content.replace("디피 t" + name + " ", "")
+                inputline = ctx.message.content.replace(_("디피 t%s") % name, "")
                 result = run(line, inputline)
                 await self.bot.send_message(ctx.message.channel, result)
                 print(name)
                 print(result)
         except:
-            await self.bot.send_message(ctx.message.channel, "이미 있는 태그입니다.")
+            await self.bot.send_message(ctx.message.channel, _("이미 있는 태그입니다."))
 
     async def taginsert(table, name, line):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')

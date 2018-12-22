@@ -4,13 +4,13 @@ from variables import osuapikey
 import discord
 from discord.ext import commands
 from embed import Embed
-
+from trans_open import _, refresh
 class osuclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(pass_context=True)
-    async def 오스(self, ctx, *user):
+    @commands.command(name=_("오스"), pass_context=True)
+    async def osu(self, ctx, *user):
         username = ''
         i = 0
         for word in user:

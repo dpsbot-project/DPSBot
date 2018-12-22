@@ -3,13 +3,13 @@ import asyncio
 import discord
 from pluginlist import lst, alllst
 from embed import Embed
-
+from trans_open import _, refresh
 class pluginclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(pass_context=True)
-    async def 모듈(self, ctx):
+    @commands.command(name=_("모듈"), pass_context=True)
+    async def module(self, ctx):
         i = 0
         body = ""
         for plugin in alllst:
@@ -17,7 +17,7 @@ class pluginclass():
             body += plugin + " "
             if i % 5 == 0:
                 body += '\n'
-        embed = Embed(title="사용 가능한 모듈 리스트", description=body, color=0x00FFFF)
+        embed = Embed(title=_("사용 가능한 모듈 리스트"), description=body, color=0x00FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
         i = 0
         body = ""
@@ -26,7 +26,7 @@ class pluginclass():
             body += plugin + " "
             if i % 5 == 0:
                 body += '\n'
-        embed = Embed(title="현재 작동중인 모듈 리스트",
+        embed = Embed(title=_("현재 작동중인 모듈 리스트"),
                               description=body, color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 

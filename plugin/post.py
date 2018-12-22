@@ -1,18 +1,18 @@
 import asyncio
 import psycopg2
 import discord
-from variables import DATABASE_URL, owner, mod
+from variables import DATABASE_URL, owner, mod, prefix
 from discord.ext import commands
 from embed import Embed
+from trans_open import _, refresh
 class postclass():
     def __init__(self, bot):
         self.bot = bot
 
 
-    @commands.command(pass_context=True)
-    async def 써줘(self, ctx, *heads):
-        conn = psycopg2.connect(database=database, user=user,
-                                password=password, host=host, port=port)
+    @commands.command(name=_("써줘"), pass_context=True)
+    async def write(self, ctx, *heads):
+        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         with conn:
             try:
                 cur = conn.cursor()
@@ -30,10 +30,10 @@ class postclass():
             else:
                 head += word + ' '
         if len(heads) == 0:
-            await self.bot.send_message(ctx.message.channel, "제목이 없습니다.")
+            await self.bot.send_message(ctx.message.channel, _("제목이 없습니다."))
             pass
         else:
-            await self.bot.send_message(ctx.message.channel, "내용을 말해주세요!")
+            await self.bot.send_message(ctx.message.channel, _("내용을 말해주세요!"))
             body = await self.bot.wait_for_message(timeout=600, author=ctx.message.author)
             body = body.content
             author = ctx.message.author.name
@@ -43,8 +43,8 @@ class postclass():
             await self.postinsert("post", num, author, head, body)
 
 
-    @commands.command(pass_context=True)
-    async def 보여줘(self, ctx):
+    @commands.command(name=_("보여줘"), pass_context=True)
+    async def show(self, ctx):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
         cur.execute('select * from post')
@@ -55,11 +55,11 @@ class postclass():
             head = row[2]
             await self.bot.send_message(ctx.message.channel, "%s. %s - by %s\n" % (num, head, author))
         conn.close()
-        await self.bot.send_message(ctx.message.channel, "디피 글 (번호)를 입력하시면 글을 보실수 있어요!")
+        await self.bot.send_message(ctx.message.channel, _("%s글 (번호)를 입력하시면 글을 보실수 있어요!") % prefix.get())
 
 
-    @commands.command(pass_context=True)
-    async def 글(self, ctx, select: int):
+    @commands.command(name=_("글"), pass_context=True)
+    async def post(self, ctx, select: int):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
         cur.execute('select * from post where num = {0}'.format(select))
@@ -73,17 +73,17 @@ class postclass():
             num, head), description="\nby %s\n%s" % (author, body), color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
-    @commands.command(pass_context=True)
-    async def 글삭제(self, ctx, select: int):
+    @commands.command(name=_("글삭제"), pass_context=True)
+    async def deletepost(self, ctx, select: int):
         if ctx.message.author.id == owner or ctx.message.author.id in mod:
             conn = psycopg2.connect(DATABASE_URL, sslmode='require')
             cur = conn.cursor()
             cur.execute("""delete from post where num = %d""" % select)
             conn.commit()
             conn.close()
-            await self.bot.send_message(ctx.message.channel, "%d 글 삭제 완료!" % select)
+            await self.bot.send_message(ctx.message.channel, _("%d 글 삭제 완료!") % select)
         else:
-            await self.bot.send_message(ctx.message.channel, "당신은 권한이 없습니다.\n당신이 봇의 소유자거나 관리자인지 확인해 보세요.")
+            await self.bot.send_message(ctx.message.channel, _("당신은 권한이 없습니다.\n당신이 봇의 소유자거나 관리자인지 확인해 보세요."))
 
 
     async def postinsert(self, table, num, author, head, body):
