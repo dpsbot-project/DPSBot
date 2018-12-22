@@ -16,7 +16,7 @@
 
 제작자의 개인 홈페이지:https://dps0340.xyz
 
-저희 :http://ttakkku.tk/
+저희 팀:http://ttakkku.tk/
 
 Proudly Powered by Team ttakkku
 
