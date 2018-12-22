@@ -4,8 +4,6 @@ import discord
 from variables import DATABASE_URL, owner, mod, prefix
 from discord.ext import commands
 from embed import Embed
-from trans_open import opentrans
-_ = opentrans._
 class postclass():
     def __init__(self, bot):
         self.bot = bot

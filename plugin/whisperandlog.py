@@ -6,8 +6,6 @@ from discord.ext import commands
 from cryptography.fernet import Fernet
 import random
 from embed import Embed
-from trans_open import opentrans
-_ = opentrans._
 class whisperclass():
     def __init__(self, bot):
         self.bot = bot

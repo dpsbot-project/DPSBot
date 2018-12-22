@@ -3,10 +3,10 @@ import gettext
 
 class Opentrans():
     def __init__(self):
-        self._ = gettext.translation('./', localedir='./locales', languages=[trans.get()], fallback=True)
-        self._ = self._.gettext
+        self.lang = gettext.translation('./', localedir='./locales', languages=[trans.get()], fallback=True)
+        self.lang.install()
     def refresh(self):
-        self._ = gettext.translation('./', localedir='./locales', languages=[trans.get()], fallback=True)
-        self._ = self._.gettext
+        self.lang = gettext.translation('./', localedir='./locales', languages=[trans.get()], fallback=True)
+        self.lang.install()
 
 opentrans = Opentrans()
