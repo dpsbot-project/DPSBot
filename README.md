@@ -4,4 +4,4 @@
 
 # DPSBot open translate
 
-**[Would you help me?:)](DPSBot open translate)**
+**[Would you help me?:)](https://www.transifex.com/ttakkku/dpsbot/dashboard/)**
