@@ -13,12 +13,6 @@ class infoclass():
         self.bot = bot
 
 
-    @commands.command(name=_("도움"), pass_context=True)
-    async def help(self, ctx):
-        embed=Embed(title=_("가이드 홈페이지"), url="https://dpsbot.tk", color=0x1dfff5)
-        await self.bot.send_message(ctx.message.channel, embed=embed)
-
-
     @commands.command(name=_("사용자정보"), pass_context=True)
     async def userinfo(self, ctx):
         person = ctx.message.mentions[0].id
