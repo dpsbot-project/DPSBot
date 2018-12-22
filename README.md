@@ -1,8 +1,7 @@
-# DPSBot - 한국어 다용도 디스코드 봇
+# DPSBot 공개 번역
 
-**[공식 홈페이지](https://dpsbot.tk)를 봐주세요**
+**[도와주실래요?:)](https://www.transifex.com/ttakkku/dpsbot/dashboard/)**
 
+# DPSBot open translate
 
-# DPSBot - Korean Discord bot
-
-**Please look at [official bot site](https://dpsbot.tk)**
+**[Would you help me?:)](DPSBot open translate)**
