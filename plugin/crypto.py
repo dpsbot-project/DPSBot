@@ -20,7 +20,7 @@ class cryptoclass():
         else:
             await self.bot.say(_('내용이 없습니다.'))
 
-    @commands.command(name=_("암호화"), pass_context=True)
+    @commands.command(name=_("복호화"), pass_context=True)
     async def decrypt(self, ctx):
         await self.bot.say(_('암호를 말해주세요.'))
         encryptedtext = await self.bot.wait_for_message(author=ctx.message.author)
