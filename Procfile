@@ -1,2 +1,2 @@
-release: chmod 777 geckodriver
+release: chmod a+x geckodriver
 worker: python Main.py
