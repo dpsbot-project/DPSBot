@@ -21,7 +21,7 @@ class alohclass():
             await self.alohsaydCore(ctx, num)
 
 
-    @commands.command(name=_("알로셍이드랜덤"), pass_context=True)
+    @commands.command(name=_("알로세이드랜덤"), pass_context=True)
     async def alohsaydrandom(self, ctx):
         num = random.randrange(0, 1173)
         await self.bot.send_message(ctx.message.channel, _("랜덤 알로세이드"))

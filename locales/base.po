@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-23 00:30+0900\n"
+"POT-Creation-Date: 2018-12-23 02:04+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -32,6 +32,10 @@ msgstr ""
 msgid "%s 확장 기능을 불러오는데 실패했습니다."
 msgstr ""
 
+#: ./plugin/admin.py:19
+msgid "load"
+msgstr ""
+
 #: ./plugin/admin.py:27
 msgid "%s 모듈 로드 완료!"
 msgstr ""
@@ -54,6 +58,10 @@ msgid ""
 "운영자만 사용 가능합니다."
 msgstr ""
 
+#: ./plugin/admin.py:35
+msgid "unload"
+msgstr ""
+
 #: ./plugin/admin.py:40
 msgid "어드민 모듈은 모듈을 로드하고 해제하는 기능이 있어, 해제가 불가능합니다."
 msgstr ""
@@ -66,12 +74,20 @@ msgstr ""
 msgid "이미 해제된 모듈입니다."
 msgstr ""
 
+#: ./plugin/admin.py:54
+msgid "reload"
+msgstr ""
+
 #: ./plugin/admin.py:59
 msgid "어드민 모듈은 모듈을 로드하고 해제하는 기능이 있어, 재로드가 불가능합니다."
 msgstr ""
 
 #: ./plugin/admin.py:66
 msgid "%s 모듈 재로드 완료!"
+msgstr ""
+
+#: ./plugin/admin.py:73
+msgid "봇소개변경"
 msgstr ""
 
 #: ./plugin/admin.py:76 ./plugin/admin.py:93
@@ -82,8 +98,16 @@ msgstr ""
 msgid "변경 완료."
 msgstr ""
 
+#: ./plugin/admin.py:90
+msgid "플레이중추가"
+msgstr ""
+
 #: ./plugin/admin.py:103 ./plugin/transhandler.py:25
 msgid "%s로 변경되었습니다."
+msgstr ""
+
+#: ./plugin/admin.py:108
+msgid "접두사변경"
 msgstr ""
 
 #: ./plugin/admin.py:111
@@ -96,6 +120,10 @@ msgstr ""
 msgid ""
 "%s로 접두사가 변경되었습니다.\n"
 "봇을 재시작시켜주세요."
+msgstr ""
+
+#: ./plugin/admin.py:127
+msgid "명령어삭제"
 msgstr ""
 
 #: ./plugin/admin.py:130 ./plugin/admin.py:146
@@ -114,12 +142,24 @@ msgstr ""
 msgid "오류가 발생했습니다."
 msgstr ""
 
+#: ./plugin/admin.py:143
+msgid "명령어복구"
+msgstr ""
+
 #: ./plugin/admin.py:151
 msgid "%s 명령어 복구 완료."
 msgstr ""
 
+#: ./plugin/aloh.py:17
+msgid "알로세이드"
+msgstr ""
+
 #: ./plugin/aloh.py:19
 msgid "알로세이드는 1172번까지 있습니다."
+msgstr ""
+
+#: ./plugin/aloh.py:24
+msgid "알로세이드랜덤"
 msgstr ""
 
 #: ./plugin/aloh.py:27
@@ -128,6 +168,10 @@ msgstr ""
 
 #: ./plugin/aloh.py:48
 msgid "파일을 찾지 못했어요!"
+msgstr ""
+
+#: ./plugin/archive.py:38
+msgid "아카이브"
 msgstr ""
 
 #: ./plugin/archive.py:40
@@ -150,6 +194,11 @@ msgstr ""
 msgid "오류가 발생했어요!"
 msgstr ""
 
+#: ./plugin/crypto.py:13 ./plugin/crypto.py:23 ./plugin/etc.py:79
+#: ./plugin/whisperandlog.py:42
+msgid "암호화"
+msgstr ""
+
 #: ./plugin/crypto.py:15
 msgid "암호화시킬 내용을 말해주세요."
 msgstr ""
@@ -162,8 +211,16 @@ msgstr ""
 msgid "암호를 말해주세요."
 msgstr ""
 
+#: ./plugin/etc.py:14
+msgid "안녕"
+msgstr ""
+
 #: ./plugin/etc.py:16
 msgid "안녕하세요!"
+msgstr ""
+
+#: ./plugin/etc.py:19
+msgid "블라인드"
 msgstr ""
 
 #: ./plugin/etc.py:21
@@ -179,6 +236,10 @@ msgstr ""
 msgid "---------------블라인드가 끝났습니다---------------"
 msgstr ""
 
+#: ./plugin/etc.py:25
+msgid "귓속말"
+msgstr ""
+
 #: ./plugin/etc.py:27
 msgid "DM을 봐주세요!"
 msgstr ""
@@ -191,12 +252,32 @@ msgstr ""
 msgid "이제 눈치보지 마시고 마음껏 얘기해 주세요!"
 msgstr ""
 
+#: ./plugin/etc.py:32
+msgid "죽어"
+msgstr ""
+
 #: ./plugin/etc.py:34 ./plugin/etc.py:39
 msgid "싫어요!"
 msgstr ""
 
+#: ./plugin/etc.py:37
+msgid "닥쳐"
+msgstr ""
+
+#: ./plugin/etc.py:42
+msgid "헬로월드"
+msgstr ""
+
 #: ./plugin/etc.py:44
 msgid "안녕하세요....DPS봇입니다!"
+msgstr ""
+
+#: ./plugin/etc.py:47
+msgid "뭐해"
+msgstr ""
+
+#: ./plugin/etc.py:53
+msgid "찍어"
 msgstr ""
 
 #: ./plugin/etc.py:55
@@ -211,8 +292,12 @@ msgid ""
 "님을 찍겠습니다☆"
 msgstr ""
 
-#: ./plugin/etc.py:69
+#: ./plugin/etc.py:66 ./plugin/etc.py:69
 msgid "내성위키"
+msgstr ""
+
+#: ./plugin/etc.py:72
+msgid "내가누구"
 msgstr ""
 
 #: ./plugin/etc.py:74
@@ -237,6 +322,10 @@ msgid ""
 " %s 님이 %s (이)라고 건의했습니다."
 msgstr ""
 
+#: ./plugin/exec.py:17
+msgid "exec"
+msgstr ""
+
 #: ./plugin/exec.py:31
 msgid "명령어 실행: %s"
 msgstr ""
@@ -249,6 +338,10 @@ msgstr ""
 msgid ""
 "권한이 없습니다!\n"
 "개발자만 접근 가능합니다."
+msgstr ""
+
+#: ./plugin/exec.py:40
+msgid "telnet"
 msgstr ""
 
 #: ./plugin/exec.py:43
@@ -273,8 +366,24 @@ msgstr ""
 msgid "종료되었습니다."
 msgstr ""
 
+#: ./plugin/gravatar.py:9
+msgid "gravatar"
+msgstr ""
+
+#: ./plugin/info.py:18
+msgid "도움"
+msgstr ""
+
 #: ./plugin/info.py:20
 msgid "가이드 홈페이지"
+msgstr ""
+
+#: ./plugin/info.py:24
+msgid "사용자정보"
+msgstr ""
+
+#: ./plugin/info.py:38
+msgid "정보"
 msgstr ""
 
 #: ./plugin/info.py:56
@@ -334,23 +443,39 @@ msgstr ""
 msgid "부운영자 로드 완료!"
 msgstr ""
 
+#: ./plugin/mod.py:28 ./plugin/mod.py:43
+msgid "부운영자삭제"
+msgstr ""
+
 #: ./plugin/mod.py:39
 msgid "%s 부운영자 등록 완료!"
 msgstr ""
 
-#: ./plugin/mod.py:41 ./plugin/mod.py:56
+#: ./plugin/mod.py:41 ./plugin/mod.py:55
 msgid ""
 "당신은 권한이 없습니다.\n"
 "당신이 봇의 운영자거나 부운영자인지 확인해 보세요."
 msgstr ""
 
-#: ./plugin/mod.py:54
+#: ./plugin/mod.py:53
 msgid "%s 부운영자 삭제 완료!"
 msgstr ""
 
-#: ./plugin/mod.py:60
+#: ./plugin/mod.py:57
+msgid "부운영자목록"
+msgstr ""
+
+#: ./plugin/mod.py:59
 msgid ""
 "부운영자 목록\n"
+msgstr ""
+
+#: ./plugin/osu.py:12
+msgid "오스"
+msgstr ""
+
+#: ./plugin/pluginsettings.py:12
+msgid "모듈"
 msgstr ""
 
 #: ./plugin/pluginsettings.py:21
@@ -361,6 +486,10 @@ msgstr ""
 msgid "현재 작동중인 모듈 리스트"
 msgstr ""
 
+#: ./plugin/post.py:14
+msgid "써줘"
+msgstr ""
+
 #: ./plugin/post.py:34
 msgid "제목이 없습니다."
 msgstr ""
@@ -369,8 +498,20 @@ msgstr ""
 msgid "내용을 말해주세요!"
 msgstr ""
 
+#: ./plugin/post.py:47
+msgid "보여줘"
+msgstr ""
+
 #: ./plugin/post.py:59
 msgid "디피 글 (번호)를 입력하시면 글을 보실수 있어요!"
+msgstr ""
+
+#: ./plugin/post.py:62
+msgid "글"
+msgstr ""
+
+#: ./plugin/post.py:77
+msgid "글삭제"
 msgstr ""
 
 #: ./plugin/post.py:85
@@ -383,6 +524,10 @@ msgid ""
 "당신이 봇의 소유자거나 관리자인지 확인해 보세요."
 msgstr ""
 
+#: ./plugin/tag.py:362 ./plugin/tag.py:401
+msgid "t%s"
+msgstr ""
+
 #: ./plugin/tag.py:376
 msgid "태그 로드중..."
 msgstr ""
@@ -393,6 +538,10 @@ msgstr ""
 
 #: ./plugin/tag.py:390
 msgid "태그 로드 완료!"
+msgstr ""
+
+#: ./plugin/tag.py:393
+msgid "maketag"
 msgstr ""
 
 #: ./plugin/tag.py:399
@@ -415,8 +564,16 @@ msgstr ""
 msgid "잘못된 언어코드입니다."
 msgstr ""
 
+#: ./plugin/whisperandlog.py:18
+msgid "전해줘"
+msgstr ""
+
 #: ./plugin/whisperandlog.py:26
 msgid "멘션과 메시지를 입력해주세요."
+msgstr ""
+
+#: ./plugin/whisperandlog.py:29
+msgid "익명"
 msgstr ""
 
 #: ./plugin/whisperandlog.py:38
@@ -497,6 +654,10 @@ msgstr ""
 
 #: ./plugin/whisperandlog.py:133
 msgid "log"
+msgstr ""
+
+#: ./plugin/whisperandlog.py:141
+msgid "로그켜"
 msgstr ""
 
 #: ./plugin/whisperandlog.py:145
