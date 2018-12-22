@@ -16,7 +16,7 @@
 
 제작자의 개인 홈페이지:https://dps0340.xyz
 
-제작자가 활동하는 곳:http://ttakkku.tk/
+저희 :http://ttakkku.tk/
 
 Proudly Powered by Team ttakkku
 
@@ -39,7 +39,7 @@ Bot official git:https://github.com/DPS0340/DPSBot
 
 Creator's personal homepage:https://dps0340.xyz
 
-Where the creator works:http://ttakkku.tk/
+Our crew:http://ttakkku.tk/
 
 Proudly Powered by Team ttakkku
 
