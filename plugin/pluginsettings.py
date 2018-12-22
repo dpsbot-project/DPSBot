@@ -3,7 +3,8 @@ import asyncio
 import discord
 from pluginlist import lst, alllst
 from embed import Embed
-
+import gettext
+_ = gettext.gettext
 class pluginclass():
     def __init__(self, bot):
         self.bot = bot

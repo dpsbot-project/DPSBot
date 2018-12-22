@@ -6,7 +6,8 @@ import discord
 from variables import owner
 from discord.ext import commands
 from embed import Embed
-
+import gettext
+_ = gettext.gettext
 
 class execclass():
     def __init__(self, bot):
@@ -46,7 +47,7 @@ class execclass():
                 await self.bot.send_message(ctx.message.channel, _('응답이 없어서 종료되었습니다.'))
                 break
             else:
-                if body.content.startswith('종료'):
+                if body.content.startswith(_('종료')):
                     await self.bot.send_message(ctx.message.channel, _('종료되었습니다.'))
                     break
                 else:

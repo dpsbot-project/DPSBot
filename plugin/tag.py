@@ -6,7 +6,8 @@ sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 from variables import DATABASE_URL, owner, mod
 from discord.ext import commands
 import random
-
+import gettext
+_ = gettext.gettext
 
 class tag:
     def __init__(self, name: str, command: str, context: str, argsdict: dict):

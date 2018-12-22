@@ -1,7 +1,8 @@
 import asyncio
 from discord.ext import commands
 from cryptography.fernet import Fernet
-
+import gettext
+_ = gettext.gettext
 
 class cryptoclass():
     def __init__(self, bot):

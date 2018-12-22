@@ -2,7 +2,8 @@ import psycopg2
 from variables import DATABASE_URL, owner, mod
 import asyncio
 from discord.ext import commands
-
+import gettext
+_ = gettext.gettext
 class modclass():
     def __init__(self, bot):
         self.bot = bot

@@ -4,6 +4,8 @@ import discord
 from variables import DATABASE_URL, owner, mod
 from discord.ext import commands
 from embed import Embed
+import gettext
+_ = gettext.gettext
 class postclass():
     def __init__(self, bot):
         self.bot = bot

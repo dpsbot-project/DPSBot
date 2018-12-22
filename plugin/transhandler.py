@@ -1,7 +1,8 @@
 import asyncio
 from discord.ext import commands
 from translate import trans
-
+import gettext
+_ = gettext.gettext
 class transconfig():
     def __init__(self, bot):
         self.bot = bot
