@@ -24,7 +24,7 @@
 Proudly Powered by Team ttakkku
 
 
-DPSBot - Korean Discord bot
+# DPSBot - Korean Discord bot
 
 **Please look at [official bot site](https://dpsbot.tk)**
 
