@@ -401,7 +401,7 @@ class tagclass():
             @commands.command(name="t" + name, pass_context=True)
             async def tag(self, ctx):
                 await self.bot.send_message(ctx.message.channel, line)
-                inputline = ctx.message.content.replace(_("디피 t" + name + " ", ""))
+                inputline = ctx.message.content.replace(_("디피 t%s") % name, "")
                 result = run(line, inputline)
                 await self.bot.send_message(ctx.message.channel, result)
                 print(name)

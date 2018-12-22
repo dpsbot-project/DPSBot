@@ -76,10 +76,10 @@ class adminclass():
             await self.bot.say(_("변경할 내용을 말해주세요."))
             msg = await self.bot.wait_for_message(author=ctx.message.author)
             if msg:
-                conn = psycopg2.connect(DATABASE_URL, sslmode='require'))
+                conn = psycopg2.connect(DATABASE_URL, sslmode='require')
                 conn.autocommit = True
                 cur = conn.cursor()
-                cur.execute("update settings set body = '%s' where name='instructions'" % msg.content))
+                cur.execute("update settings set body = '%s' where name='instructions'" % msg.content)
                 conn.close()
                 instructions.set(msg.content)
                 await self.bot.say(_("변경 완료."))
@@ -151,7 +151,7 @@ class adminclass():
                     await self.bot.say(_("%s 명령어 복구 완료.") % function)
                 except Exception as e:
                     await self.bot.say(_("오류가 발생했습니다.") % function)
-                    await self.bot.say(_(e)
+                    await self.bot.say(e)
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 

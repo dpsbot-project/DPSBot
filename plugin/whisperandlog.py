@@ -55,7 +55,7 @@ class whisperclass():
         await bot_log(Aname + "\n")
         await bot_log(Bname + "\n")
         await self.bot.send_message(message.channel, Bname)
-        await bot_log(_("%s님이 %s님에게 %s라 말합니다." % (Aname, Bname, message)))
+        await bot_log(_("%s님이 %s님에게 %s라 말합니다.") % (Aname, Bname, message))
         if message.content.startswith(_('종료')):
             await self.bot.send_message(A, _('종료되었습니다.'))
         else:
@@ -97,7 +97,7 @@ class whisperclass():
                 await self.bot.send_message(A, _('종료되었습니다.'))
             else:
                 await bot_log(_("%s가 %s에게 %s라 말합니다.(익명)\n") % (A, B, body.content))
-                await self.bot.send_message(B, _('익명으로 메시지가 왔어요! %s(이)라고 전해달라고 말하던데요?' % body.content))
+                await self.bot.send_message(B, _('익명으로 메시지가 왔어요! %s(이)라고 전해달라고 말하던데요?') % body.content)
                 await self.bot.send_message(A, _('메시지가 전해졌습니다.'))
                 await self.anonpong(message, A, B)
 
