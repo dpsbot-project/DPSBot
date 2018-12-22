@@ -16,7 +16,7 @@ The functionality provided by the bot is modularized into plug-ins.
 
 [Bot official git](https://github.com/DPS0340/DPSBot)
 
-[Creator's personal homepage\(https://dps0340.xyz)
+[Creator's personal homepage](https://dps0340.xyz)
 
 [Our crew](http://ttakkku.tk/)
 
