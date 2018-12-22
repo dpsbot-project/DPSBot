@@ -6,20 +6,20 @@
 
 사용자가 봇을 직접 돌리기 위해서는 약간의 DB 설정이 필요합니다.
 
+봇이 제공하는 기능은 플러그인으로 모듈화되어있습니다.
+
 [DB 초기화 가이드](db-init.md)
 
 [매뉴얼](manual.md)
 
-봇이 제공하는 기능은 플러그인으로 모듈화되어있습니다.
-
 [봇 초대](https://discordbots.org/bot/523785272693882880)
-
-제작자:DPS0340
 
 [봇 공식 git](https://github.com/DPS0340/DPSBot)
 
 [제작자의 개인 홈페이지](https://dps0340.xyz)
 
 [저희 팀](http://ttakkku.tk/)
+
+제작자:DPS0340
 
 Proudly Powered by Team ttakkku
