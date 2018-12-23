@@ -31,7 +31,7 @@ python3 ./db-init/db-init.py -url (데이터베이스_url)
 ```
 
 
-![db-setup-heroku](https://github.com/DPS0340/DPSBot/blob/gh-pages/Screenshot_20181223_162448.png)
+![db-setup-heroku](https://github.com/DPS0340/DPSBot/blob/gh-pages/Screenshot_20181223_162759.png)
 ![db-init.py](https://github.com/DPS0340/DPSBot/blob/gh-pages/Screenshot_20181223_162448.png)
 
 과정이 이렇게 되어야 합니다.
