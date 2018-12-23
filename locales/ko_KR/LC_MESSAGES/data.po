@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-23 04:44+0900\n"
+"POT-Creation-Date: 2018-12-23 11:57+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,11 +23,11 @@ msgstr "로그인 되었습니다."
 msgid "------"
 msgstr "------"
 
-#: ./Main.py:30 ./plugin/transhandler.py:31
+#: ./Main.py:30 ./plugin/transhandler.py:32
 msgid "%s 확장 기능을 불러왔습니다."
 msgstr "%s 확장 기능을 불러왔습니다."
 
-#: ./Main.py:32 ./plugin/transhandler.py:33
+#: ./Main.py:32 ./plugin/transhandler.py:34
 msgid "%s 확장 기능을 불러오는데 실패했습니다."
 msgstr "%s 확장 기능을 불러오는데 실패했습니다."
 
@@ -105,7 +105,7 @@ msgstr "변경 완료."
 msgid "플레이중추가"
 msgstr "플레이중추가"
 
-#: ./plugin/admin.py:102 ./plugin/transhandler.py:36
+#: ./plugin/admin.py:102 ./plugin/transhandler.py:37
 msgid "%s로 변경되었습니다."
 msgstr "%s로 변경되었습니다."
 
@@ -396,62 +396,54 @@ msgid "그라바타"
 msgstr "그라바타"
 
 #: ./plugin/info.py:16
-msgid "도움"
-msgstr "도움"
-
-#: ./plugin/info.py:18
-msgid "가이드 홈페이지"
-msgstr "가이드 홈페이지"
-
-#: ./plugin/info.py:22
 msgid "사용자정보"
 msgstr "사용자정보"
 
-#: ./plugin/info.py:36
+#: ./plugin/info.py:30
 msgid "정보"
 msgstr "정보"
 
-#: ./plugin/info.py:54
+#: ./plugin/info.py:48
 msgid "%s 정보"
 msgstr "%s 정보"
 
-#: ./plugin/info.py:56
+#: ./plugin/info.py:50
 msgid "봇 운영자"
 msgstr "봇 운영자"
 
-#: ./plugin/info.py:57
+#: ./plugin/info.py:51
 msgid "봇 부운영자"
 msgstr "봇 부운영자"
 
-#: ./plugin/info.py:58
+#: ./plugin/info.py:52
 msgid "서버 수"
 msgstr "서버 수"
 
-#: ./plugin/info.py:59
+#: ./plugin/info.py:53
 msgid "사용자 수"
 msgstr "사용자 수"
 
-#: ./plugin/info.py:60
+#: ./plugin/info.py:54
 msgid "접두사"
 msgstr "접두사"
 
-#: ./plugin/info.py:61
+#: ./plugin/info.py:55
 msgid "%s 플레이 중\n"
 msgstr "%s 플레이 중\n"
 
-#: ./plugin/info.py:61
+#: ./plugin/info.py:55
 msgid "지금 플레이 중"
 msgstr "지금 플레이 중"
 
-#: ./plugin/info.py:62
+#: ./plugin/info.py:56
 msgid "DPSBot의 나이"
 msgstr "DPSBot의 나이"
 
-#: ./plugin/info.py:62
+#: ./plugin/info.py:56
 msgid "최초 공개로부터 %s일 지났습니다."
 msgstr "최초 공개로부터 %s일 지났습니다."
 
-#: ./plugin/info.py:63
+#: ./plugin/info.py:57
 msgid "Powered by Team ttakkku"
 msgstr "Powered by Team ttakkku"
 
@@ -598,10 +590,6 @@ msgstr "번역할 내용을 말해주세요."
 #: ./plugin/transhandler.py:19
 msgid "잘못된 언어코드입니다."
 msgstr "잘못된 언어코드입니다."
-
-#: ./plugin/transhandler.py:23
-msgid "언어변경"
-msgstr "언어변경"
 
 #: ./plugin/whisperandlog.py:16
 msgid "전해줘"
@@ -758,34 +746,34 @@ msgstr "도서관에 왔어요! 현실속의 아카이브 저장소랍니다!"
 msgid "주인님의 블로그에 들일 가구들을 고르고 있어요!"
 msgstr "주인님의 블로그에 들일 가구들을 고르고 있어요!"
 
-#: ./variables.py:54
+#: ./variables.py:59
 msgid "DPSBot!"
 msgstr "DPSBot!"
 
-#: ./variables.py:55
-msgid "%s도움을 쳐보세요!"
-msgstr "%s도움을 쳐보세요!"
+#: ./variables.py:60
+msgid "%shelp를 쳐보세요!"
+msgstr "%shelp를 쳐보세요!"
 
-#: ./variables.py:56
+#: ./variables.py:61
 msgid "%s정보를 쳐보세요!"
 msgstr "%s정보를 쳐보세요!"
 
-#: ./variables.py:57
+#: ./variables.py:62
 msgid "제작자: DPS0340"
 msgstr "제작자: DPS0340"
 
-#: ./variables.py:58
+#: ./variables.py:63
 msgid "dpsbot.tk"
 msgstr "dpsbot.tk"
 
-#: ./variables.py:59
+#: ./variables.py:64
 msgid "github.com/DPS0340/DPSbot"
 msgstr "github.com/DPS0340/DPSbot"
 
-#: ./variables.py:60
+#: ./variables.py:65
 msgid "teamttakkku.tk"
 msgstr "teamttakkku.tk"
 
-#: ./variables.py:61
+#: ./variables.py:66
 msgid "Proudly Powered by Team ttakkku"
 msgstr "Proudly Powered by Team ttakkku"
