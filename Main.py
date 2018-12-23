@@ -14,7 +14,7 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print(_('------'))
-    if test:
+    if args[0]:
         sys.exit()
     bot.loop.create_task(splash_rotate())
 
