@@ -4,6 +4,8 @@ python:
 install: "pip install -r requirements.txt"
 script: python3 Main.py
 env: DB=postgres
+services:
+  - postgresql
 addons:
   postgresql: "11.1"
 before_script:
