@@ -35,3 +35,4 @@ psycopg2_binary == 2.7.5
 # plugin\archive.py: 6,7,8,9,10
 selenium == 3.6.0
 googletrans == 2.4.0
+python-coveralls = 2.9.1
