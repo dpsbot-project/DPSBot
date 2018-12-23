@@ -1,1 +1,5 @@
-```heroku pg:backups:restore 'https://s3.amazonaws.com/me/items/mydb.dump' DATABASE_URL -a (Your_app)```
+# DB initialization guide
+
+Please run following commands in your clone folder:
+
+```heroku pg:backups:restore 'https://github.com/DPS0340/DPSBot/raw/master/db-dump/backup.dump' DATABASE_URL -a (Your_app)```
