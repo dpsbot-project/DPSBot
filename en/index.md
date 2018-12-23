@@ -10,7 +10,7 @@ Some DB setup is required for the user to turn the bots directly.
 
 The functionality provided by the bot is modularized into plug-ins.
 
-[DB Initialization guide](db-init.md)
+[install guide](install.md)
 
 [Manual](manual.md)
 
