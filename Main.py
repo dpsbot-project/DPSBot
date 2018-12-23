@@ -4,6 +4,7 @@ from variables import token, pluginfolder, gamename, prefix, owner
 from pluginlist import lst as initial_extensions
 from bot import DPSBot
 import argparse
+import sys
 
 bot = DPSBot(command_prefix=prefix.get())
 @bot.event  
@@ -14,7 +15,7 @@ async def on_ready():
     print(bot.user.id)
     print(_('------'))
     if test:
-        exit()
+        sys.exit()
     bot.loop.create_task(splash_rotate())
 
 async def splash_rotate():
