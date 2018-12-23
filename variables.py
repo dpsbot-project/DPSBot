@@ -41,7 +41,7 @@ class Game():
     def append(self, splash):
         self.list.append(splash)
 
-    def reset(self)
+    def reset(self):
         self.list = []
 class Prefix():
     def __init__(self, value):
