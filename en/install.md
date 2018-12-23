@@ -46,7 +46,7 @@ required: token, prefix, your discord id, osuapikey, channel id to receive ticke
 git push heroku master
 ```
 
-**then you've just deployed the app!**
+**now you've just deployed the app!**
 
 congratulations!
 
