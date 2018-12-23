@@ -6,6 +6,11 @@ Please run following commands in your clone root folder:
 
 first, install [heroku postgres](https://elements.heroku.com/addons/heroku-postgresql) in your app.
 
+Second. import DB dump.(it has no data)
+
+last. run python script to insert settings.
+
+
 ```
 heroku addons:create heroku-postgresql:hobby-dev -a (Your_app_name)
 heroku pg:backups:restore 'https://github.com/DPS0340/DPSBot/raw/master/db-dump/backup.dump' DATABASE_URL -a (Your_app_name)
