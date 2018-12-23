@@ -57,7 +57,7 @@ gamename = Game()
 def gamerefresh():
     gamename.reset()
     gamename.append(_("DPSBot!"))
-    gamename.append(_("%s도움을 쳐보세요!") % prefixvalue)
+    gamename.append(_("%shelp를 쳐보세요!") % prefixvalue)
     gamename.append(_("%s정보를 쳐보세요!") % prefixvalue)
     gamename.append(_("제작자: DPS0340"))
     gamename.append(_("dpsbot.tk"))
