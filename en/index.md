@@ -2,7 +2,7 @@
 
 It is a Discord bot for a murtiple purposes.
 
-Supports English! please help [open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/).
+Now supports English! please help [open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/).
 
 To use english, please type 'd!changelang en_US'.
 
