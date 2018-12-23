@@ -1,10 +1,7 @@
 import os
 import psycopg2
 import trans_open
-try:
-  DATABASE_URL = os.environ['DATABASE_URL']
-except:
-  DATABASE_URL = 'postgres://postgres@localhost/DPSBot'
+DATABASE_URL = os.environ['DATABASE_URL']
 doinglist = [_('주인님 드릴 드립 커피를 내리고 있어요!'), _('두둥! 밴드부 활동 중이랍니다!'), _('요리 중이에요☆'), _('놀이터에서 꼬마들이랑 노는 중이랍니다!\n동심이란...후훗'),
              _('주인님의 블로그에 들일 가구들을 고르고 있어요!'), _('공부 중이랍니다!'), _('PUBG 플레이 중! 오늘은 진짜 치킨이에요!'), _('도서관에 왔어요! 현실속의 아카이브 저장소랍니다!')]
 mod = []
