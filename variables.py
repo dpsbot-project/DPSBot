@@ -40,6 +40,9 @@ class Game():
 
     def append(self, splash):
         self.list.append(splash)
+
+    def reset(self)
+        self.list = []
 class Prefix():
     def __init__(self, value):
         self.value = value
@@ -52,8 +55,7 @@ class Prefix():
 instructions = Instructions(instructionsvalue)
 gamename = Game()
 def gamerefresh():
-    global gamename
-    gamaname = Game()
+    gamename.reset()
     gamename.append(_("DPSBot!"))
     gamename.append(_("%s도움을 쳐보세요!") % prefixvalue)
     gamename.append(_("%s정보를 쳐보세요!") % prefixvalue)
