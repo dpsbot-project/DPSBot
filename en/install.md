@@ -20,7 +20,7 @@ heroku create (Your_app_name)
 to make app.
 
 
-# DB initialization guide
+## DB initialization guide
 
 Please run following commands in your clone root folder:
 
@@ -46,7 +46,7 @@ process should be like this.
 required: token, prefix, owner id, osuapikey, channel id to receive ticket
 
 
-# first deploy to heroku
+## first deploy to heroku
 
 ```
 git push heroku master
@@ -55,7 +55,7 @@ git push heroku master
 **then you've just deployed the app!**
 
 
-# update bot
+## update bot
 
 ```
 git pull origin master
