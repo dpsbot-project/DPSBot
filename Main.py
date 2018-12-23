@@ -14,8 +14,11 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print(_('------'))
-    if args[0]:
-        sys.exit()
+    try:
+        if args.test:
+            sys.exit()
+    except:
+        pass
     bot.loop.create_task(splash_rotate())
 
 async def splash_rotate():
@@ -30,6 +33,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument('-test', help='exit after ready',action = 'store_true')
     parser.set_defaults(feature=False)
+    global args
     args = parser.parse_args()
     print(_("------"))
     for extension in initial_extensions:
