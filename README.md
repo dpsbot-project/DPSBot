@@ -1,4 +1,4 @@
-![bot](https://discordbots.org/api/widget/:523785272693882880.svg)
+![bot](https://discordbots.org/api/widget/523785272693882880.svg)
 
 # DPSBot - 다용도 디스코드 봇
 
