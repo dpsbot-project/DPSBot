@@ -22,7 +22,7 @@
 **[Would you help me?](https://www.transifex.com/ttakkku/dpsbot/dashboard/) :)**
 
 
-## footer
+
 
 
 Powered by team ttakkku
