@@ -52,6 +52,8 @@ class Prefix():
 instructions = Instructions(instructionsvalue)
 gamename = Game()
 def gamerefresh():
+    global gamename
+    gamaname = Game()
     gamename.append(_("DPSBot!"))
     gamename.append(_("%s도움을 쳐보세요!") % prefixvalue)
     gamename.append(_("%s정보를 쳐보세요!") % prefixvalue)
@@ -61,4 +63,5 @@ def gamerefresh():
     gamename.append(_("teamttakkku.tk"))
     gamename.append(_("Proudly Powered by Team ttakkku"))
 
+gamerefresh()
 prefix = Prefix(prefixvalue)
