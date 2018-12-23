@@ -3,7 +3,7 @@ from discord.ext import commands
 from translate import trans
 from trans_open import opentrans
 from pluginlist import lst
-from variables import pluginfolder
+from variables import pluginfolder, refresh
 class transconfig():
     def __init__(self, bot):
         self.bot = bot
@@ -24,6 +24,7 @@ class transconfig():
     async def changelang(self, ctx, lang):
         trans.setlang(lang)
         opentrans.refresh()
+        refresh
         for extension in lst:
             try:
                 self.bot.unload_extension(pluginfolder + extension)

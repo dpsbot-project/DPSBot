@@ -51,13 +51,14 @@ class Prefix():
         self.value = value
 instructions = Instructions(instructionsvalue)
 gamename = Game()
-gamename.append(_("DPSBot!"))
-gamename.append(_("%s도움을 쳐보세요!") % prefixvalue)
-gamename.append(_("%s정보를 쳐보세요!") % prefixvalue)
-gamename.append(_("제작자: DPS0340"))
-gamename.append(_("dpsbot.tk"))
-gamename.append(_("github.com/DPS0340/DPSbot"))
-gamename.append(_("teamttakkku.tk"))
-gamename.append(_("Proudly Powered by Team ttakkku"))
+def gamerefresh():
+    gamename.append(_("DPSBot!"))
+    gamename.append(_("%s도움을 쳐보세요!") % prefixvalue)
+    gamename.append(_("%s정보를 쳐보세요!") % prefixvalue)
+    gamename.append(_("제작자: DPS0340"))
+    gamename.append(_("dpsbot.tk"))
+    gamename.append(_("github.com/DPS0340/DPSbot"))
+    gamename.append(_("teamttakkku.tk"))
+    gamename.append(_("Proudly Powered by Team ttakkku"))
 
 prefix = Prefix(prefixvalue)
