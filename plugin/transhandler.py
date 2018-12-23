@@ -3,7 +3,7 @@ from discord.ext import commands
 from translate import trans
 from trans_open import opentrans
 from pluginlist import lst
-from variables import pluginfolder
+from variables import pluginfolder, refresh
 class transconfig():
     def __init__(self, bot):
         self.bot = bot
@@ -20,10 +20,11 @@ class transconfig():
         else:
             await self.bot.say(_('내용이 없습니다.'))
 
-    @commands.command(name=_("언어변경"), pass_context=True)
+    @commands.command(name="언어변경", pass_context=True, aliases=['changelang'])
     async def changelang(self, ctx, lang):
         trans.setlang(lang)
         opentrans.refresh()
+        refresh
         for extension in lst:
             try:
                 self.bot.unload_extension(pluginfolder + extension)
