@@ -7,5 +7,5 @@ addons:
   postgresql: "11.1"
 before_script:
   - export DATABASE_URL="postgres://postgres@localhost/DPSBot"
-  - createdb -U postgres DPSBot
+  - psql -c 'create database DPSBot;' -U postgres
   - pg_restore -U postgres --dbname=DPSBot < ./db-dump/backup.dump
