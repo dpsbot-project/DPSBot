@@ -24,12 +24,6 @@ to make app.
 
 Please run following commands in your clone root folder:
 
-first, install [heroku postgres](https://elements.heroku.com/addons/heroku-postgresql) in your app.
-
-Second. import DB dump.(it has no data)
-
-last. run python script to insert settings.
-
 
 ```
 heroku addons:create heroku-postgresql:hobby-dev -a (Your_app_name)
@@ -43,7 +37,7 @@ python3 ./db-init/db-init.py -url (Your_database_url)
 
 process should be like this.
 
-required: token, prefix, owner id, osuapikey, channel id to receive ticket
+required: token, prefix, your discord id, osuapikey, channel id to receive ticket
 
 
 ## first deploy to heroku
