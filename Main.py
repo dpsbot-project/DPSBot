@@ -28,7 +28,8 @@ async def splash_rotate():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-test', help='exit after ready',action = 'store')
+    parser.add_argument('-test', help='exit after ready',action = 'store_true')
+    parser.set_defaults(feature=False)
     args = parser.parse_args()
     print(_("------"))
     for extension in initial_extensions:
