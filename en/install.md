@@ -3,7 +3,7 @@
 it is strongly recommended that deploy via heroku.
 
 
-## cloning git & make heroku app
+## Cloning git & make heroku app
 
 open terminal, and cd to folder you want to clone.
 
@@ -35,25 +35,31 @@ python3 ./db-init/db-init.py -url (Your_database_url)
 ![db-setup-heroku](https://github.com/DPS0340/DPSBot/blob/gh-pages/Screenshot_20181223_162448.png)
 ![db-init.py](https://github.com/DPS0340/DPSBot/blob/gh-pages/Screenshot_20181223_162448.png)
 
-process should be like this.
+Process should be like this.
 
-required: token, prefix, your discord id, osuapikey, channel id to receive ticket
+Required: token, prefix, your discord id, osuapikey, channel id to receive ticket
 
 
-## first deploy to heroku
+## First deploy to heroku
 
 ```
 git push heroku master
 ```
 
-**now you've just deployed the app!**
+**Now you've just deployed the app!**
 
-congratulations!
+Congratulations!
 
-## update bot
+## Update bot
 
 ```
 git pull origin master
 git push heroku master
 ```
-app is updated to latest version.
+App is updated to latest version.
+
+but, DPSBot updates very often. so may be unstable!
+
+Please check build status!
+
+[![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=master)](https://travis-ci.com/DPS0340/DPSBot) 
