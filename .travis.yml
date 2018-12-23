@@ -6,3 +6,5 @@ script: python3 Main.py -test
 env: DB=postgres
 services:
   - postgresql
+after_success:
+  - coveralls
