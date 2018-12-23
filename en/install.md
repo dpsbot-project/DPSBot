@@ -58,7 +58,7 @@ git push heroku master
 ```
 App is updated to latest version.
 
-but, DPSBot updates very often. so may be unstable!
+but, DPSBot is updated very often. so may be unstable!
 
 Please check build status!
 
