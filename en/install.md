@@ -54,6 +54,7 @@ git push heroku master
 
 **then you've just deployed the app!**
 
+congratulations!
 
 ## update bot
 
