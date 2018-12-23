@@ -1,8 +1,8 @@
-# DPSBot - Korean Discord bot
+# DPSBot - a Discord bot
 
-It is a Korean Discord bot.
+It is a Discord bot for a mortiple purpose..
 
-Multi language supports by tranlator, but [open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/) in progress.
+Supports English! but [open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/) in progress.
 
 Some DB setup is required for the user to turn the bots directly.
 
