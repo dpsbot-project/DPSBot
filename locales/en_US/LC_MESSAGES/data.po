@@ -116,7 +116,7 @@ msgstr "addplaying"
 
 #: ./plugin/admin.py:102 ./plugin/transhandler.py:36
 msgid "%s로 변경되었습니다."
-msgstr ".changed to %s"
+msgstr "changed to %s."
 
 #: ./plugin/admin.py:107
 msgid "접두사변경"

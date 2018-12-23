@@ -15,8 +15,8 @@ async def on_ready():
     bot.loop.create_task(splash_rotate())
 
 async def splash_rotate():
-    splashes = gamename.get()
     while True:
+        splashes = gamename.get()
         for splash in splashes:
             await bot.change_presence(game=discord.Game(name=splash))
             await asyncio.sleep(2)
