@@ -45,3 +45,20 @@ process should be like this.
 
 required: token, prefix, owner id, osuapikey, channel id to receive ticket
 
+
+# first deploy to heroku
+
+```
+git push heroku master
+```
+
+**then you've just deployed the app!**
+
+
+# update bot
+
+```
+git pull origin master
+git push heroku master
+```
+app is updated to latest version.
