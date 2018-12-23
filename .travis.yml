@@ -4,7 +4,7 @@ python:
 install: "pip install -r requirements.txt"
 script: python3 Main.py
 addons:
-  postgresql: "9.6.8"
+  postgresql: "11"
 before_script:
   - export DATABASE_URL="postgres://postgres@localhost/DPSBot"
   - createdb -U postgres DPSBot
