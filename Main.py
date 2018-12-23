@@ -14,11 +14,8 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print(_('------'))
-    try:
-        if args.test:
-            sys.exit()
-    except:
-        pass
+    if args.test == True:
+         sys.exit()
     bot.loop.create_task(splash_rotate())
 
 async def splash_rotate():
@@ -31,8 +28,8 @@ async def splash_rotate():
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('-test', help='exit after ready',action = 'store_true')
-    parser.set_defaults(feature=False)
+    parser.add_argument('-test', help='exit after ready', action='store_true')
+    parser.set_defaults(test=False)
     global args
     args = parser.parse_args()
     print(_("------"))
