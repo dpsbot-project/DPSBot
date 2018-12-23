@@ -7,7 +7,7 @@ env: DB=postgres
 services:
   - postgresql
 addons:
-  postgresql: "11.1"
+  postgresql: "9.6"
 before_script:
   - export DATABASE_URL="postgres://postgres@localhost/DPSBot"
   - psql -c 'create database DPSBot;' -U postgres
