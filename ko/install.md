@@ -58,6 +58,7 @@ git push heroku master
 봇이 최신 버전으로 업데이트 되었습니다.
 
 다만, DPSBot은 자주 업데이트 되어서 불안정할 수 있습니다.
+
 빌드 상태를 확인하세요!
 
 [![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=master)](https://travis-ci.com/DPS0340/DPSBot) 
