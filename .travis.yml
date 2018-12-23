@@ -6,5 +6,6 @@ script: python3 Main.py
 addons:
   postgresql: "9.6.8"
 before_script:
+  - export DATABASE_URL="postgres://postgres@localhost/DPSBot"
   - createdb -U postgres DPSBot
   - pg_restore -U postgres --dbname=DPSBot < ./db-dump/backup.dump
