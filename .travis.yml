@@ -5,4 +5,4 @@ install: "pip install -r requirements.txt"
 script: python3 Main.py
 before_script:
   - createdb DPSBot
-  - psql DPSBot < db-dump/backup.dump -U postgres
+  - pg_restore DPSBot < db-dump/backup.dump -U postgres
