@@ -20,7 +20,7 @@ class transconfig():
         else:
             await self.bot.say(_('내용이 없습니다.'))
 
-    @commands.command(name=_("언어변경"), pass_context=True)
+    @commands.command(name="언어변경", pass_context=True, aliases=['changelang'])
     async def changelang(self, ctx, lang):
         trans.setlang(lang)
         opentrans.refresh()
