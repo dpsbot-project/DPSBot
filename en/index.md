@@ -6,11 +6,9 @@ Now supports English! please help [open translate](https://www.transifex.com/tta
 
 To use english, please type 'd!changelang en_US'.
 
-Some DB setup is required for the user to turn the bots directly.
-
 The functionality provided by the bot is modularized into plug-ins.
 
-[install guide](install.md)
+[install your own server](install.md)
 
 [Manual](manual.md)
 
