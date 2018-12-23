@@ -3,7 +3,7 @@
 it is strongly recommended that deploy via heroku.
 
 
-# cloning git & make heroku app
+## cloning git & make heroku app
 
 open terminal, and cd to folder you want to clone.
 
