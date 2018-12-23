@@ -154,6 +154,13 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
+    @commands.command(name=_("exit"), hidden=True, pass_context=True)
+    async def restorecommand(self, ctx):
+        if ctx.message.author.id == owner:
+            await self.bot.say(_('봇이 종료됩니다.'))
+            sys.exit()
+        else:
+            await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
 def setup(bot):
     bot.add_cog(adminclass(bot))
