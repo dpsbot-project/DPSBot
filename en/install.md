@@ -15,7 +15,7 @@ and [install heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#downlo
 heroku login is needed.
 
 ```
-heroku create
+heroku create (Your_app_name)
 ```
 to make app.
 
