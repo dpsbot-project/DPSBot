@@ -40,6 +40,6 @@ if __name__ == '__main__':
         except Exception as e:
             print(_('%s 확장 기능을 불러오는데 실패했습니다.') % extension)
             print(e)
-            pass
+            raise
     print(_("------"))
     bot.run(token)
