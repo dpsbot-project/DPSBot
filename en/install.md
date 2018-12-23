@@ -1,6 +1,6 @@
 # How to install?
 
-it is strongly recommended that deploy via heroku!
+it is strongly recommended that deploy via heroku.
 
 
 # cloning git & make heroku app
@@ -19,11 +19,10 @@ heroku create (Your_app_name)
 ```
 to make app.
 
+
 # DB initialization guide
 
 Please run following commands in your clone root folder:
-
-# if you use heroku
 
 first, install [heroku postgres](https://elements.heroku.com/addons/heroku-postgresql) in your app.
 
