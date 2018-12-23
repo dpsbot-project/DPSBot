@@ -1,8 +1,8 @@
 # DPSBot - a Discord bot
 
-It is a Discord bot for a mortiple purpose..
+It is a Discord bot for a mortiple purposes.
 
-Supports English! but [open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/) in progress.
+Supports English! please help [open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/).
 
 Some DB setup is required for the user to turn the bots directly.
 
