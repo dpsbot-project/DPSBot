@@ -3,6 +3,7 @@ import asyncio
 from variables import token, pluginfolder, gamename, prefix, owner
 from pluginlist import lst as initial_extensions
 from bot import DPSBot
+import argparse
 
 bot = DPSBot(command_prefix=prefix.get())
 @bot.event  
@@ -12,6 +13,8 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print(_('------'))
+    if test:
+        exit()
     bot.loop.create_task(splash_rotate())
 
 async def splash_rotate():
@@ -23,6 +26,9 @@ async def splash_rotate():
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser()
+    parser.add_argument('-test', help='exit after ready',action = 'store')
+    args = parser.parse_args()
     print(_("------"))
     for extension in initial_extensions:
         try:
