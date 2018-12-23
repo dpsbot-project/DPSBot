@@ -15,7 +15,7 @@ heroku CLI가 없다면 [설치](https://devcenter.heroku.com/articles/heroku-cl
 heroku 로그인이 필요합니다.
 
 ```
-heroku create (Your_app_name)
+heroku create (앱_이름)
 ```
 앱을 만듭니다.
 
@@ -25,9 +25,9 @@ heroku create (Your_app_name)
 
 
 ```
-heroku addons:create heroku-postgresql:hobby-dev -a (Your_app_name)
-heroku pg:backups:restore 'https://github.com/DPS0340/DPSBot/raw/master/db-dump/backup.dump' DATABASE_URL -a (Your_app_name)
-python3 ./db-init/db-init.py -url (Your_database_url)
+heroku addons:create heroku-postgresql:hobby-dev -a (앱_이름)
+heroku pg:backups:restore 'https://github.com/DPS0340/DPSBot/raw/master/db-dump/backup.dump' DATABASE_URL -a (앱_이름)
+python3 ./db-init/db-init.py -url (데이터베이스_url)
 ```
 
 
