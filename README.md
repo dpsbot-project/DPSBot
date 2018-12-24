@@ -1,7 +1,7 @@
 
 [<img src="https://discordbots.org/api/widget/523785272693882880.svg">](https://discordbots.org/bot/523785272693882880)
 
-[![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=master)](https://travis-ci.com/DPS0340/DPSBot) [![Coverage Status](https://coveralls.io/repos/github/DPS0340/DPSBot/badge.svg?branch=master)](https://coveralls.io/github/DPS0340/DPSBot?branch=master)
+[![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=master)](https://travis-ci.com/DPS0340/DPSBot)
 # DPSBot - 다용도 디스코드 봇
 
 **[공식 홈페이지](https://dpsbot.tk)를 봐주세요**
