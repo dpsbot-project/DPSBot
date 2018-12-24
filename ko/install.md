@@ -144,7 +144,7 @@ export DATABASE_URL=postgres://postgres@localhost/DPSBot
 
 ```
 cd DPSBot
-pg_restore --dbname=DPSBot -U postgres db-dump/backup.dump
+pg_restore -x -d DPSBot --no-acl -U postgres --host=localhost db-dump/backup.dump  # 오류 무시
 python3 ./db-init/db-init.py -url postgres://postgres@localhost/DPSBot
 ```
 
@@ -154,6 +154,7 @@ python3 ./db-init/db-init.py -url postgres://postgres@localhost/DPSBot
 ```
 python3 Main.py &
 ```
+배포 완료!
 
 
 ## 시작시 자동 실행
