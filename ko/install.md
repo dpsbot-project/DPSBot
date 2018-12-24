@@ -105,7 +105,7 @@ sudo nano ~/.bashrc
 export DATABASE_URL=postgres://postgres@localhost/DPSBot
 ```
 
-라고 쓰세요.
+라고 추가하세요.
 
 ## DB 초기화
 
