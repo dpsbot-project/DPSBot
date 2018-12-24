@@ -98,7 +98,7 @@ export DATABASE_URL=postgres://postgres@localhost/DPSBot
 ```
 라고 쓰세요.
 
-## DB initialization
+## DB 초기화
 
 ```
 cd DPSBot
@@ -107,14 +107,14 @@ pg_restore --dbname=DPSBot -U postgres db-dump.backup.dump
 ```
 
 
-## Deploy bot
+## 봇 배포
 
 ```
 python3 Main.py &
 ```
 
 
-## Always run in startup
+## 시작시 자동 실행
 
 ```
 crontab -e
