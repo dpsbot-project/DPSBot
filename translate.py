@@ -12,7 +12,7 @@ class Trans():
         return self.outputlang
 
     def gettext(self, text: str):
-        if self.outputlang == 'ko_KR':
+        if self.outputlang == 'ko_KR' or 'en_US':
             return text
         return self.translator.translate(text, dest=self.outputlang).text
     
