@@ -24,13 +24,13 @@ class transconfig():
     @commands.command(name="changelang", pass_context=True, aliases=['언어변경'])
     async def changelang(self, ctx, lang):
         if lang == 'ko' or lang == 'ko_KR':
-            serverlist.setlang(ctx.message.id, 'ko_KR')
+            serverlist.setlang(ctx.message.server.id, 'ko_KR')
             opentrans.refresh()
         elif lang == 'en' or lang == 'en_US':
-            serverlist.setlang(ctx.message.id, 'en_US')
+            serverlist.setlang(ctx.message.server.id, 'en_US')
             opentrans.refresh()
         else:
-            serverlist.setlang(ctx.message.id, lang)
+            serverlist.setlang(ctx.message.server.id, lang)
             opentrans.set('en_US')
         for extension in lst:
             try:
