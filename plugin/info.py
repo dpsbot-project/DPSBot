@@ -35,10 +35,7 @@ class infoclass():
         for a_mod in mod:
             modname = await self.bot.get_user_info(a_mod)
             modname = modname.name
-            if not a_mod == mod[-1]:
-                modstring += modname + ", "
-            else:
-                modstring += modname
+            modstring += modname + " "
         users = 0
         for s in self.bot.servers:
             users += len(s.members)
