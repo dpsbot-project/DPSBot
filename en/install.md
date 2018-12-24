@@ -69,4 +69,4 @@ Please check build status!
 # install your own ubuntu server
 
 ## Work in progress
-Sorry! manual is work in progress.
+Sorry! work in progress.
