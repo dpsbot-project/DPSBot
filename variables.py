@@ -6,7 +6,7 @@ doinglist = [_('주인님 드릴 드립 커피를 내리고 있어요!'), _('두
              _('주인님의 블로그에 들일 가구들을 고르고 있어요!'), _('공부 중이랍니다!'), _('PUBG 플레이 중! 오늘은 진짜 치킨이에요!'), _('도서관에 왔어요! 현실속의 아카이브 저장소랍니다!')]
 mod = []
 def setting_set(name: str):
-    conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+    conn = psycopg2.connect(DATABASE_URL)
     conn.autocommit = True
     cur = conn.cursor()
     cur.execute("select body from settings where name='%s'" % name)
