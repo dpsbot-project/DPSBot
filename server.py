@@ -1,7 +1,7 @@
 import json
 import os
 import sys
-def server(id, lang="en_US"):
+def return_server(id, lang="en_US"):
     return {'id':id, 'resistricted':False, 'language':lang}
 def server_save(server:dict):
     with open('servers/%s.json' % server['id'], 'w') as w:
@@ -15,4 +15,4 @@ def server_init(bot):
         if os.path.exists('servers/%s.json' % id):
             pass
         else:
-            server_save(server(id))
+            server_save(return_server(id))
