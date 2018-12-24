@@ -69,4 +69,5 @@ git push heroku master
 # 우분투 서버에 설치하기
 
 ## 작성중
-Sorry! manual is work in progress.
+
+죄송합니다! 작성중입니다.
