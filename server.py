@@ -3,7 +3,7 @@ import os
 import sys
 from translate import Trans
 def return_server(id, lang="en_US"):
-    return {'id':int(id),
+    return {'id':int(id,
     'resistricted':False,
     'language':lang}
 def server_save(server:dict):
@@ -36,7 +36,7 @@ class Serverlist():
                         jsonfile = json.load(r)
                         self.list[int(jsonfile['id'])] = jsonfile
     def setlang(self, id, lang):
-        serverdict = self.list[int(id)].get()
+        serverdict = self.list.get(int(id))
         serverdict['language'] = lang
         self.list[int(id)] = serverdict
     def append(self, server:dict):
