@@ -122,5 +122,5 @@ crontab -e
 
 파일의 끝에 쓰세요.
 ```
-@reboot python (clone_path)/DPSBot/Main.py &
+@reboot python (클론한_경로)/DPSBot/Main.py &
 ```
