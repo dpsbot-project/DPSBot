@@ -25,14 +25,16 @@ class Serverlist():
         self.trans = Trans()
         for filename in os.listdir('servers'):
             if '.json' in filename:
-                with open(filename, 'r') as r:
+                with open('servers/%s' % filename, 'r') as r:
                         self.list[json.load(r)['id']] = json.load(r)
     def reload(self):
         self.list = {}
         for filename in os.listdir('servers'):
             if '.json' in filename:
-                with open(filename, 'r') as r:
+                with open('servers/%s' % filename, 'r') as r:
                         self.list[json.load(r)['id']] = json.load(r)
+    def setlang(self, id, lang):
+        self.list[int(id)].get()['language'] = lang
     def append(self, server:dict):
         server_save(server)
         self.list[server['id']] = server
