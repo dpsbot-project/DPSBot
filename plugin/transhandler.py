@@ -27,7 +27,7 @@ class transconfig():
             opentrans.refresh()
             gamerefresh()
         else:
-            trans.setlang(lang)
+            trans.setlang('en_US')
             gamerefresh()
         for extension in lst:
             try:
