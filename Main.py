@@ -5,9 +5,9 @@ from pluginlist import lst as initial_extensions
 from bot import DPSBot
 import argparse
 import sys
-import server
-
+from server import Serverlist
 bot = DPSBot(command_prefix=prefix.get())
+serverlist = Serverlist(bot)
 @bot.event  
 async def on_ready():
     print(_('로그인 되었습니다.'))
@@ -15,7 +15,7 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print(_('------'))
-    server.server_init(bot)
+    serverlist.reload()
     if args.test == True:
          sys.exit()
     bot.loop.create_task(splash_rotate())

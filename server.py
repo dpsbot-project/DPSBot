@@ -2,7 +2,9 @@ import json
 import os
 import sys
 def return_server(id, lang="en_US"):
-    return {'id':id, 'resistricted':False, 'language':lang}
+    return {'id':id,
+    'resistricted':False,
+    'language':lang}
 def server_save(server:dict):
     with open('servers/%s.json' % server['id'], 'w') as w:
         json.dump(server, w)
@@ -16,3 +18,22 @@ def server_init(bot):
             pass
         else:
             server_save(return_server(id))
+class Serverlist():
+    def __init__(self, bot):
+        server_init(bot)
+        self.list = {}
+        for filename in os.listdir('servers'):
+            if '.json' in filename:
+                with open(filename, 'r') as r:
+                        self.list[json.load(r)['id']] = json.load(r)
+    def reload(self):
+        self.list = {}
+        for filename in os.listdir('servers'):
+            if '.json' in filename:
+                with open(filename, 'r') as r:
+                        self.list[json.load(r)['id']] = json.load(r)
+    def append(self, server:dict):
+        server_save(server)
+        self.list[server['id']] = server
+    def get(self):
+        return self.list

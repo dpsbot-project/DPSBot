@@ -23,16 +23,12 @@ class transconfig():
 
     @commands.command(name="changelang", pass_context=True, aliases=[_('언어변경')])
     async def changelang(self, ctx, lang):
-        if lang == 'ko':
+        if lang == 'ko' or lang == 'ko_KR:
             trans.setlang('ko_KR')
             opentrans.refresh()
             gamerefresh()
-        elif lang == 'en':
+        elif lang == 'en' lang == 'en_US':
             trans.setlang('en_US')
-            opentrans.refresh()
-            gamerefresh()
-        elif lang == 'ko_KR' or lang == 'en_US':
-            trans.setlang(lang)
             opentrans.refresh()
             gamerefresh()
         else:
