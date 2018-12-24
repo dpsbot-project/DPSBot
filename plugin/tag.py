@@ -365,7 +365,7 @@ class tagclass():
             print(result)
 
     def tagload(self):
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = psycopg2.connect(DATABASE_URL)
         cur = conn.cursor()
         cur.execute('select * from tag')
         rows = cur.fetchall()
@@ -405,7 +405,7 @@ class tagclass():
             await self.bot.send_message(ctx.message.channel, _("이미 있는 태그입니다."))
 
     async def taginsert(table, name, line):
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = psycopg2.connect(DATABASE_URL)
         cur = conn.cursor()
         sql = """insert into {0} ("name","tag") values (%s, %s)""".format(
             table)

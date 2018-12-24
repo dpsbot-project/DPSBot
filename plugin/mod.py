@@ -5,7 +5,7 @@ from discord.ext import commands
 class modclass():
     def __init__(self, bot):
         self.bot = bot
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = psycopg2.connect(DATABASE_URL)
         cur = conn.cursor()
         cur.execute('select * from mod')
         rows = cur.fetchall()
@@ -29,7 +29,7 @@ class modclass():
         if ctx.message.author.id == owner or ctx.message.author.id in mod:
             userid = ctx.message.mentions[0].id
             mod.append(userid)
-            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            conn = psycopg2.connect(DATABASE_URL)
             cur = conn.cursor()
             cur.execute("""insert into mod ("id") values (%s)""" % userid)
             conn.commit()
@@ -43,7 +43,7 @@ class modclass():
     async def deletemod(self, ctx, userid: str):
         if ctx.message.author.id == owner or ctx.message.author.id in mod:
             mod.remove(userid)
-            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            conn = psycopg2.connect(DATABASE_URL)
             cur = conn.cursor()
             cur.execute("""delete from mod where id = '%s'""" % userid)
             conn.commit()
