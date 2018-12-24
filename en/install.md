@@ -73,6 +73,7 @@ Please check build status!
 
 ```
 git clone https://github.com/DPS0340/DPSBot
+cd DPSBot
 pip install -r requirements.txt
 ```
 
