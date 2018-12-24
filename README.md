@@ -8,7 +8,7 @@
 
 **please use with caution!**
 
-## invite link
+## bot invite link...?
 
 currently there is no invite link.
 
