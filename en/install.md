@@ -71,5 +71,11 @@ Please check build status!
 
 ## Cloning git & install dependencies
 
+
+```
+git clone https://github.com/DPS0340/DPSBot
+pip install -r requirements.txt
+```
+
 ## Work in progress
 Sorry! work in progress.
