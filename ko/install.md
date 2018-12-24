@@ -82,7 +82,6 @@ pip3 install -r requirements.txt
 ## DB 설치
 
 ```
-sudo apt update
 sudo apt install postgresql postgresql-contrib
 ```
 
