@@ -119,6 +119,3 @@ write at file's end.
 ```
 @reboot python (clone_path)/DPSBot/Main.py &
 ```
-
-## Work in progress
-Sorry! work in progress.
