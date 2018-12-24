@@ -1,6 +1,6 @@
 # How to install?
 
-it is strongly recommended that deploy via heroku.
+deploy via Heroku or ubuntu server.
 
 # Deploy via heroku
 
@@ -107,6 +107,10 @@ pg_restore --dbname=DPSBot -U postgres db-dump.backup.dump
 ```
 python3 Main.py &
 ```
+
+
+## Always run in startup
+
 
 ## Work in progress
 Sorry! work in progress.
