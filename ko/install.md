@@ -89,12 +89,17 @@ sudo apt install postgresql postgresql-contrib
 ## DATABASE_URL 변수 설정
 
 ```
-createdb -U postgres DPSBot
+su - postgres
+```
+엔터를 누르세요.
+```
+createdb DPSBot
+su - (your username)
+```
+계정을 다시 바꾸기 위해서  비밀번호를 입력하세요.
+```
 export DATABASE_URL=postgres://postgres@localhost/DPSBot
 sudo nano ~/.bashrc
-```
-```
-export DATABASE_URL=postgres://postgres@localhost/DPSBot
 ```
 라고 쓰세요.
 
