@@ -19,7 +19,6 @@ prefixvalue = setting_set("prefix")
 token = setting_set("token")
 owner = setting_set("owner")
 osuapikey = setting_set("osuapikey")
-gamevalue = setting_set("game")
 instructionsvalue = setting_set("instructions")
 channel = setting_set("channel")
 class Instructions():
