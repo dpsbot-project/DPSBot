@@ -5,6 +5,7 @@ from pluginlist import lst as initial_extensions
 from bot import DPSBot
 import argparse
 import sys
+import server
 
 bot = DPSBot(command_prefix=prefix.get())
 @bot.event  
@@ -14,6 +15,7 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print(_('------'))
+    server.server_init(bot)
     if args.test == True:
          sys.exit()
     bot.loop.create_task(splash_rotate())

@@ -4,6 +4,7 @@ from translate import trans
 from trans_open import opentrans
 from pluginlist import lst
 from variables import pluginfolder, gamerefresh
+import server
 class transconfig():
     def __init__(self, bot):
         self.bot = bot
