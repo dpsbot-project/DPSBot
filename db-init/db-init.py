@@ -1,5 +1,5 @@
 import argparse
-import psycopg2
+import psycopg2_binary as psycopg2
 
 if __name__ == "__main__":
     token = input("Please type token.")
