@@ -15,7 +15,7 @@ class DPSBot(commands.Bot):
         data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
         channel = self.get_channel(data.get('channel_id'))
         serverid = data.get('server_id')
-        trans.gettext_remote(data, serverlist.list[serverid]['language'])
+        trans.gettext_remote(data, serverlist.list[int(serverid)]['language'])
         message = self.connection._create_message(channel=channel, **data)
         return message
     @asyncio.coroutine
