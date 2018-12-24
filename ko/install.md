@@ -11,6 +11,7 @@ heroku를 통한 배포가 강력하게 추천됩니다.
 
 ```
 git clone https://github.com/DPS0340/DPSBot
+cd DPSBot
 ```
 heroku CLI가 없다면 [설치](https://devcenter.heroku.com/articles/heroku-cli#download-and-install)하세요.
 
@@ -68,6 +69,58 @@ git push heroku master
 
 # 우분투 서버에 설치하기
 
-## 작성중
+## git 클론 & 의존성 설치
 
-죄송합니다! 작성중입니다.
+
+```
+git clone https://github.com/DPS0340/DPSBot
+pip install -r requirements.txt
+```
+
+
+## DB 설치
+
+```
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+```
+
+
+## DATABASE_URL 변수 설정
+
+```
+createdb DPSBot
+export DATABASE_URL=postgres://postgres@localhost/DPSBot
+sudo nano ~/.bashrc
+```
+```
+export DATABASE_URL=postgres://postgres@localhost/DPSBot
+```
+라고 쓰세요.
+
+## DB initialization
+
+```
+cd DPSBot
+python3 ./db-init/db-init.py -url postgres://postgres@localhost/DPSBot
+pg_restore --dbname=DPSBot -U postgres db-dump.backup.dump
+```
+
+
+## Deploy bot
+
+```
+python3 Main.py &
+```
+
+
+## Always run in startup
+
+```
+crontab -e
+```
+
+파일의 끝에 쓰세요.
+```
+@reboot python (clone_path)/DPSBot/Main.py &
+```
