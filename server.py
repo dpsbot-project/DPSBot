@@ -3,7 +3,7 @@ import os
 import sys
 from translate import Trans
 def return_server(id, lang="en_US"):
-    return {'id':int(id,
+    return {'id':int(id),
     'resistricted':False,
     'language':lang}
 def server_save(server:dict):
