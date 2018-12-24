@@ -8,5 +8,8 @@ class Opentrans():
     def refresh(self):
         self.lang = gettext.translation('data', localedir='./locales', languages=[trans.get()], fallback=True)
         self.lang.install()
+    def set(self, lang):
+        self.lang = gettext.translation('data', localedir='./locales', languages=[lang], fallback=True)
+        self.lang.install()
 
 opentrans = Opentrans()
