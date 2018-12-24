@@ -16,6 +16,8 @@ The functionality provided by the bot is modularized into plug-ins.
 
 [Bot official git](https://github.com/DPS0340/DPSBot)
 
+[Bot open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/)
+
 [Creator's personal homepage](https://dps0340.xyz)
 
 [Our crew](http://ttakkku.tk/)
