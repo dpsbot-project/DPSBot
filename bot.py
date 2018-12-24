@@ -1,7 +1,7 @@
 from translate import trans
 from discord.ext import commands
 import asyncio
-from variables import serverlist
+from serverlist import serverlist
 from translate import trans
 class DPSBot(commands.Bot):
     @asyncio.coroutine

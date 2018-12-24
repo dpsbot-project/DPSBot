@@ -5,7 +5,7 @@ from pluginlist import lst as initial_extensions
 from bot import DPSBot
 import argparse
 import sys
-from variables import serverlist
+from serverlist import serverlist
 bot = DPSBot(command_prefix=prefix.get())
 @bot.event  
 async def on_ready():
