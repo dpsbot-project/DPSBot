@@ -1,5 +1,5 @@
 import asyncio
-import psycopg2
+import psycopg2_binary as psycopg2
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
