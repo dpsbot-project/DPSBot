@@ -73,8 +73,9 @@ git push heroku master
 
 ```
 git clone https://github.com/DPS0340/DPSBot
+sudo apt install python3 python3-pip
 cd DPSBot
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 
@@ -131,7 +132,7 @@ crontab -e
 
 파일의 끝에 쓰세요.
 ```
-@reboot python (클론한_경로)/DPSBot/Main.py &
+@reboot python3 (클론한_경로)/DPSBot/Main.py &
 ```
 
 
