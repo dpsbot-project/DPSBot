@@ -10,8 +10,9 @@ def server_load(id):
     with open('servers/%s.json' % id, 'r') as r:
         return json.load(r)
 def server_init(bot):
-    for server.id in bot.servers:
-        if os.path.exists('servers/%s.json' % server.id):
+    for server in bot.servers:
+        id = server.id
+        if os.path.exists('servers/%s.json' % id):
             pass
         else:
-            server_save(server(server.id))
+            server_save(server(id))
