@@ -11,5 +11,4 @@ class Opentrans():
     def set(self, lang):
         self.lang = gettext.translation('data', localedir='./locales', languages=[lang], fallback=True)
         self.lang.install()
-
 opentrans = Opentrans()

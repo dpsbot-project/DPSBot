@@ -7,7 +7,8 @@ class DPSBot(commands.Bot):
     @asyncio.coroutine
     def send_message(self, destination, content=None, *, tts=False, embed=None):
         channel_id, guild_id = yield from self._resolve_destination(destination)
-        content = trans.gettext_remote(str(content), serverlist.list[int(guild_id)]['language']) if content is not None else None
+        content = str(content) if content is not None else None
+        content = trans.gettext_remote(content, serverlist.list[int(guild_id)]['language']) if content is not None else None
         
         if embed is not None:
             embed = embed.to_dict()
