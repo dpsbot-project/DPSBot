@@ -5,9 +5,8 @@ from pluginlist import lst as initial_extensions
 from bot import DPSBot
 import argparse
 import sys
-from server import Serverlist
+from variables import serverlist
 bot = DPSBot(command_prefix=prefix.get())
-serverlist = Serverlist(bot)
 @bot.event  
 async def on_ready():
     print(_('로그인 되었습니다.'))
