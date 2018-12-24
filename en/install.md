@@ -85,13 +85,33 @@ pip3 install -r requirements.txt
 sudo apt install postgresql postgresql-client postgresql-contrib
 sudo nano /etc/postgresql/10/main/pg_hba.conf
 ```
-change this line:
+change this:
 ```
+# "local" is for Unix domain socket connections only
 local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     peer
+host    replication     all             127.0.0.1/32            md5
+host    replication     all             ::1/128                 md5
 ```
 to
 ```
+# "local" is for Unix domain socket connections only
 local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+host    all             all             ::1/128                 trust
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     trust
+host    replication     all             127.0.0.1/32            trust
+host    replication     all             ::1/128                 trust
 ```
 then
 ```
