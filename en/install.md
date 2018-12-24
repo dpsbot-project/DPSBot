@@ -73,8 +73,9 @@ Please check build status!
 
 ```
 git clone https://github.com/DPS0340/DPSBot
+sudo apt install python3 python3-pip
 cd DPSBot
-pip install -r requirements.txt
+pip3 install -r requirements.txt
 ```
 
 
@@ -131,7 +132,7 @@ crontab -e
 
 write at file's end.
 ```
-@reboot python (clone_path)/DPSBot/Main.py &
+@reboot python3 (clone_path)/DPSBot/Main.py &
 ```
 
 
