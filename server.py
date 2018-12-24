@@ -20,8 +20,7 @@ def server_init(bot):
         else:
             server_save(return_server(id))
 class Serverlist():
-    def __init__(self, bot):
-        server_init(bot)
+    def __init__(self, ):
         self.list = {}
         self.trans = Trans()
         for filename in os.listdir('servers'):
@@ -39,3 +38,4 @@ class Serverlist():
         self.list[server['id']] = server
     def get(self):
         return self.list
+serverlist = Serverlist()

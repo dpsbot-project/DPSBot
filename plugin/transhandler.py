@@ -4,7 +4,7 @@ from translate import trans
 from trans_open import opentrans
 from pluginlist import lst
 from variables import pluginfolder, gamerefresh
-import server
+from server import serverlist
 class transconfig():
     def __init__(self, bot):
         self.bot = bot
@@ -23,7 +23,7 @@ class transconfig():
 
     @commands.command(name="changelang", pass_context=True, aliases=[_('언어변경')])
     async def changelang(self, ctx, lang):
-        if lang == 'ko' or lang == 'ko_KR:
+        if lang == 'ko' or lang == 'ko_KR':
             trans.setlang('ko_KR')
             opentrans.refresh()
             gamerefresh()
