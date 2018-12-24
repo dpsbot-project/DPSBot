@@ -12,10 +12,10 @@ class Embed(discord.embeds.Embed):
             colour = kwargs.get('color', EmptyEmbed)
 
         self.colour = colour
-        self.title = trans.gettext_remote(kwargs.get('title', EmptyEmbed), serverlist.list[int(guild_id)]['language'])
+        self.title = trans.gettext(kwargs.get('title', EmptyEmbed))
         self.type = kwargs.get('type', 'rich')
         self.url = kwargs.get('url', EmptyEmbed)
-        self.description = trans.gettext_remote(kwargs.get('description', EmptyEmbed), serverlist.list[int(guild_id)]['language'])
+        self.description = trans.gettext(kwargs.get('description', EmptyEmbed))
 
         try:
             timestamp = kwargs['timestamp']
@@ -40,7 +40,7 @@ class Embed(discord.embeds.Embed):
 
         self._footer = {}
         if text is not EmptyEmbed:
-            self._footer['text'] = trans.gettext_remote((str(text)), serverlist.list[int(guild_id)]['language'])
+            self._footer['text'] = trans.gettext(str(text))
 
         if icon_url is not EmptyEmbed:
             self._footer['icon_url'] = str(icon_url)
@@ -50,8 +50,8 @@ class Embed(discord.embeds.Embed):
     def add_field(self, *, name, value, inline=True):
         field = {
             'inline': inline,
-            'name': trans.gettext_remote(((str(name))), serverlist.list[int(guild_id)]['language']),
-            'value': trans.gettext_remote(((str(value))), serverlist.list[int(guild_id)]['language'])
+            'name': trans.gettext((str(name))),
+            'value': trans.gettext((str(value)))
         }
 
         try:
