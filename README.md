@@ -4,6 +4,8 @@
 
 # DPSBot unstable
 
+[![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=unstable)](https://travis-ci.com/DPS0340/DPSBot)
+
 **this version is really, really for test and update master branch!**
 
 **please use with caution!**
