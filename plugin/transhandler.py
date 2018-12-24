@@ -9,7 +9,7 @@ class transconfig():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name=_("번역"), pass_context=True)
+    @commands.command(name="translate", pass_context=True, aliases=['번역'])
     async def translate(self, ctx, src, dest):
         await self.bot.say(_('번역할 내용을 말해주세요.'))
         plaintext = await self.bot.wait_for_message(author=ctx.message.author)
@@ -21,7 +21,7 @@ class transconfig():
         else:
             await self.bot.say(_('내용이 없습니다.'))
 
-    @commands.command(name="changelang", pass_context=True, aliases=[_('언어변경')])
+    @commands.command(name="changelang", pass_context=True, aliases=['언어변경'])
     async def changelang(self, ctx, lang):
         if lang == 'ko' or lang == 'ko_KR':
             serverlist.setlang(ctx.message.id, 'ko_KR')
@@ -31,7 +31,7 @@ class transconfig():
             opentrans.refresh()
         else:
             serverlist.setlang(ctx.message.id, lang)
-            opentrans.set('ko_KR')
+            opentrans.set('en_US')
         for extension in lst:
             try:
                 self.bot.unload_extension(pluginfolder + extension)
