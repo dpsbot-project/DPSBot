@@ -4,7 +4,7 @@
 
 # DPSBot unstable
 
-**this version is really, really for test and ready to update master branch!**
+**this version is really, really for test and update master branch!**
 
 **please use with caution!**
 
