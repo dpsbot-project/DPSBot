@@ -44,4 +44,12 @@ class Serverlist():
         self.list[server['id']] = server
     def get(self):
         return self.list
+    def ban(self, id):
+        serverdict = self.list.get(int(id))
+        serverdict['resistricted'] = True
+        self.list[server['id']] = server
+    def unban(self, id):
+        serverdict = self.list.get(int(id))
+        serverdict['resistricted'] = False
+        self.list[server['id']] = server
 serverlist = Serverlist()
