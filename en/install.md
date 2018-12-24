@@ -21,7 +21,7 @@ heroku create (Your_app_name)
 to make app.
 
 
-## DB initialization guide
+## DB initialization
 
 Please run following commands in your clone root folder:
 
@@ -78,6 +78,24 @@ pip install -r requirements.txt
 ```
 
 
+## Setting up DB
+
+```
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+```
+
 ## Set DATABASE_URL variable
+
+```
+createdb DPSBot
+export DATABASE_URL=postgres://postgres@localhost/DPSBot
+```
+
+## DB initialization
+
+```
+python3 ./db-init/db-init.py -url postgres://postgres@localhost/DPSBot
+```
 ## Work in progress
 Sorry! work in progress.
