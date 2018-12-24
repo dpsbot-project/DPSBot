@@ -2,7 +2,7 @@ from discord.ext import commands
 import asyncio
 from variables import owner, pluginfolder, instructions, gamename, prefix
 from pluginlist import lst as pluginlist
-import psycopg2
+import psycopg2_binary as psycopg2
 import os
 import discord
 import sys
