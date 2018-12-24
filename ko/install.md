@@ -3,6 +3,8 @@
 heroku를 통한 배포가 강력하게 추천됩니다.
 
 
+# heroku를 통한 배포
+
 ## git 복제 & heroku 앱 만들기
 
 터미널을 열고, git을 복제할 위치로 이동하세요.
@@ -62,3 +64,9 @@ git push heroku master
 빌드 상태를 확인하세요!
 
 [![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=master)](https://travis-ci.com/DPS0340/DPSBot) 
+
+
+# 우분투 서버에 설치하기
+
+## 작성중
+Sorry! manual is work in progress.
