@@ -83,8 +83,20 @@ pip3 install -r requirements.txt
 
 ```
 sudo apt install postgresql postgresql-client postgresql-contrib
+sudo nano /etc/postgresql/10/main/pg_hba.conf
 ```
-
+change this line:
+```
+local   all             all                                     peer
+```
+to
+```
+local   all             all                                     trust
+```
+then
+```
+sudo service postgresql restart
+```
 
 ## Set DATABASE_URL variable
 
