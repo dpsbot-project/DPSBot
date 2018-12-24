@@ -11,6 +11,7 @@ class modclass():
         rows = cur.fetchall()
         print(_('부운영자 로드중...'))
         print(_('------'))
+        del mod[:]
         for row in rows:
             try:
                 name = row[0]
