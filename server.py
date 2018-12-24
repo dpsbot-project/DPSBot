@@ -27,7 +27,8 @@ class Serverlist():
             if '.json' in filename:
                 with open('servers/%s' % filename, 'r') as r:
                         jsonfile = json.load(r)
-                        self.list[jsonfile['id']] = jsonfile    def reload(self):
+                        self.list[jsonfile['id']] = jsonfile
+    def reload(self):
         self.list = {}
         for filename in os.listdir('servers'):
             if '.json' in filename:
