@@ -5,7 +5,7 @@ from pluginlist import lst as initial_extensions
 from bot import DPSBot
 import argparse
 import sys
-from server import serverlist
+from server import serverlist, server_init
 bot = DPSBot(command_prefix=prefix.get())
 @bot.event  
 async def on_ready():
@@ -14,6 +14,7 @@ async def on_ready():
     print(bot.user.name)
     print(bot.user.id)
     print(_('------'))
+    server_init(bot)
     serverlist.reload()
     if args.test == True:
          sys.exit()
