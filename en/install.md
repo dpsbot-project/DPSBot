@@ -51,6 +51,7 @@ git push heroku master
 
 Congratulations!
 
+
 ## Update bot
 
 ```
@@ -67,6 +68,8 @@ Please check build status!
 
 
 # install your own ubuntu server
+
+## Cloning git & install dependencies
 
 ## Work in progress
 Sorry! work in progress.
