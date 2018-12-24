@@ -30,7 +30,7 @@ osuapi == 0.0.33
 # plugin\post.py: 2
 # plugin\tag.py: 2
 # plugin\whisperandlog.py: 3
-psycopg2_binary == 2.7.5
+psycopg2-binary == 2.7.6.1
 
 # plugin\archive.py: 6,7,8,9,10
 selenium == 3.6.0

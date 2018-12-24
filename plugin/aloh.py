@@ -1,5 +1,5 @@
 import asyncio
-import psycopg2_binary as psycopg2
+import psycopg2-binary as psycopg2
 import random
 import discord
 import re
