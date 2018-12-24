@@ -89,7 +89,7 @@ sudo apt install postgresql postgresql-contrib
 ## Set DATABASE_URL variable
 
 ```
-createdb DPSBot
+createdb -U postgres DPSBot
 export DATABASE_URL=postgres://postgres@localhost/DPSBot
 sudo nano ~/.bashrc
 ```
