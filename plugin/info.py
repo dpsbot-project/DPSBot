@@ -44,7 +44,7 @@ class infoclass():
         result = now - dday
         embed=Embed(title=_("%s 정보") % self.bot.user.name, description=instructions.get(), color=0x1ef7fa)
         embed.set_thumbnail(url=self.bot.user.avatar_url)
-        embed.add_field(name=_("봇 운영자"), value=ownername, inline=True)
+ #       embed.add_field(name=_("봇 운영자"), value=ownername, inline=True)
         embed.add_field(name=_("봇 부운영자"), value=modstring, inline=True)
         embed.add_field(name=_("서버 수"), value=len(self.bot.servers), inline=True)
         embed.add_field(name=_("사용자 수"), value=users, inline=True)
