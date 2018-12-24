@@ -7,3 +7,11 @@
 **this version is really, really for test and ready to update master branch!**
 
 **please use with caution!**
+
+## invite link
+
+currently there is no invite link.
+
+## how to use?
+
+[clone and install](https://github.com/DPS0340/DPSBot/blob/gh-pages/en/install.md) or just come to my official DPSBot unstable server.
