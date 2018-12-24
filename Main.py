@@ -20,6 +20,12 @@ async def on_ready():
          sys.exit()
     bot.loop.create_task(splash_rotate())
 
+
+@bot.event
+async def on_guild_join(guild):
+    serverlist.reload()
+
+
 async def splash_rotate():
     while True:
         splashes = gamename.get()

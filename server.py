@@ -1,6 +1,7 @@
 import json
 import os
 import sys
+from translate import Trans
 def return_server(id, lang="en_US"):
     return {'id':id,
     'resistricted':False,
@@ -22,6 +23,7 @@ class Serverlist():
     def __init__(self, bot):
         server_init(bot)
         self.list = {}
+        self.trans = Trans()
         for filename in os.listdir('servers'):
             if '.json' in filename:
                 with open(filename, 'r') as r:
