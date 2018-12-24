@@ -44,13 +44,13 @@ class infoclass():
         result = now - dday
         embed=Embed(title=_("%s 정보") % self.bot.user.name, description=instructions.get(), color=0x1ef7fa)
         #embed.set_thumbnail(url=self.bot.user.avatar_url)
-        embed.add_field(name=_("봇 운영자"), value=ownername, inline=True)
-        embed.add_field(name=_("봇 부운영자"), value=modstring, inline=True)
-        embed.add_field(name=_("서버 수"), value=len(self.bot.servers), inline=True)
-        embed.add_field(name=_("사용자 수"), value=users, inline=True)
-        embed.add_field(name=_("접두사"), value=prefix.get(), inline=True)
-        embed.add_field(name=_("DPSBot의 나이"), value=_("최초 공개로부터 %s일 지났습니다.") % str(result.days), inline=True)
-        embed.set_footer(text=_("Powered by Team ttakkku"))
+        #embed.add_field(name=_("봇 운영자"), value=ownername, inline=True)
+        #embed.add_field(name=_("봇 부운영자"), value=modstring, inline=True)
+        #embed.add_field(name=_("서버 수"), value=len(self.bot.servers), inline=True)
+        #embed.add_field(name=_("사용자 수"), value=users, inline=True)
+        #embed.add_field(name=_("접두사"), value=prefix.get(), inline=True)
+        #embed.add_field(name=_("DPSBot의 나이"), value=_("최초 공개로부터 %s일 지났습니다.") % str(result.days), inline=True)
+        #embed.set_footer(text=_("Powered by Team ttakkku"))
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
