@@ -2,6 +2,7 @@
 
 it is strongly recommended that deploy via heroku.
 
+# Deploy via heroku
 
 ## Cloning git & make heroku app
 
@@ -63,3 +64,9 @@ but, DPSBot is updated very often. so may be unstable!
 Please check build status!
 
 [![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=master)](https://travis-ci.com/DPS0340/DPSBot) 
+
+
+# install your own ubuntu server
+
+## Work in progress
+Sorry! manual is work in progress.
