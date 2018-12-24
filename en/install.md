@@ -77,5 +77,7 @@ git clone https://github.com/DPS0340/DPSBot
 pip install -r requirements.txt
 ```
 
+
+## Set DATABASE_URL variable
 ## Work in progress
 Sorry! work in progress.
