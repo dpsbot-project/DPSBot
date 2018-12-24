@@ -20,21 +20,21 @@ def server_init(bot):
         else:
             server_save(return_server(id))
 class Serverlist():
-    def __init__(self, ):
+    def __init__(self):
         self.list = {}
         self.trans = Trans()
         for filename in os.listdir('servers'):
             if '.json' in filename:
                 with open('servers/%s' % filename, 'r') as r:
                         jsonfile = json.load(r)
-                        self.list[jsonfile['id']] = jsonfile
+                        self.list[int(jsonfile['id'])] = jsonfile
     def reload(self):
         self.list = {}
         for filename in os.listdir('servers'):
             if '.json' in filename:
                 with open('servers/%s' % filename, 'r') as r:
                         jsonfile = json.load(r)
-                        self.list[jsonfile['id']] = jsonfile
+                        self.list[int(jsonfile['id'])] = jsonfile
     def setlang(self, id, lang):
         serverdict = self.list[int(id)].get()
         serverdict['language'] = lang
