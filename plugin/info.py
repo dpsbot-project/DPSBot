@@ -13,7 +13,7 @@ class infoclass():
         self.bot = bot
 
 
-    @commands.command(name=_("사용자정보"), pass_context=True)
+    @commands.command(name="userinfo", pass_context=True, aliases=['사용자정보'])
     async def userinfo(self, ctx):
         person = ctx.message.mentions[0].id
         person = await self.bot.get_user_info(person)
@@ -27,7 +27,7 @@ class infoclass():
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
-    @commands.command(name=_("정보"), pass_context=True)
+    @commands.command(name="info", pass_context=True, aliases=['정보'])
     async def info(self, ctx):
         ownername = await self.bot.get_user_info(owner)
         ownername = ownername.name
@@ -35,10 +35,9 @@ class infoclass():
         for a_mod in mod:
             modname = await self.bot.get_user_info(a_mod)
             modname = modname.name
-            if not a_mod == mod[-1]:
-                modstring += modname + ", "
-            else:
-                modstring += modname
+            modstring += modname + " "
+        if not modstring:
+            modstring = "None"
         users = 0
         for s in self.bot.servers:
             users += len(s.members)
@@ -52,7 +51,6 @@ class infoclass():
         embed.add_field(name=_("서버 수"), value=len(self.bot.servers), inline=True)
         embed.add_field(name=_("사용자 수"), value=users, inline=True)
         embed.add_field(name=_("접두사"), value=prefix.get(), inline=True)
-        embed.add_field(name=_("지금 플레이 중"), value=_("%s 플레이 중\n") % gamename.get(), inline=True)
         embed.add_field(name=_("DPSBot의 나이"), value=_("최초 공개로부터 %s일 지났습니다.") % str(result.days), inline=True)
         embed.set_footer(text=_("Powered by Team ttakkku"))
         await self.bot.send_message(ctx.message.channel, embed=embed)
