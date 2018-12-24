@@ -27,7 +27,7 @@ class transconfig():
             trans.setlang('ko_KR')
             opentrans.refresh()
             gamerefresh()
-        elif lang == 'en' lang == 'en_US':
+        elif lang == 'en' or lang == 'en_US':
             trans.setlang('en_US')
             opentrans.refresh()
             gamerefresh()
