@@ -2,6 +2,7 @@ from translate import trans
 from discord.ext import commands
 import asyncio
 from Main import serverlist
+from translate import trans
 class DPSBot(commands.Bot):
     @asyncio.coroutine
     def send_message(self, destination, content=None, *, tts=False, embed=None):
@@ -14,7 +15,7 @@ class DPSBot(commands.Bot):
         data = yield from self.http.send_message(channel_id, content, guild_id=guild_id, tts=tts, embed=embed)
         channel = self.get_channel(data.get('channel_id'))
         serverid = data.get('server_id')
-        gettext(data, serverlist[serverid]['language'])
+        trans.gettext_remote(data, serverlist.list[serverid]['language'])
         message = self.connection._create_message(channel=channel, **data)
         return message
     @asyncio.coroutine
