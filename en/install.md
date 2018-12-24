@@ -105,7 +105,7 @@ pg_restore --dbname=DPSBot -U postgres db-dump.backup.dump
 ## Deploy bot
 
 ```
-python3 Main.py & # run in background
+python3 Main.py &
 ```
 
 ## Work in progress
