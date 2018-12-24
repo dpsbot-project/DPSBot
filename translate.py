@@ -23,8 +23,6 @@ class Trans():
         return self.translator.translate(text, dest=lang).text
 
     def temprun(self, text: str, src:str, dest:str):
-        if self.outputlang == 'ko_KR' or self.outputlang == 'en_US':
-            return text
         return self.translator.translate(text, src=src, dest=dest).text   
 
 trans = Trans()
