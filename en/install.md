@@ -10,6 +10,7 @@ open terminal, and cd to folder you want to clone.
 
 ```
 git clone https://github.com/DPS0340/DPSBot
+cd DPSBot
 ```
 and [install heroku CLI](https://devcenter.heroku.com/articles/heroku-cli#download-and-install). (if you haven't)
 
@@ -22,8 +23,6 @@ to make app.
 
 
 ## DB initialization
-
-Please run following commands in your clone root folder:
 
 
 ```
@@ -85,6 +84,7 @@ sudo apt update
 sudo apt install postgresql postgresql-contrib
 ```
 
+
 ## Set DATABASE_URL variable
 
 ```
@@ -92,10 +92,21 @@ createdb DPSBot
 export DATABASE_URL=postgres://postgres@localhost/DPSBot
 ```
 
+
 ## DB initialization
 
 ```
+cd DPSBot
 python3 ./db-init/db-init.py -url postgres://postgres@localhost/DPSBot
+pg_restore --dbname=DPSBot -U postgres db-dump.backup.dump
 ```
+
+
+## Deploy bot
+
+```
+python3 Main.py & # run in background
+```
+
 ## Work in progress
 Sorry! work in progress.
