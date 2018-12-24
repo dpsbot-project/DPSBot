@@ -111,6 +111,14 @@ python3 Main.py &
 
 ## Always run in startup
 
+```
+crontab -e
+```
+
+write at file's end.
+```
+@reboot python (clone_path)/DPSBot/Main.py &
+```
 
 ## Work in progress
 Sorry! work in progress.
