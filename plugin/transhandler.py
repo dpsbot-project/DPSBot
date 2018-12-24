@@ -24,7 +24,8 @@ class transconfig():
     async def changelang(self, ctx, lang):
         trans.setlang(lang)
         opentrans.refresh()
-        gamerefresh()
+        if lang == 'ko_KR' or 'en_US':
+            gamerefresh()
         for extension in lst:
             try:
                 self.bot.unload_extension(pluginfolder + extension)
