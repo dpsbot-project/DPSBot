@@ -36,7 +36,9 @@ class Serverlist():
                         jsonfile = json.load(r)
                         self.list[jsonfile['id']] = jsonfile
     def setlang(self, id, lang):
-        self.list[int(id)].get()['language'] = lang
+        serverdict = self.list[int(id)].get()
+        serverdict['language'] = lang
+        self.list[int(id)] = serverdict
     def append(self, server:dict):
         server_save(server)
         self.list[server['id']] = server
