@@ -143,7 +143,7 @@ export DATABASE_URL=postgres://postgres@localhost/DPSBot
 
 ```
 cd DPSBot
-pg_restore --dbname=DPSBot -U postgres db-dump/backup.dump
+pg_restore -x -d DPSBot --no-acl -U postgres --host=localhost db-dump/backup.dump  # ignore errors
 python3 ./db-init/db-init.py -url postgres://postgres@localhost/DPSBot
 ```
 
