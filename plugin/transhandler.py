@@ -22,12 +22,21 @@ class transconfig():
 
     @commands.command(name="changelang", pass_context=True, aliases=[_('언어변경')])
     async def changelang(self, ctx, lang):
-        if lang == 'ko_KR' or lang == 'en_US':
+        if lang == 'ko':
+            trans.setlang('ko_KR')
+            opentrans.refresh()
+            gamerefresh()
+        elif lang == 'en':
+            trans.setlang('en_US')
+            opentrans.refresh()
+            gamerefresh()
+        elif lang == 'ko_KR' or lang == 'en_US':
             trans.setlang(lang)
             opentrans.refresh()
             gamerefresh()
         else:
-            trans.setlang('en_US')
+            trans.setlang(lang)
+            opentrans.set('en_US')
             gamerefresh()
         for extension in lst:
             try:
