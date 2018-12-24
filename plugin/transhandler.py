@@ -25,10 +25,10 @@ class transconfig():
     async def changelang(self, ctx, lang):
         if lang == 'ko' or lang == 'ko_KR':
             serverlist.setlang(ctx.message.server.id, 'ko_KR')
-            opentrans.refresh()
+            opentrans.refresh('ko_KR')
         elif lang == 'en' or lang == 'en_US':
             serverlist.setlang(ctx.message.server.id, 'en_US')
-            opentrans.refresh()
+            opentrans.set('en_US')
         else:
             serverlist.setlang(ctx.message.server.id, lang)
             opentrans.set('en_US')
