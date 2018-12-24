@@ -31,7 +31,7 @@ class transconfig():
             opentrans.refresh()
         else:
             serverlist.setlang(ctx.message.id, lang)
-            opentrans.set('en_US')
+            opentrans.set('ko_KR')
         for extension in lst:
             try:
                 self.bot.unload_extension(pluginfolder + extension)
