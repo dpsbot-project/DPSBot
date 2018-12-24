@@ -89,7 +89,15 @@ sudo apt install postgresql postgresql-contrib
 ## Set DATABASE_URL variable
 
 ```
-createdb -U postgres DPSBot
+su - postgres
+```
+press enter
+```
+createdb DPSBot
+su - (your username)
+```
+then type your password to change account.
+```
 export DATABASE_URL=postgres://postgres@localhost/DPSBot
 sudo nano ~/.bashrc
 ```
