@@ -153,6 +153,7 @@ python3 ./db-init/db-init.py -url postgres://postgres@localhost/DPSBot
 ```
 python3 Main.py &
 ```
+deploy complete!
 
 
 ## Always run in startup
