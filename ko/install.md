@@ -83,8 +83,41 @@ pip3 install -r requirements.txt
 
 ```
 sudo apt install postgresql postgresql-client postgresql-contrib
+sudo nano /etc/postgresql/10/main/pg_hba.conf
 ```
+이것을
+```
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     peer
+host    replication     all             127.0.0.1/32            md5
+host    replication     all             ::1/128                 md5
+```
+```
+# "local" is for Unix domain socket connections only
+local   all             all                                     trust
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            trust
+# IPv6 local connections:
+host    all             all             ::1/128                 trust
+# Allow replication connections from localhost, by a user with the
+# replication privilege.
+local   replication     all                                     trust
+host    replication     all             127.0.0.1/32            trust
+host    replication     all             ::1/128                 trust
+```
+이렇게 바꾸세요.
 
+그리고
+```
+sudo service postgresql restart
+```
 
 ## DATABASE_URL 변수 설정
 
@@ -96,23 +129,23 @@ su - postgres
 createdb DPSBot
 su - (your username)
 ```
-계정을 다시 바꾸기 위해서  비밀번호를 입력하세요.
+계정을 다시 바꾸기 위해 비밀번호를 입력하세요.
 ```
 export DATABASE_URL=postgres://postgres@localhost/DPSBot
 sudo nano ~/.bashrc
 ```
+이 문장을 추가합니다.
 ```
 export DATABASE_URL=postgres://postgres@localhost/DPSBot
 ```
 
-라고 추가하세요.
 
-## DB 초기화
+## DB initialization
 
 ```
 cd DPSBot
-python3 ./db-init/db-init.py -url postgres://postgres@localhost/DPSBot
 pg_restore --dbname=DPSBot -U postgres db-dump.backup.dump
+python3 ./db-init/db-init.py -url postgres://postgres@localhost/DPSBot
 ```
 
 
