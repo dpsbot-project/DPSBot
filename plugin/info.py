@@ -13,7 +13,7 @@ class infoclass():
         self.bot = bot
 
 
-    @commands.command(name=_("사용자정보"), pass_context=True)
+    @commands.command(name="userinfo", pass_context=True, aliases=['사용자정보'])
     async def userinfo(self, ctx):
         person = ctx.message.mentions[0].id
         person = await self.bot.get_user_info(person)
@@ -27,7 +27,7 @@ class infoclass():
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
-    @commands.command(name=_("정보"), pass_context=True)
+    @commands.command(name="info", pass_context=True, aliases=['정보'])
     async def info(self, ctx):
         ownername = await self.bot.get_user_info(owner)
         ownername = ownername.name
