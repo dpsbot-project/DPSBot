@@ -1,4 +1,4 @@
-import psycopg2-binary as psycopg2
+import psycopg2
 from variables import DATABASE_URL, owner, mod
 import asyncio
 from discord.ext import commands

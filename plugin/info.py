@@ -1,5 +1,5 @@
 import asyncio
-import psycopg2-binary as psycopg2
+import psycopg2
 from variables import owner, mod, instructions, gamename, prefix
 from discord.ext import commands
 import discord
