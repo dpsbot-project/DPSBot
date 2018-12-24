@@ -125,3 +125,17 @@ write at file's end.
 ```
 @reboot python (clone_path)/DPSBot/Main.py &
 ```
+
+
+## Update bot
+
+```
+git pull origin master
+```
+App is updated to latest version.
+
+but, DPSBot is updated very often. so may be unstable!
+
+Please check build status!
+
+[![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=master)](https://travis-ci.com/DPS0340/DPSBot) 
