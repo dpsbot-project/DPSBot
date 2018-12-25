@@ -62,7 +62,7 @@ class etcclass():
         await self.bot.send_message(ctx.message.channel, mention + _('\n님을 찍겠습니다☆'))
 
 
-    @commands.command(name="naesungwiki" aliases=["naesungwiki"], pass_context=True)
+    @commands.command(name="naesungwiki", aliases=["naesungwiki"], pass_context=True)
     async def naesungwiki(self, ctx):
         embed = Embed(
             title=_("내성위키"), description="https://naesung.tk", color=0xE0FFFF)
