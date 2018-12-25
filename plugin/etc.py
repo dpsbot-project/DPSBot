@@ -10,18 +10,18 @@ class etcclass():
         self.bot = bot
 
 
-    @commands.command(name="hello"_("안녕"), pass_context=True)
+    @commands.command(name="hello", aliases=["안녕"], pass_context=True)
     async def hello(self, ctx):
         await self.bot.say(_("안녕하세요!"))
 
 
-    @commands.command(name="blind"_("블라인드"), pass_context=True)
+    @commands.command(name="blind", aliases=["블라인드"], pass_context=True)
     async def blind(self, ctx):
         await self.bot.say(_("---------------블라인드 중입니다---------------"))
         await self.bot.say(_(".\n") * 50)
         await self.bot.say(_("---------------블라인드가 끝났습니다---------------"))
 
-    @commands.command(name="whisper"_("귓속말"), pass_context=True)
+    @commands.command(name="whisper", aliases=["귓속말"], pass_context=True)
     async def whisper(self, ctx):
         await self.bot.send_message(ctx.message.channel, _("DM을 봐주세요!"))
         await self.bot.send_message(ctx.message.author, _("저를 부르셨나요...?"))
