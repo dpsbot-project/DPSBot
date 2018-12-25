@@ -123,7 +123,7 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
 
-    @commands.command(name="deletecommand", aliases=["접두사변경"] hidden=True, pass_context=True)
+    @commands.command(name="deletecommand", aliases=["명령어삭제"], hidden=True, pass_context=True)
     async def deletecommand(self, ctx, *functions):
         if ctx.message.author.id == owner:
             embed = Embed(title=_("**경고**"), description=_("현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다."), color=0xff0000)
@@ -139,7 +139,7 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
 
-    @commands.command(name="restorecommand", aliases=["접두사변경"] hidden=True, pass_context=True)
+    @commands.command(name="restorecommand", aliases=["명령어복구"], hidden=True, pass_context=True)
     async def restorecommand(self, ctx, *functions):
         if ctx.message.author.id == owner:
             embed = Embed(title=_("**경고**"), description=_("현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다."), color=0xff0000)
