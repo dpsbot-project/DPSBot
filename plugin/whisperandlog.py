@@ -13,7 +13,7 @@ class whisperclass():
         self.cipher_suite = Fernet(self.privatekey)
 
 
-    @commands.command(name=_("전해줘"), pass_context=True)
+    @commands.command(name="send", aliases=["전해줘"], pass_context=True)
     async def send(self, ctx, mention, message):
         try:
             userid = ctx.message.mentions[0].id
@@ -24,7 +24,7 @@ class whisperclass():
             await self.bot.say(_("멘션과 메시지를 입력해주세요."))
 
 
-    @commands.command(name=_("익명"), pass_context=True)
+    @commands.command(name="anon", aliases=["익명"], pass_context=True)
     async def anon(self, ctx, userid):
         towhisperperson = userid
         towhisperperson = await self.bot.get_user_info(towhisperperson)
@@ -37,7 +37,7 @@ class whisperclass():
         await self.bot.send_message(towhisperperson, "%s" % B_looks_A)
         await self.anonping(ctx.message, ctx.message.author, towhisperperson)
 
-    @commands.command(name=_("답장"), pass_context=True)
+    @commands.command(name="reply", aliases=["답장"], pass_context=True)
     async def reply(self, ctx, text):
         Author_decrypt = await self.bot.get_user_info(self.cipher_suite.decrypt(text.encode("utf-8")).decode())
         await self.bot.send_message(ctx.message.author, _("암호가 확인되었습니다."))
@@ -134,7 +134,7 @@ class whisperclass():
             print(e)
 
 
-    @commands.command(name=_("로그켜"), pass_context=True)
+    @commands.command(name="log", aliases=["로그켜"], pass_context=True)
     async def log(self, ctx, channelid):
         channel = self.bot.get_channel(channelid)
         key = random.randint(1, 1000000000000000)

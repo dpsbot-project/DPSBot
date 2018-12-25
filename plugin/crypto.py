@@ -8,7 +8,7 @@ class cryptoclass():
         privatekey = Fernet.generate_key()
         self.cipher_suite = Fernet(privatekey)
 
-    @commands.command(name=_("암호화"), pass_context=True)
+    @commands.command(name="encrypt", aliases=["암호화"], pass_context=True)
     async def encrypt(self, ctx):
         await self.bot.say(_('암호화시킬 내용을 말해주세요.'))
         plaintext = await self.bot.wait_for_message(author=ctx.message.author)
@@ -18,7 +18,7 @@ class cryptoclass():
         else:
             await self.bot.say(_('내용이 없습니다.'))
 
-    @commands.command(name=_("복호화"), pass_context=True)
+    @commands.command(name="decrypt", aliases=["복호화"], pass_context=True)
     async def decrypt(self, ctx):
         await self.bot.say(_('암호를 말해주세요.'))
         encryptedtext = await self.bot.wait_for_message(author=ctx.message.author)

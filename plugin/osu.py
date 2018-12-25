@@ -8,7 +8,7 @@ class osuclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name=_("오스"), pass_context=True)
+    @commands.command(name="osu", aliases=["오스"], pass_context=True)
     async def osu(self, ctx, *user):
         username = ''
         i = 0

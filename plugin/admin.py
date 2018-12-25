@@ -15,7 +15,7 @@ class adminclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name=_("load"), hidden=True, pass_context=True)
+    @commands.command(name="load", hidden=True, pass_context=True)
     async def load(self, ctx, *modules):
         if ctx.message.author.id == owner:
             for module in modules:
@@ -31,7 +31,7 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
-    @commands.command(name=_("unload"), hidden=True, pass_context=True)
+    @commands.command(name="unload", hidden=True, pass_context=True)
     async def unload(self, ctx, *modules):
         if ctx.message.author.id == owner:
             for module in modules:
@@ -50,7 +50,7 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
-    @commands.command(name=_("reload"), hidden=True, pass_context=True)
+    @commands.command(name="reload", hidden=True, pass_context=True)
     async def reload(self, ctx, *modules):
         if ctx.message.author.id == owner:
             for module in modules:
@@ -69,7 +69,7 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
 
-    @commands.command(name=_("봇소개변경"), hidden=True, pass_context=True)
+    @commands.command(name="introducechange", aliases=["봇소개변경"], hidden=True, pass_context=True)
     async def introducechange(self, ctx):
         if ctx.message.author.id == owner:
             await self.bot.say(_("변경할 내용을 말해주세요."))
@@ -86,7 +86,7 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
 
-    @commands.command(name=_("플레이중추가"), hidden=True, pass_context=True)
+    @commands.command(name="addplaying", aliases=["플레이중추가"], hidden=True, pass_context=True)
     async def addplaying(self, ctx):
         if ctx.message.author.id == owner:
             await self.bot.say(_("변경할 내용을 말해주세요."))
@@ -104,7 +104,7 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
 
-    @commands.command(name=_("접두사변경"), hidden=True, pass_context=True)
+    @commands.command(name="changeprefix", aliases=["접두사변경"], hidden=True, pass_context=True)
     async def changeprefix(self, ctx):
         if ctx.message.author.id == owner:
             await self.bot.say(_("변경할 내용을 말해주세요.\n공백은 _으로 대체하세요."))
@@ -123,7 +123,7 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
 
-    @commands.command(name=_("명령어삭제"), hidden=True, pass_context=True)
+    @commands.command(name="deletecommand", aliases=["명령어삭제"], hidden=True, pass_context=True)
     async def deletecommand(self, ctx, *functions):
         if ctx.message.author.id == owner:
             embed = Embed(title=_("**경고**"), description=_("현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다."), color=0xff0000)
@@ -139,7 +139,7 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
 
-    @commands.command(name=_("명령어복구"), hidden=True, pass_context=True)
+    @commands.command(name="restorecommand", aliases=["명령어복구"], hidden=True, pass_context=True)
     async def restorecommand(self, ctx, *functions):
         if ctx.message.author.id == owner:
             embed = Embed(title=_("**경고**"), description=_("현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다."), color=0xff0000)
@@ -155,7 +155,7 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
 
     @commands.command(name=_("exit"), hidden=True, pass_context=True)
-    async def restorecommand(self, ctx):
+    async def exit(self, ctx):
         if ctx.message.author.id == owner:
             await self.bot.say(_('봇이 종료됩니다.'))
             sys.exit()

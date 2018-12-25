@@ -24,7 +24,7 @@ class modclass():
         print(_('------'))
         print(_('부운영자 로드 완료!'))
 
-    @commands.command(name=_("부운영자추가"), pass_context=True)
+    @commands.command(name="addmod", aliases=["부운영자추가"], pass_context=True)
     async def addmod(self, ctx):
         if ctx.message.author.id == owner or ctx.message.author.id in mod:
             userid = ctx.message.mentions[0].id
@@ -39,7 +39,7 @@ class modclass():
         else:
             await self.bot.send_message(ctx.message.channel, _("당신은 권한이 없습니다.\n당신이 봇의 운영자거나 부운영자인지 확인해 보세요."))
 
-    @commands.command(name=_("부운영자삭제"), pass_context=True)
+    @commands.command(name="deletemod", aliases=["부운영자삭제"], pass_context=True)
     async def deletemod(self, ctx, userid: str):
         if ctx.message.author.id == owner or ctx.message.author.id in mod:
             mod.remove(userid)
@@ -53,7 +53,7 @@ class modclass():
         else:
             await self.bot.send_message(ctx.message.channel, _("당신은 권한이 없습니다.\n당신이 봇의 운영자거나 부운영자인지 확인해 보세요."))
 
-    @commands.command(name=_("부운영자목록"), pass_context=True)
+    @commands.command(name="modlist", aliases=["부운영자목록"], pass_context=True)
     async def modlist(self, ctx):
         messagebody = _("부운영자 목록\n")
         for userid in mod:

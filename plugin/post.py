@@ -9,9 +9,9 @@ class postclass():
         self.bot = bot
 
 
-    @commands.command(name=_("써줘"), pass_context=True)
+    @commands.command(name="write", alias=["써줘"], pass_context=True)
     async def write(self, ctx, *heads):
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = psycopg2.connect(DATABASE_URL)
         with conn:
             try:
                 cur = conn.cursor()
@@ -42,9 +42,9 @@ class postclass():
             await self.postinsert("post", num, author, head, body)
 
 
-    @commands.command(name=_("보여줘"), pass_context=True)
+    @commands.command(name="show", aliases=["보여줘"], pass_context=True)
     async def show(self, ctx):
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = psycopg2.connect(DATABASE_URL)
         cur = conn.cursor()
         cur.execute('select * from post')
         rows = cur.fetchall()
@@ -57,9 +57,9 @@ class postclass():
         await self.bot.send_message(ctx.message.channel, _("%s글 (번호)를 입력하시면 글을 보실수 있어요!") % prefix.get())
 
 
-    @commands.command(name=_("글"), pass_context=True)
+    @commands.command(name="post", aliases=["글"], pass_context=True)
     async def post(self, ctx, select: int):
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = psycopg2.connect(DATABASE_URL)
         cur = conn.cursor()
         cur.execute('select * from post where num = {0}'.format(select))
         row = cur.fetchone()
@@ -72,10 +72,10 @@ class postclass():
             num, head), description="\nby %s\n%s" % (author, body), color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
-    @commands.command(name=_("글삭제"), pass_context=True)
+    @commands.command(name="deletepost", aliases=["글삭제"], pass_context=True)
     async def deletepost(self, ctx, select: int):
         if ctx.message.author.id == owner or ctx.message.author.id in mod:
-            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            conn = psycopg2.connect(DATABASE_URL)
             cur = conn.cursor()
             cur.execute("""delete from post where num = %d""" % select)
             conn.commit()
@@ -86,7 +86,7 @@ class postclass():
 
 
     async def postinsert(self, table, num, author, head, body):
-        conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+        conn = psycopg2.connect(DATABASE_URL)
         cur = conn.cursor()
         sql = """insert into {0} ("num","author","head","body") values (%s, %s, %s, %s)""".format(
             table)
