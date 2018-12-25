@@ -7,7 +7,7 @@ class pluginclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name=_("모듈"), pass_context=True)
+    @commands.command(name="module", aliases=["모듈"], pass_context=True)
     async def module(self, ctx):
         i = 0
         body = ""

@@ -9,7 +9,7 @@ class postclass():
         self.bot = bot
 
 
-    @commands.command(name=_("써줘"), pass_context=True)
+    @commands.command(name="write", alias=["써줘"], pass_context=True)
     async def write(self, ctx, *heads):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         with conn:
@@ -42,7 +42,7 @@ class postclass():
             await self.postinsert("post", num, author, head, body)
 
 
-    @commands.command(name=_("보여줘"), pass_context=True)
+    @commands.command(name="show", aliases=["보여줘"], pass_context=True)
     async def show(self, ctx):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
@@ -57,7 +57,7 @@ class postclass():
         await self.bot.send_message(ctx.message.channel, _("%s글 (번호)를 입력하시면 글을 보실수 있어요!") % prefix.get())
 
 
-    @commands.command(name=_("글"), pass_context=True)
+    @commands.command(name="post", aliases=["글"], pass_context=True)
     async def post(self, ctx, select: int):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
         cur = conn.cursor()
