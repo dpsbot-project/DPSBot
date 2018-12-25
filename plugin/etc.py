@@ -68,14 +68,14 @@ class etcclass():
             title=_("내성위키"), description="https://naesung.tk", color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
-    @commands.command(name="whoami", aliases=["whoami"] pass_context=True)
+    @commands.command(name="whoami", aliases=["whoami"], pass_context=True)
     async def whoami(self, ctx):
         embed = Embed(title=_("당신은 혹시..."), description=_("\n%s\n\n이신가요?!?!") %
                             ctx.message.author, color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
-    @commands.command(name="ticket", aliases=["건의"] pass_context=True)
+    @commands.command(name="ticket", aliases=["건의"], pass_context=True)
     async def ticket(self, ctx, msg):
         me = await self.bot.get_user_info(owner)
         channel = self.bot.get_channel(int(channel))
