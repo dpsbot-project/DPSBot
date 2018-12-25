@@ -386,7 +386,7 @@ class tagclass():
         print(_('태그 로드 완료!'))
 
 
-    @commands.command(pass_context=True, name=_("maketag"))
+    @commands.command(pass_context=True, name="maketag")
     async def maketag(self, ctx, *words):
         name = nameParse(ctx.message.content)
         line = ctx.message.content
