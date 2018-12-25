@@ -13,14 +13,14 @@ class alohclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name=_("알로세이드"), pass_context=True)
+    @commands.command(name=_("alohsayd"), aliases=["알로세이드"] pass_context=True)
     async def alohsayd(self, ctx, num: int):
         await self.bot.send_message(ctx.message.channel, _("알로세이드는 1172번까지 있습니다."))
         if 0 <= num <= 1172:
             await self.alohsaydCore(ctx, num)
 
 
-    @commands.command(name=_("알로세이드랜덤"), pass_context=True)
+    @commands.command(name="alohsaydrandom", aliases=["알로세이드랜덤"], pass_context=True)
     async def alohsaydrandom(self, ctx):
         num = random.randrange(0, 1173)
         await self.bot.send_message(ctx.message.channel, _("랜덤 알로세이드"))
