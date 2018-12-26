@@ -35,6 +35,7 @@ class pluginclass():
         embed = Embed(title=_("사용 가능한 모듈 리스트"),
                       description=body, color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
+        await self.bot.say("sorry! module setting for each channel is not yet.")
 
 
 def setup(bot):
