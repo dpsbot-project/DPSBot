@@ -8,8 +8,10 @@ class DPSBot(commands.Bot):
     def send_message(self, destination, content=None, *, tts=False, embed=None):
         channel_id, guild_id = yield from self._resolve_destination(destination)
         content = str(content) if content is not None else None
-        content = trans.gettext_remote(content, serverlist.list[int(guild_id)]['language']) if content is not None else None
-        
+        try:
+            content = trans.gettext_remote(content, serverlist.list[int(guild_id)]['language']) if content is not None else None
+        else:
+            content = trans.gettext_remote(content, 'en_US') if content is not None else None
         if embed is not None:
             embed = embed.to_dict()
 
