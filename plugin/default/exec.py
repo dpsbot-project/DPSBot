@@ -12,15 +12,12 @@ class execclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(pass_context=True)
-    async def print(self, ctx):
-        await self.bot.say(ctx.message.content)
-
     @commands.command(name="exec", aliases=["실행"], pass_context=True)
     async def exec(self, ctx):
         if ctx.message.author.id == owner:
             try:
-                command = ctx.message.content.replace(ctx.message.content.split()[0], "", 1)
+                command = ctx.message.content.replace(ctx.message.content.split()[0] + " ", "", 1)
+                print(command)
                 result = subprocess.check_output(command, shell=True)
                 embed = Embed(title=_("명령어 실행: %s") % (
                     plaintext), description="%s" % (result.decode('ascii')), color=0xE0FFFF)
