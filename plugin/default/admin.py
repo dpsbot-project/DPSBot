@@ -74,7 +74,7 @@ class adminclass():
             conn = psycopg2.connect(DATABASE_URL, sslmode='require')
             conn.autocommit = True
             cur = conn.cursor()
-            sql = cur.mogrify("update settings set body = '%s' where name='instructions'", (introduce,)
+            sql = cur.mogrify("update settings set body = '%s' where name='instructions'", (introduce,))
             cur.execute(sql)
             conn.close()
             instructions.set(introduce)
