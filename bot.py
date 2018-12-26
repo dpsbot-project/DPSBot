@@ -10,7 +10,7 @@ class DPSBot(commands.Bot):
         content = str(content) if content is not None else None
         try:
             content = trans.gettext_remote(content, serverlist.list[int(guild_id)]['language']) if content is not None else None
-        else:
+        except:
             content = trans.gettext_remote(content, 'en_US') if content is not None else None
         if embed is not None:
             embed = embed.to_dict()
