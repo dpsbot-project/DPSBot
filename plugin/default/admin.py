@@ -69,56 +69,44 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name="introducechange", aliases=["봇소개변경"], hidden=True, pass_context=True)
-    async def introducechange(self, ctx):
+    async def introducechange(self, ctx, *, introduce=None):
         if ctx.message.author.id == owner:
-            await self.bot.say(_("변경할 내용을 말해주세요."))
-            msg = await self.bot.wait_for_message(author=ctx.message.author)
-            if msg:
-                conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-                conn.autocommit = True
-                cur = conn.cursor()
-                cur.execute(
-                    "update settings set body = '%s' where name='instructions'" % msg.content)
-                conn.close()
-                instructions.set(msg.content)
-                await self.bot.say(_("변경 완료."))
+            conn = psycopg2.connect(DATABASE_URL, sslmode='require')
+            conn.autocommit = True
+            cur = conn.cursor()
+            sql = cur.mogrify("update settings set body = '%s' where name='instructions'", (introduce,))
+            cur.execute(sql)
+            conn.close()
+            instructions.set(introduce)
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name="addplaying", aliases=["플레이중추가"], hidden=True, pass_context=True)
-    async def addplaying(self, ctx):
+    async def addplaying(self, ctx, *, playing=None):
         if ctx.message.author.id == owner:
-            await self.bot.say(_("변경할 내용을 말해주세요."))
-            msg = await self.bot.wait_for_message(author=ctx.message.author)
-            if msg:
-                conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-                conn.autocommit = True
-                cur = conn.cursor()
-                cur.execute(
-                    "update settings set body = '%s' where name='game'" % msg.content)
-                conn.close()
-                gamename.append(msg.content)
-                await self.bot.change_presence(game=discord.Game(name=gamename.get()))
-                await self.bot.say(_("%s로 변경되었습니다.") % msg.content)
+            conn = psycopg2.connect(DATABASE_URL)
+            conn.autocommit = True
+            cur = conn.cursor()
+            sql = cur.mogrify("update settings set body = '%s' where name='game'", (playing,))
+            cur.execute(sql)
+            conn.close()
+            gamename.append(playing)
+            await self.bot.change_presence(game=discord.Game(name=gamename.get()))
+            await self.bot.say(_("%s로 변경되었습니다.") % playing)
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name="changeprefix", aliases=["접두사변경"], hidden=True, pass_context=True)
-    async def changeprefix(self, ctx):
+    async def changeprefix(self, ctx, *, change=None):
         if ctx.message.author.id == owner:
-            await self.bot.say(_("변경할 내용을 말해주세요.\n공백은 _으로 대체하세요."))
-            msg = await self.bot.wait_for_message(author=ctx.message.author)
-            if msg:
-                new_prefix = msg.content
-                new_prefix = new_prefix.replace("_", " ")
-                conn = psycopg2.connect(DATABASE_URL, sslmode='require')
-                conn.autocommit = True
-                cur = conn.cursor()
-                cur.execute(
-                    "update settings set body = '%s' where name='prefix'" % new_prefix)
-                conn.close()
-                prefix.set(new_prefix)
-                await self.bot.say(_("%s로 접두사가 변경되었습니다.\n봇을 재시작시켜주세요.") % new_prefix)
+            conn = psycopg2.connect(DATABASE_URL)
+            conn.autocommit = True
+            cur = conn.cursor()
+            sql = cur.mogrify("update settings set body = '%s' where name='prefix'", (change))
+            cur.execute(sql)
+            conn.close()
+            prefix.set(change)
+            await self.bot.say(_("%s로 접두사가 변경되었습니다.\n봇을 재시작시켜주세요.") % change)
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 

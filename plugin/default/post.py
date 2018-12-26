@@ -81,9 +81,9 @@ class postclass():
     async def postinsert(self, table, num, author, head, body):
         conn = psycopg2.connect(DATABASE_URL)
         cur = conn.cursor()
-        sql = """insert into {0} ("num","author","head","body") values (%s, %s, %s, %s)""".format(
-            table)
-        cur.execute(sql, (int(num), str(author), str(head), str(body)))
+        sql = cur.mogrify("""insert into {0} ("num","author","head","body") values (%s, %s, %s, %s)""".format(
+            table), (int(num), str(author), str(head), str(body)))
+        cur.execute(sql)
         conn.commit()
         conn.close()
 
