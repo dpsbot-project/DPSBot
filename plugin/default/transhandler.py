@@ -29,27 +29,30 @@ class transconfig():
             await self.bot.say(_('내용이 없습니다.'))
 
     @commands.command(name="changelang", pass_context=True, aliases=['언어변경'])
-    async def changelang(self, ctx, lang):
-        await self.bot.raw_say('open translate language support: en, ko\nothers support translator.\nplease view google language code:\nhttps://developers.google.com/admin-sdk/directory/v1/languages')
-        if lang == 'ko' or lang == 'ko_KR':
-            serverlist.setlang(ctx.message.server.id, 'ko_KR')
-            opentrans.set('ko_KR')
-        elif lang == 'en' or lang == 'en_US':
-            serverlist.setlang(ctx.message.server.id, 'en_US')
-            opentrans.set('en_US')
+    async def changelang(self, ctx, lang=None):
+        await self.bot.raw_say('open translate language support: en, ko \nothers support translator.\nplease view google language code:\nhttps://developers.google.com/admin-sdk/directory/v1/languages')
+        if lang == None:
+            await self.bot.raw_say("please specify a language.")
         else:
-            serverlist.setlang(ctx.message.server.id, lang)
-            opentrans.set('en_US')
-        for extension in pluginlist.get()['default']:
-            try:
-                self.bot.unload_extension("plugin.default." + extension)
-                self.bot.load_extension("plugin.default." + extension)
-                print(_("%s 확장 기능을 불러왔습니다.") % extension)
-            except Exception as e:
-                print(_('%s 확장 기능을 불러오는데 실패했습니다.') % extension)
-                print(e)
-                pass
-        await self.bot.say(_('%s로 변경되었습니다.') % lang)
+            if lang == 'ko' or lang == 'ko_KR':
+                serverlist.setlang(ctx.message.server.id, 'ko_KR')
+                opentrans.set('ko_KR')
+            elif lang == 'en' or lang == 'en_US':
+                serverlist.setlang(ctx.message.server.id, 'en_US')
+                opentrans.set('en_US')
+            else:
+                serverlist.setlang(ctx.message.server.id, lang)
+                opentrans.set('en_US')
+            for extension in pluginlist.get()['default']:
+                try:
+                    self.bot.unload_extension("plugin.default." + extension)
+                    self.bot.load_extension("plugin.default." + extension)
+                    print(_("%s 확장 기능을 불러왔습니다.") % extension)
+                except Exception as e:
+                    print(_('%s 확장 기능을 불러오는데 실패했습니다.') % extension)
+                    print(e)
+                    pass
+            await self.bot.say(_('%s로 변경되었습니다.') % lang)
 
 
 def setup(bot):
