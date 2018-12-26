@@ -1,13 +1,15 @@
 import discord
 import asyncio
 from variables import token, pluginfolder, gamename, prefix, owner
-from pluginlist import lst as initial_extensions
+from pluginlist import pluginlist
 from bot import DPSBot
 import argparse
 import sys
 from server import serverlist, server_init
 bot = DPSBot(command_prefix=prefix.get())
-@bot.event  
+
+
+@bot.event
 async def on_ready():
     print(_('로그인 되었습니다.'))
     print(_('------'))
@@ -17,7 +19,7 @@ async def on_ready():
     server_init(bot)
     serverlist.reload()
     if args.test == True:
-         sys.exit()
+        sys.exit()
     bot.loop.create_task(splash_rotate())
 
 
@@ -41,7 +43,8 @@ if __name__ == '__main__':
     global args
     args = parser.parse_args()
     print(_("------"))
-    for extension in initial_extensions:
+    print(pluginlist.get()['default'])
+    for extension in pluginlist.get()['default']:
         try:
             bot.load_extension(pluginfolder + extension)
             print(_("%s 확장 기능을 불러왔습니다.") % extension)
