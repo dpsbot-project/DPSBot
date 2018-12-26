@@ -1,7 +1,7 @@
 import discord
 import asyncio
 from variables import token, pluginfolder, gamename, prefix, owner
-from pluginlist import lst as initial_extensions
+from pluginlist import pluginlist
 from bot import DPSBot
 import argparse
 import sys
@@ -41,10 +41,11 @@ if __name__ == '__main__':
     global args
     args = parser.parse_args()
     print(_("------"))
-    for extension in initial_extensions:
+    for key in pluginlist.get().keys():
         try:
-            bot.load_extension(pluginfolder + extension)
-            print(_("%s 확장 기능을 불러왔습니다.") % extension)
+            for extension in pluginlist.get().get(key)
+                bot.load_extension(pluginfolder + key + "/" + extension)
+                print(_("%s 확장 기능을 불러왔습니다.") % extension)
         except Exception as e:
             print(_('%s 확장 기능을 불러오는데 실패했습니다.') % extension)
             print(e)

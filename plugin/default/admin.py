@@ -177,7 +177,7 @@ class adminclass():
             await self.bot.kick(member)
             await self.bot.say(_('%s 님이 %s님을 킥하셨습니다.') % (message.author.name, member.name))
         except:
-            await self.bot.say(_('밴 대상자가 없거나 봇에 밴 권한이 없습니다.'))
+            await self.bot.say(_('킥 대상자가 없거나 봇에 킥 권한이 없습니다.'))
 
 def setup(bot):
     bot.add_cog(adminclass(bot))

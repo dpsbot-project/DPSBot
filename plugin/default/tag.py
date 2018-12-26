@@ -3,6 +3,7 @@ import psycopg2
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))
 from variables import DATABASE_URL, owner, mod, prefix
 from discord.ext import commands
 class tag:
@@ -396,7 +397,7 @@ class tagclass():
             @commands.command(name=_("t%s") % name, pass_context=True)
             async def tag(self, ctx):
                 await self.bot.send_message(ctx.message.channel, line)
-                inputline = ctx.message.content.replace(_("디피 t%s") % name, "")
+                inputline = ctx.message.content.replace(_("%st%s") % (prefix, name), "")
                 result = run(line, inputline)
                 await self.bot.send_message(ctx.message.channel, result)
                 print(name)
