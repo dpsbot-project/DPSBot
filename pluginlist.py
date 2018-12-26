@@ -35,8 +35,8 @@ class Pluginlist():
     def get(self):
         return {"default": self.default, "non-default": self.non_default, "half-abondoned": self.half_abandoned}
     def append(self, module:str):
-           return move(self, module, "non-default", "default")
+           return self.move(module, "non-default", "default")
     def remove(self, module:str):
-           return move(self, module, "default", "non-default")
+           return self.move(module, "default", "non-default")
 
 pluginlist = Pluginlist()
