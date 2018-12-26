@@ -178,7 +178,7 @@ class adminclass():
             await self.bot.say(_('%s 님이 %s님을 킥하셨습니다.') % (message.author.name, member.name))
         except:
             await self.bot.say(_('킥 대상자가 없거나 봇에 킥 권한이 없습니다.'))
-    @commands.command
+    @commands.command(pass_context=True)
     async def serverlist(self, ctx):
         if ctx.message.author.id == owner:
             for server in self.bot.servers:
