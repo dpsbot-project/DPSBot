@@ -5,7 +5,7 @@ import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))
-from pluginlist import lst, alllst
+from pluginlist import pluginlist
 from embed import Embed
 
 
@@ -17,22 +17,22 @@ class pluginclass():
     async def module(self, ctx):
         i = 0
         body = ""
-        for plugin in alllst:
+        for plugin in pluginlist.get()["default"]:
+            i += 1
+            body += plugin + " "
+            if i % 5 == 0:
+                body += '\n'
+        embed = Embed(title=_("사용중인 모듈 리스트"),
+                      description=body, color=0x00FFFF)
+        await self.bot.send_message(ctx.message.channel, embed=embed)
+        i = 0
+        body = ""
+        for plugin in pluginlist.get()["non-default"]:
             i += 1
             body += plugin + " "
             if i % 5 == 0:
                 body += '\n'
         embed = Embed(title=_("사용 가능한 모듈 리스트"),
-                      description=body, color=0x00FFFF)
-        await self.bot.send_message(ctx.message.channel, embed=embed)
-        i = 0
-        body = ""
-        for plugin in lst:
-            i += 1
-            body += plugin + " "
-            if i % 5 == 0:
-                body += '\n'
-        embed = Embed(title=_("현재 작동중인 모듈 리스트"),
                       description=body, color=0xE0FFFF)
         await self.bot.send_message(ctx.message.channel, embed=embed)
 

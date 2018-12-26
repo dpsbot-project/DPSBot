@@ -14,7 +14,7 @@ class alohclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="alohsayd", aliases=["알로세이드"] pass_context=True)
+    @commands.command(name="alohsayd", aliases=["알로세이드"], pass_context=True)
     async def alohsayd(self, ctx, num: int):
         await self.bot.send_message(ctx.message.channel, _("알로세이드는 1172번까지 있습니다."))
         if 0 <= num <= 1172:

@@ -14,7 +14,7 @@ def setting_set(name: str):
     conn.close()
     return result
 
-pluginfolder = "plugin."
+pluginfolder = "plugin/"
 prefixvalue = setting_set("prefix")
 token = setting_set("token")
 owner = setting_set("owner")
