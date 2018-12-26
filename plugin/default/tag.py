@@ -279,7 +279,7 @@ class tag:
 
 
 def nameParse(rawline):
-    rawline = rawline.replace("%s maketag " % prefix.get(), "", 1)
+    rawline = rawline.replace("%smaketag " % prefix.get(), "", 1)
     name = rawline.split()[0]
     return name
 
@@ -395,7 +395,7 @@ class tagclass():
 
     @commands.command(pass_context=True, name="maketag")
     async def maketag(self, ctx, *words):
-        name = words[0]
+        name = nameParse(ctx.message.content)
         line = ctx.message.content
         try:
             await self.taginsert("tag", name, line)
