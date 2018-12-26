@@ -43,7 +43,7 @@ if __name__ == '__main__':
     print(_("------"))
     for key in pluginlist.get().keys():
         try:
-            for extension in pluginlist.get().get(key)
+            for extension in pluginlist.get().get(key):
                 bot.load_extension(pluginfolder + key + "/" + extension)
                 print(_("%s 확장 기능을 불러왔습니다.") % extension)
         except Exception as e:
