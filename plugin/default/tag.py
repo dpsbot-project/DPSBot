@@ -8,6 +8,7 @@ import asyncio
 import psycopg2
 import os
 import sys
+import random
 
 
 class tag:
