@@ -30,6 +30,7 @@ class transconfig():
 
     @commands.command(name="changelang", pass_context=True, aliases=['언어변경'])
     async def changelang(self, ctx, lang):
+        await self.bot.raw_say('open translate language support: en, ko\nothers support translator.\nplease view google language code:\nhttps://developers.google.com/admin-sdk/directory/v1/languages')
         if lang == 'ko' or lang == 'ko_KR':
             serverlist.setlang(ctx.message.server.id, 'ko_KR')
             opentrans.set('ko_KR')
