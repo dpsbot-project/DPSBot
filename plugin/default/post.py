@@ -15,7 +15,7 @@ class postclass():
         self.bot = bot
 
     @commands.command(name="write", alias=["써줘"], pass_context=True)
-    async def write(self, ctx, *heads):
+    async def write(self, ctx, *, head=None):
         conn = psycopg2.connect(DATABASE_URL)
         with conn:
             try:
@@ -25,17 +25,8 @@ class postclass():
             except:
                 num = 1
                 pass
-        i = 0
-        head = ''
-        for word in heads:
-            i += 1
-            if word == heads[-1] and len(heads) == i:
-                head += word
-            else:
-                head += word + ' '
-        if len(heads) == 0:
+        if not head:
             await self.bot.send_message(ctx.message.channel, _("제목이 없습니다."))
-            pass
         else:
             await self.bot.send_message(ctx.message.channel, _("내용을 말해주세요!"))
             body = await self.bot.wait_for_message(timeout=600, author=ctx.message.author)

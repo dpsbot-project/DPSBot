@@ -7,7 +7,7 @@ import asyncio
 from discord.ext import commands
 from translate import trans
 from trans_open import opentrans
-from pluginlist import lst
+from pluginlist import pluginlist
 from variables import pluginfolder, gamerefresh
 from server import serverlist
 
@@ -39,10 +39,10 @@ class transconfig():
         else:
             serverlist.setlang(ctx.message.server.id, lang)
             opentrans.set('en_US')
-        for extension in lst:
+        for extension in pluginlist.get()['default']:
             try:
-                self.bot.unload_extension(pluginfolder + extension)
-                self.bot.load_extension(pluginfolder + extension)
+                self.bot.unload_extension("plugin.default." + extension)
+                self.bot.load_extension("plugin.default." + extension)
                 print(_("%s 확장 기능을 불러왔습니다.") % extension)
             except Exception as e:
                 print(_('%s 확장 기능을 불러오는데 실패했습니다.') % extension)

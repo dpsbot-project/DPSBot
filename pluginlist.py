@@ -11,7 +11,9 @@ class Pluginlist():
         self.refresh()
 
     def searcher(self, dir: str):
-        return os.listdir(self.plugin_path + dir)
+       files = map(lambda x: x,os.listdir(self.plugin_path + dir))
+       files = filter(lambda x:x if ".py" in x else False, files)
+       return list(map(lambda x: os.path.splitext(x)[0], files))
 
     def refresh(self):
         self.default = self.searcher("default")
@@ -32,6 +34,9 @@ class Pluginlist():
 
     def get(self):
         return {"default": self.default, "non-default": self.non_default, "half-abondoned": self.half_abandoned}
-
+    def append(self, module:str):
+           return move(self, module, "non-default", "default")
+    def remove(self, module:str):
+           return move(self, module, "default", "non-default")
 
 pluginlist = Pluginlist()

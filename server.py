@@ -2,7 +2,8 @@ import json
 import os
 import sys
 from translate import Trans
-
+dir = os.path.dirname(
+            os.path.realpath(__file__))
 
 def return_server(id, lang="en_US"):
     return {'id': int(id),
@@ -11,12 +12,12 @@ def return_server(id, lang="en_US"):
 
 
 def server_save(server: dict):
-    with open('servers/%s.json' % server['id'], 'w') as w:
+    with open(dir + '/servers/%s.json' % server['id'], 'w') as w:
         json.dump(server, w)
 
 
 def server_load(id):
-    with open('servers/%s.json' % id, 'r') as r:
+    with open(dir + '/servers/%s.json' % id, 'r') as r:
         return json.load(r)
 
 

@@ -6,7 +6,7 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(
     os.path.abspath(os.path.dirname(__file__)))))
-from pluginlist import lst as pluginlist
+from pluginlist import pluginlist
 from variables import owner, pluginfolder, instructions, gamename, prefix, DATABASE_URL
 from embed import Embed
 from discord.ext import commands
@@ -20,7 +20,7 @@ class adminclass():
         if ctx.message.author.id == owner:
             for module in modules:
                 try:
-                    if not module in pluginlist:
+                    if not module in pluginlist.get()["default"]:
                         pluginlist.append(module)
                         self.bot.load_extension(pluginfolder + module)
                         await self.bot.say(_('%s 모듈 로드 완료!') % module)
@@ -39,9 +39,9 @@ class adminclass():
                     await self.bot.say(_('어드민 모듈은 모듈을 로드하고 해제하는 기능이 있어, 해제가 불가능합니다.'))
                 else:
                     try:
-                        if module in pluginlist:
-                            pluginlist.remove(module)
+                        if module in pluginlist.get()["default"]:
                             self.bot.unload_extension(pluginfolder + module)
+                            pluginlist.remove(module)
                             await self.bot.say(_('%s 모듈 해제 완료!') % module)
                         else:
                             await self.bot.say(_('이미 해제된 모듈입니다.'))
@@ -58,10 +58,10 @@ class adminclass():
                     await self.bot.say(_('어드민 모듈은 모듈을 로드하고 해제하는 기능이 있어, 재로드가 불가능합니다.'))
                 else:
                     try:
+                        if not module in pluginlist.get()["default"]:
+                            pluginlist.append(module)
                         self.bot.unload_extension(pluginfolder + module)
                         self.bot.load_extension(pluginfolder + module)
-                        if not module in pluginlist:
-                            pluginlist.append(module)
                         await self.bot.say(_('%s 모듈 재로드 완료!') % module)
                     except Exception as e:
                         await self.bot.say(_('오류 발생!\n%s') % e)

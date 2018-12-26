@@ -43,9 +43,10 @@ if __name__ == '__main__':
     global args
     args = parser.parse_args()
     print(_("------"))
+    print(pluginlist.get()['default'])
     for extension in pluginlist.get()['default']:
         try:
-            bot.load_extension(pluginfolder + "default" + "/." + extension)
+            bot.load_extension(pluginfolder + extension)
             print(_("%s 확장 기능을 불러왔습니다.") % extension)
         except Exception as e:
             print(_('%s 확장 기능을 불러오는데 실패했습니다.') % extension)
