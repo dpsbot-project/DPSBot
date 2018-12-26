@@ -1,11 +1,15 @@
-import asyncio
-import psycopg2
+from discord.ext import commands
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))
 from variables import DATABASE_URL, owner, mod, prefix
-from discord.ext import commands
+import asyncio
+import psycopg2
+import os
+import sys
+
+
 class tag:
     def __init__(self, name: str, command: str, context: str, argsdict: dict):
         self.name = name
@@ -350,6 +354,7 @@ def run(rawline: str, args="", argsdict={}):
         else:
             return rawline
 
+
 class tagclass():
     def __init__(self, bot):
         self.bot = bot
@@ -359,7 +364,8 @@ class tagclass():
         @commands.command(name=_("t%s") % name, pass_context=True)
         async def tag(self, ctx):
             await self.bot.send_message(ctx.message.channel, ctx.message.content)
-            inputline = ctx.message.content.replace("%s t%s " % (prefix.get(), name), "")
+            inputline = ctx.message.content.replace(
+                "%s t%s " % (prefix.get(), name), "")
             result = run(line, inputline)
             await self.bot.send_message(ctx.message.channel, result)
             print(name)
@@ -386,7 +392,6 @@ class tagclass():
         print(_('------'))
         print(_('태그 로드 완료!'))
 
-
     @commands.command(pass_context=True, name="maketag")
     async def maketag(self, ctx, *words):
         name = nameParse(ctx.message.content)
@@ -394,10 +399,12 @@ class tagclass():
         try:
             await taginsert("tag", name, line)
             await self.bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
+
             @commands.command(name=_("t%s") % name, pass_context=True)
             async def tag(self, ctx):
                 await self.bot.send_message(ctx.message.channel, line)
-                inputline = ctx.message.content.replace(_("%st%s") % (prefix, name), "")
+                inputline = ctx.message.content.replace(
+                    _("%st%s") % (prefix, name), "")
                 result = run(line, inputline)
                 await self.bot.send_message(ctx.message.channel, result)
                 print(name)
@@ -413,7 +420,6 @@ class tagclass():
         cur.execute(sql, (name, line))
         conn.commit()
         conn.close()
-
 
 
 def setup(bot):

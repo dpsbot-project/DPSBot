@@ -9,6 +9,7 @@ import os
 
 DATABASE_URL = os.environ['DATABASE_URL']
 
+
 class alohclass():
     def __init__(self, bot):
         self.bot = bot
@@ -19,13 +20,11 @@ class alohclass():
         if 0 <= num <= 1172:
             await self.alohsaydCore(ctx, num)
 
-
     @commands.command(name="alohsaydrandom", aliases=["알로세이드랜덤"], pass_context=True)
     async def alohsaydrandom(self, ctx):
         num = random.randrange(0, 1173)
         await self.bot.send_message(ctx.message.channel, _("랜덤 알로세이드"))
         await self.alohsaydCore(ctx, num)
-
 
     async def alohsaydCore(self, ctx, num: int):
         conn = psycopg2.connect(DATABASE_URL, sslmode='require')
@@ -46,6 +45,7 @@ class alohclass():
             except:
                 await self.bot.send_message(ctx.message.channel, _("파일을 찾지 못했어요!"))
                 pass
+
 
 def setup(bot):
     bot.add_cog(alohclass(bot))

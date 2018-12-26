@@ -1,14 +1,15 @@
-from discord.ext import commands
 import asyncio
 import psycopg2
 import os
 import discord
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))
-from embed import Embed
-from variables import owner, pluginfolder, instructions, gamename, prefix, DATABASE_URL
+sys.path.append(os.path.dirname(os.path.dirname(
+    os.path.abspath(os.path.dirname(__file__)))))
 from pluginlist import lst as pluginlist
+from variables import owner, pluginfolder, instructions, gamename, prefix, DATABASE_URL
+from embed import Embed
+from discord.ext import commands
 
 class adminclass():
     def __init__(self, bot):
@@ -161,7 +162,6 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
-
     @commands.has_permissions(ban_members=True)
     async def ban(self, member: discord.Member, days: int = 1, *, reason):
         try:
@@ -178,6 +178,7 @@ class adminclass():
             await self.bot.say(_('%s 님이 %s님을 킥하셨습니다.') % (message.author.name, member.name))
         except:
             await self.bot.say(_('킥 대상자가 없거나 봇에 킥 권한이 없습니다.'))
+
 
 def setup(bot):
     bot.add_cog(adminclass(bot))

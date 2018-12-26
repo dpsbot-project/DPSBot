@@ -1,17 +1,23 @@
 import asyncio
 import psycopg2
 import discord
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(
+    os.path.abspath(os.path.dirname(__file__)))))
 from variables import DATABASE_URL, owner, mod, prefix
 from discord.ext import commands
 from cryptography.fernet import Fernet
 import random
 from embed import Embed
+
+
 class whisperclass():
     def __init__(self, bot):
         self.bot = bot
         self.privatekey = Fernet.generate_key()
         self.cipher_suite = Fernet(self.privatekey)
-
 
     @commands.command(name="send", aliases=["전해줘"], pass_context=True)
     async def send(self, ctx, mention, message):
@@ -22,7 +28,6 @@ class whisperclass():
         except Exception as e:
             raise
             await self.bot.say(_("멘션과 메시지를 입력해주세요."))
-
 
     @commands.command(name="anon", aliases=["익명"], pass_context=True)
     async def anon(self, ctx, userid):
@@ -43,7 +48,6 @@ class whisperclass():
         await self.bot.send_message(ctx.message.author, _("암호가 확인되었습니다."))
         await self.anonping(ctx, ctx.message.author, Author_decrypt)
 
-
     async def ping(self, message, user, body):
         A = message.author
         B = user
@@ -61,8 +65,6 @@ class whisperclass():
             await self.bot.send_message(message.channel, _('메시지가 전해졌습니다.'))
             await self.pong(message, A, B)
 
-
-
     async def anonping(self, message, Author, towhisperperson):
         await bot_log(_("익명 채팅을 시도합니다.\n"))
         await bot_log("%s" % Author + "\n")
@@ -79,10 +81,9 @@ class whisperclass():
             else:
                 await bot_log(_("%s가 %s에게 %s라 말합니다.(익명)\n") % (Author, towhisperperson, body.content))
                 await self.bot.send_message(B,
-                                    _('익명으로 메시지가 왔어요! %s(이)라고 전해달라고 말하던데요?') % body.content)
+                                            _('익명으로 메시지가 왔어요! %s(이)라고 전해달라고 말하던데요?') % body.content)
                 await self.bot.send_message(A, _('메시지가 전해졌습니다.'))
                 await self.anonpong(message, A, B)
-    
 
     async def anonpong(self, message, A, B):
         body = await self.bot.wait_for_message(timeout=60.0, author=A)
@@ -98,7 +99,6 @@ class whisperclass():
                 await self.bot.send_message(A, _('메시지가 전해졌습니다.'))
                 await self.anonpong(message, A, B)
 
-
     async def pong(self, message, A, B):
         body = await self.bot.wait_for_message(timeout=60.0, author=A)
         if body is None:
@@ -111,7 +111,6 @@ class whisperclass():
                 await self.bot.send_message(B, _('%s 씨가 %s(이)라고 전해달라고 말하던데요?') % (A, body.content))
                 await self.bot.send_message(A, _('메시지가 전해졌습니다.'))
                 await self.pong(message, A, B)
-
 
     async def log(self, message, channel, key):
         listener = message.author
@@ -127,12 +126,12 @@ class whisperclass():
                     pass
                 else:
                     await bot_log(_('\n서버:%s\n채널:%s\n작성자:%s\n%s\n') % (body.server, body.channel, body.author, body.content))
-                    embed = Embed(title=_("log"), description=_('\n서버:%s\n\n채널:%s\n\n작성자:%s\n\n%s') % (body.server, body.channel, body.author, body.content), color=0xE0FFFF)
+                    embed = Embed(title=_("log"), description=_('\n서버:%s\n\n채널:%s\n\n작성자:%s\n\n%s') % (
+                        body.server, body.channel, body.author, body.content), color=0xE0FFFF)
                     await self.bot.send_message(message.author, embed=embed)
                     await self.log(message, channel, key)
         except Exception as e:
             print(e)
-
 
     @commands.command(name="log", aliases=["로그켜"], pass_context=True)
     async def log(self, ctx, channelid):
@@ -146,6 +145,7 @@ class whisperclass():
         except AttributeError:
             return
 
+
 async def bot_log(message):
     print(message)
     conn = psycopg2.connect(DATABASE_URL, sslmode='require')
@@ -154,6 +154,7 @@ async def bot_log(message):
     cur.execute(sql, (message, ))
     conn.commit()
     conn.close()
+
 
 def setup(bot):
     bot.add_cog(whisperclass(bot))

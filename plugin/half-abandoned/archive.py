@@ -2,6 +2,11 @@ import os
 import sys
 import archiveis
 import asyncio
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(
+    os.path.abspath(os.path.dirname(__file__)))))
 from discord.ext import commands
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
@@ -9,6 +14,8 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from plugin.whisperandlog import bot_log
+
+
 class archiveclass():
     def __init__(self, bot):
         self.bot = bot
@@ -27,11 +34,11 @@ class archiveclass():
         self.profile = webdriver.FirefoxProfile()
         self.profile.set_preference("media.volume_scale", "0.0")
         self.profile.set_preference("intl.accept_languages", "ko")
-        self.driver = webdriver.Firefox(self.profile, firefox_options=self.options, executable_path="/app/geckodriver")
+        self.driver = webdriver.Firefox(
+            self.profile, firefox_options=self.options, executable_path="/app/geckodriver")
         self.options.add_argument(
-                {'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13F69 Safari/601.1', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
-                'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3', 'Accept-Encoding': 'none', 'Accept-Language': 'en-US,en;q=0.8', 'Connection': 'keep-alive'})
-
+            {'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 9_3_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Version/9.0 Mobile/13F69 Safari/601.1', 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+             'Accept-Charset': 'ISO-8859-1,utf-8;q=0.7,*;q=0.3', 'Accept-Encoding': 'none', 'Accept-Language': 'en-US,en;q=0.8', 'Connection': 'keep-alive'})
 
     @commands.command(name="archive", aliases=["아카이브"], pass_context=True)
     async def archive(self, ctx, url):
@@ -45,7 +52,8 @@ class archiveclass():
             wait = WebdriverWait(self.driver, 2)
             wait.until(EC.presence_of_element_located((By.XPATH, 'html')))
             self.driver.maximize_window()
-            self.driver.find_element_by_tag_name('html').screenshot('screenshot.png')
+            self.driver.find_element_by_tag_name(
+                'html').screenshot('screenshot.png')
             await self.bot.send_file(ctx.message.channel, 'screenshot.png')
             await self.bot.send_message(ctx.message.channel, archive_url)
             await self.bot.log(_("아카이브 주소:%s\n") % (url))

@@ -1,3 +1,8 @@
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(
+    os.path.abspath(os.path.dirname(__file__)))))
 import asyncio
 from discord.ext import commands
 from translate import trans
@@ -5,6 +10,8 @@ from trans_open import opentrans
 from pluginlist import lst
 from variables import pluginfolder, gamerefresh
 from server import serverlist
+
+
 class transconfig():
     def __init__(self, bot):
         self.bot = bot
@@ -46,4 +53,3 @@ class transconfig():
 
 def setup(bot):
     bot.add_cog(transconfig(bot))
-

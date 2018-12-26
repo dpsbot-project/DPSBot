@@ -1,7 +1,14 @@
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(
+    os.path.abspath(os.path.dirname(__file__)))))
 import psycopg2
 from variables import DATABASE_URL, owner, mod
 import asyncio
 from discord.ext import commands
+
+
 class modclass():
     def __init__(self, bot):
         self.bot = bot
@@ -61,7 +68,6 @@ class modclass():
             messagebody += person.name + " "
         await self.bot.send_message(ctx.message.channel, messagebody)
 
-    
 
 def setup(bot):
     bot.add_cog(modclass(bot))

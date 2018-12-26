@@ -2,6 +2,7 @@ import hashlib
 import asyncio
 from discord.ext import commands
 
+
 class gravatarclass():
     def __init__(self, bot):
         self.bot = bot

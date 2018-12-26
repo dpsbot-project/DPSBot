@@ -1,13 +1,18 @@
 import asyncio
 import psycopg2
 import discord
+import os
+import sys
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))
 from variables import DATABASE_URL, owner, mod, prefix
 from discord.ext import commands
 from embed import Embed
+
+
 class postclass():
     def __init__(self, bot):
         self.bot = bot
-
 
     @commands.command(name="write", alias=["써줘"], pass_context=True)
     async def write(self, ctx, *heads):
@@ -41,7 +46,6 @@ class postclass():
             await self.bot.send_message(ctx.message.channel, embed=embed)
             await self.postinsert("post", num, author, head, body)
 
-
     @commands.command(name="show", aliases=["보여줘"], pass_context=True)
     async def show(self, ctx):
         conn = psycopg2.connect(DATABASE_URL)
@@ -55,7 +59,6 @@ class postclass():
             await self.bot.send_message(ctx.message.channel, "%s. %s - by %s\n" % (num, head, author))
         conn.close()
         await self.bot.send_message(ctx.message.channel, _("%s글 (번호)를 입력하시면 글을 보실수 있어요!") % prefix.get())
-
 
     @commands.command(name="post", aliases=["글"], pass_context=True)
     async def post(self, ctx, select: int):
@@ -84,7 +87,6 @@ class postclass():
         else:
             await self.bot.send_message(ctx.message.channel, _("당신은 권한이 없습니다.\n당신이 봇의 소유자거나 관리자인지 확인해 보세요."))
 
-
     async def postinsert(self, table, num, author, head, body):
         conn = psycopg2.connect(DATABASE_URL)
         cur = conn.cursor()
@@ -93,6 +95,7 @@ class postclass():
         cur.execute(sql, (int(num), str(author), str(head), str(body)))
         conn.commit()
         conn.close()
+
 
 def setup(bot):
     bot.add_cog(postclass(bot))
