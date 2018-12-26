@@ -22,6 +22,7 @@ class Pluginlist():
                      try:
                             os.rename(self.plugin_path + original_dir + "/" + module_name + ".py",
                                    self.plugin_path + new_dir + "/" + module_name + ".py")
+                            self.refresh()
                             return True
                      except:
                             return _("잘못된 접근입니다.")
