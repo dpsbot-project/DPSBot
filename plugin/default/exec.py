@@ -17,9 +17,10 @@ class execclass():
         await self.bot.say(ctx.message.content)
 
     @commands.command(name="exec", aliases=["실행"], pass_context=True)
-    async def exec(self, ctx, *, command):
+    async def exec(self, ctx):
         if ctx.message.author.id == owner:
             try:
+                command = ctx.message.content.replace(ctx.message.content.split()[0], "", 1)
                 result = subprocess.check_output(command, shell=True)
                 embed = Embed(title=_("명령어 실행: %s") % (
                     plaintext), description="%s" % (result.decode('ascii')), color=0xE0FFFF)
