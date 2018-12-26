@@ -19,13 +19,15 @@ class Pluginlist():
 
        def move(self, module_name: str, original_dir: str, new_dir: str):
               if not ".." in original_dir and not ".." in new_dir:
-                     os.rename(self.plugin_path + original_dir + "/" + module_name + ".py",
-                            self.plugin_path + new_dir + "/" + module_name + ".py")
-                     return True
+                     try:
+                            os.rename(self.plugin_path + original_dir + "/" + module_name + ".py",
+                                   self.plugin_path + new_dir + "/" + module_name + ".py")
+                            return True
+                     except:
+                            return _("잘못된 접근입니다.")
               else:
-                     return "상위 디렉토리 접근은 불가합니다."
+                     return _("상위 디렉토리 접근은 불가합니다.")
 
        def get(self):
               return {"default":self.default, "non-default":self.non_default, "half-abondoned":self.half_abandoned}
 pluginlist= Pluginlist()
-pluginlist.move("admin", "default", "non-default")

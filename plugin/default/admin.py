@@ -1,16 +1,14 @@
 from discord.ext import commands
 import asyncio
-from variables import owner, pluginfolder, instructions, gamename, prefix
-from pluginlist import lst as pluginlist
 import psycopg2
 import os
 import discord
 import sys
-from embed import Embed
-
-DATABASE_URL = os.environ['DATABASE_URL']
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))
+from embed import Embed
+from variables import owner, pluginfolder, instructions, gamename, prefix, DATABASE_URL
+from pluginlist import lst as pluginlist
 
 class adminclass():
     def __init__(self, bot):
@@ -164,23 +162,20 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
 
-    @commands.command(pass_context=True)
-    async def ban(self, ctx, member: discord.Member, days: int = 1):
+    @commands.has_permissions(ban_members=True)
+    async def ban(self, member: discord.Member, days: int = 1, *, reason):
         try:
-            if "449706643710541824" in [role.id for role in ctx.message.author.roles]:
-                await self.bot.ban(member, days)
-            else:
-                await self.bot.say(_('권한이 없습니다.\n서버 운영자만 사용 가능합니다.'))
+            await self.bot.ban(member, days)
+            await self.bot.say(_('%s 님이 %s님을 %s일간 밴하셨습니다.') % (message.author.name, member.name, days))
+            await self.bot.say(_('이유:%s' % reason))
         except:
             await self.bot.say(_('밴 대상자가 없거나 봇에 밴 권한이 없습니다.'))
 
-    @commands.command(pass_context=True)
-    async def ban(self, ctx, member: discord.Member, days: int = 1):
+    @commands.command(kick_members=True)
+    async def kick(self, member: discord.Member, *, reason):
         try:
-            if "449706643710541824" in [role.id for role in ctx.message.author.roles]:
-                await self.bot.ban(member, days)
-            else:
-                await self.bot.say(_('권한이 없습니다.\n서버 운영자만 사용 가능합니다.'))
+            await self.bot.kick(member)
+            await self.bot.say(_('%s 님이 %s님을 킥하셨습니다.') % (message.author.name, member.name))
         except:
             await self.bot.say(_('밴 대상자가 없거나 봇에 밴 권한이 없습니다.'))
 
