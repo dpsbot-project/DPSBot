@@ -11,6 +11,7 @@ from embed import Embed
 DATABASE_URL = os.environ['DATABASE_URL']
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
+
 class adminclass():
     def __init__(self, bot):
         self.bot = bot
@@ -29,7 +30,7 @@ class adminclass():
                 except Exception as e:
                     await self.bot.say(_('오류 발생!\n%s') % e)
         else:
-            await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
+            await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name="unload", hidden=True, pass_context=True)
     async def unload(self, ctx, *modules):
@@ -48,7 +49,7 @@ class adminclass():
                     except Exception as e:
                         await self.bot.say(_('오류 발생!\n%s') % e)
         else:
-            await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
+            await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name="reload", hidden=True, pass_context=True)
     async def reload(self, ctx, *modules):
@@ -66,8 +67,7 @@ class adminclass():
                     except Exception as e:
                         await self.bot.say(_('오류 발생!\n%s') % e)
         else:
-            await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
-
+            await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name="introducechange", aliases=["봇소개변경"], hidden=True, pass_context=True)
     async def introducechange(self, ctx):
@@ -78,13 +78,13 @@ class adminclass():
                 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
                 conn.autocommit = True
                 cur = conn.cursor()
-                cur.execute("update settings set body = '%s' where name='instructions'" % msg.content)
+                cur.execute(
+                    "update settings set body = '%s' where name='instructions'" % msg.content)
                 conn.close()
                 instructions.set(msg.content)
                 await self.bot.say(_("변경 완료."))
         else:
-            await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
-
+            await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name="addplaying", aliases=["플레이중추가"], hidden=True, pass_context=True)
     async def addplaying(self, ctx):
@@ -95,14 +95,14 @@ class adminclass():
                 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
                 conn.autocommit = True
                 cur = conn.cursor()
-                cur.execute("update settings set body = '%s' where name='game'" % msg.content)
+                cur.execute(
+                    "update settings set body = '%s' where name='game'" % msg.content)
                 conn.close()
                 gamename.append(msg.content)
                 await self.bot.change_presence(game=discord.Game(name=gamename.get()))
                 await self.bot.say(_("%s로 변경되었습니다.") % msg.content)
         else:
-            await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
-
+            await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name="changeprefix", aliases=["접두사변경"], hidden=True, pass_context=True)
     async def changeprefix(self, ctx):
@@ -115,18 +115,19 @@ class adminclass():
                 conn = psycopg2.connect(DATABASE_URL, sslmode='require')
                 conn.autocommit = True
                 cur = conn.cursor()
-                cur.execute("update settings set body = '%s' where name='prefix'" % new_prefix)
+                cur.execute(
+                    "update settings set body = '%s' where name='prefix'" % new_prefix)
                 conn.close()
                 prefix.set(new_prefix)
                 await self.bot.say(_("%s로 접두사가 변경되었습니다.\n봇을 재시작시켜주세요.") % new_prefix)
         else:
-            await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
-
+            await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name="deletecommand", aliases=["명령어삭제"], hidden=True, pass_context=True)
     async def deletecommand(self, ctx, *functions):
         if ctx.message.author.id == owner:
-            embed = Embed(title=_("**경고**"), description=_("현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다."), color=0xff0000)
+            embed = Embed(title=_(
+                "**경고**"), description=_("현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다."), color=0xff0000)
             await self.bot.send_message(ctx.message.channel, embed=embed)
             for function in functions:
                 try:
@@ -136,13 +137,13 @@ class adminclass():
                     await self.bot.say(_("오류가 발생했습니다.") % function)
                     await self.bot.say(e)
         else:
-            await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
-
+            await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name="restorecommand", aliases=["명령어복구"], hidden=True, pass_context=True)
     async def restorecommand(self, ctx, *functions):
         if ctx.message.author.id == owner:
-            embed = Embed(title=_("**경고**"), description=_("현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다."), color=0xff0000)
+            embed = Embed(title=_(
+                "**경고**"), description=_("현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다."), color=0xff0000)
             await self.bot.send_message(ctx.message.channel, embed=embed)
             for function in functions:
                 try:
@@ -152,7 +153,7 @@ class adminclass():
                     await self.bot.say(_("오류가 발생했습니다.") % function)
                     await self.bot.say(e)
         else:
-            await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
+            await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(name=_("exit"), hidden=True, pass_context=True)
     async def exit(self, ctx):
@@ -160,7 +161,28 @@ class adminclass():
             await self.bot.say(_('봇이 종료됩니다.'))
             sys.exit()
         else:
-            await self.bot.say(_('권한이 없습니다.\n운영자만 사용 가능합니다.'))
+            await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
+
+
+    @commands.command(pass_context=True)
+    async def ban(self, ctx, member: discord.Member, days: int = 1):
+        try:
+            if "449706643710541824" in [role.id for role in ctx.message.author.roles]:
+                await self.bot.ban(member, days)
+            else:
+                await self.bot.say(_('권한이 없습니다.\n서버 운영자만 사용 가능합니다.'))
+        except:
+            await self.bot.say(_('밴 대상자가 없거나 봇에 밴 권한이 없습니다.'))
+
+    @commands.command(pass_context=True)
+    async def ban(self, ctx, member: discord.Member, days: int = 1):
+        try:
+            if "449706643710541824" in [role.id for role in ctx.message.author.roles]:
+                await self.bot.ban(member, days)
+            else:
+                await self.bot.say(_('권한이 없습니다.\n서버 운영자만 사용 가능합니다.'))
+        except:
+            await self.bot.say(_('밴 대상자가 없거나 봇에 밴 권한이 없습니다.'))
 
 def setup(bot):
     bot.add_cog(adminclass(bot))

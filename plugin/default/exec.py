@@ -13,19 +13,11 @@ class execclass():
 
 
     @commands.command(name="exec", aliases=["실행"], pass_context=True)
-    async def exec(self, ctx, *words):
+    async def exec(self, ctx, *, command):
         me = await self.bot.get_user_info(owner)
         if ctx.message.author == me:
-            plaintext = ''
-            i = 0
-            for word in words:
-                i += 1
-                if word == words[-1] and len(words) == i:
-                    plaintext += str(word)
-                else:
-                    plaintext += str(word) + ' '
             try:
-                result = subprocess.check_output(plaintext, shell=True)
+                result = subprocess.check_output(command, shell=True)
                 embed = Embed(title=_("명령어 실행: %s") % (
                     plaintext), description="%s" % (result.decode('ascii')), color=0xE0FFFF)
                 await self.bot.send_message(ctx.message.channel, embed=embed)
