@@ -398,9 +398,8 @@ class tagclass():
         name = nameParse(ctx.message.content)
         line = ctx.message.content
         try:
-            await taginsert("tag", name, line)
+            await self.taginsert("tag", name, line)
             await self.bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
-
             @commands.command(name=_("t%s") % name, pass_context=True)
             async def tag(self, ctx):
                 await self.bot.send_message(ctx.message.channel, line)
@@ -410,10 +409,11 @@ class tagclass():
                 await self.bot.send_message(ctx.message.channel, result)
                 print(name)
                 print(result)
-        except:
+        except Exception as e:
+            print(e)
             await self.bot.send_message(ctx.message.channel, _("이미 있는 태그입니다."))
 
-    async def taginsert(table, name, line):
+    async def taginsert(self, table, name, line):
         conn = psycopg2.connect(DATABASE_URL)
         cur = conn.cursor()
         sql = """insert into {0} ("name","tag") values (%s, %s)""".format(
