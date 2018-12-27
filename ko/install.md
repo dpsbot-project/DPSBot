@@ -132,14 +132,6 @@ createdb DPSBot
 su - (your username)
 ```
 계정을 다시 바꾸기 위해 비밀번호를 입력하세요.
-```
-export DATABASE_URL=postgres://postgres@localhost/DPSBot
-sudo nano ~/.bashrc
-```
-이 문장을 추가합니다.
-```
-export DATABASE_URL=postgres://postgres@localhost/DPSBot
-```
 
 
 ## DB initialization
