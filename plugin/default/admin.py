@@ -153,7 +153,8 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
-    @commands.command(ban_members=True)
+    @commands.command(hidden=False)
+    @commands.has_permissions(ban_members=True)
     async def ban(self, member: discord.Member, days: int = 1, *, reason):
         try:
             await self.bot.ban(member, days)
@@ -163,6 +164,7 @@ class adminclass():
             await self.bot.say(_('밴 대상자가 없거나 봇에 밴 권한이 없습니다.'))
 
     @commands.command(kick_members=True)
+    @commands.has_permissions(kick_members=True)
     async def kick(self, member: discord.Member, *, reason):
         try:
             await self.bot.kick(member)
