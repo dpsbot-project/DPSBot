@@ -153,22 +153,23 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
-    @commands.command(hidden=False)
+    @commands.command(hidden=False, pass_context=True)
     @commands.has_permissions(ban_members=True)
-    async def ban(self, member: discord.Member, days: int = 1, *, reason):
+    async def ban(self, ctx, member: discord.Member, days: int = 1, *, reason="None"):
         try:
             await self.bot.ban(member, days)
-            await self.bot.say(_('%s 님이 %s님을 %s일간 밴하셨습니다.') % (message.author.name, member.name, days))
+            await self.bot.say(_('%s 님이 %s님을 %s일간 밴하셨습니다.') % (ctx.message.author.name, member.name, days))
             await self.bot.say(_('이유:%s') % reason)
         except:
             await self.bot.say(_('밴 대상자가 없거나 봇에 밴 권한이 없습니다.'))
 
-    @commands.command(kick_members=True)
+    @commands.command(hidden=False, pass_context=True)
     @commands.has_permissions(kick_members=True)
-    async def kick(self, member: discord.Member, *, reason):
+    async def kick(self, ctx, member: discord.Member, *, reason="None"):
         try:
             await self.bot.kick(member)
-            await self.bot.say(_('%s 님이 %s님을 킥하셨습니다.') % (message.author.name, member.name))
+            await self.bot.say(_('%s 님이 %s님을 킥하셨습니다.') % (ctx.message.author.name, member.name))
+            await self.bot.say(_('이유:%s') % reason)
         except:
             await self.bot.say(_('킥 대상자가 없거나 봇에 킥 권한이 없습니다.'))
     @commands.command(pass_context=True, hidden=True)
