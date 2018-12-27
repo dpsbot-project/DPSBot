@@ -22,5 +22,6 @@ if __name__ == "__main__":
     cur.execute("INSERT INTO settings VALUES('channel', '%s') ON CONFLICT (name) DO UPDATE SET name='channel', body='%s'" % (channel, channel))
     cur.execute("INSERT INTO settings VALUES('instructions', 'a open source bot.') ON CONFLICT (name) DO UPDATE SET name='instructions', body='a open source bot.'")
     conn.close()
-    os.system('echo "export DATABASE_URL=%s" >> $HOME/.bashrc' % DATABASE_URL)
+    os.system("export DPSBOT_URL=%s" % DATABASE_URL)
+    os.system('echo "export DPSBOT_URL=%s" >> $HOME/.bashrc' % DATABASE_URL)
     print("DB set up complete!")

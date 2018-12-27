@@ -278,11 +278,11 @@ class tag:
         return self.func(args, argsdict)
 
 
-def checkDepth(rawline):
+def checkDepth(line):
     move = 0
     depth = 0
     depthList = []
-    for letter in rawline:
+    for letter in line:
         move += 1
         if letter == '(':
             depth += 1
@@ -295,45 +295,43 @@ def checkDepth(rawline):
     return depthList
 
 
-def declareschecker(rawline, num=0):
-    if rawline.find('(declare') != -1:
-        rawline = rawline.replace('(declare', "", 1)
-        return declareschecker(rawline, num+1)
+def declareschecker(line, num=0):
+    if line.find('(declare') != -1:
+        line = line.replace('(declare', "", 1)
+        return declareschecker(line, num+1)
     else:
         return num
 
 
-def run(rawline: str, args="", argsdict={}):
-    rawline = rawline.strip()
-    if len(rawline.split()) <= 1:
-        return rawline
+def run(name, line, args="", argsdict={}, first=True):
+    line = line.strip()
+    if len(line.split()) <= 1:
+        return line
     else:
-        if rawline.find("%smaketag " % prefix.get()) != -1:
-            rawline = rawline.replace("%smaketag " % prefix.get(), "", 1)
-            Name = nameParse(rawline)
-            rawline = rawline.replace(Name + " ", "", 1)
-            rawline = rawline.replace("rawinput", args)
+        if first:
+            first = False
+            line = line.replace("rawinput", args)
             for arg in args.split():
-                rawline = rawline.replace("input", arg, 1)
+                line = line.replace("input", arg, 1)
         else:
-            Name = ""
-        depthList = checkDepth(rawline)
+            pass
+        depthList = checkDepth(line)
         if len(depthList) == 0:
-            return rawline
+            return line
         if max(depthList) == -1:
-            return rawline
+            return line
         elif max(depthList) != -1:
             if True:
-                semiTag = rawline[:depthList.index(
+                semiTag = line[:depthList.index(
                     1, depthList.index(1) + 1) + 1]
-                if rawline.find("(if") == 0 or rawline.find("(declare") == 0:
+                if line.find("(if") == 0 or line.find("(declare") == 0:
                     mode = semiTag[1:-1].split()[0]
                     Tag = tag(Name, mode, semiTag, argsdict)
                     argsdict.update(Tag.argsdict)
                     result = Tag.run(semiTag, argsdict)
                     argsdict.update(Tag.argsdict)
-                    rawline = rawline.replace(semiTag, result, 1)
-                    return run(rawline, args, argsdict)
+                    line = line.replace(semiTag, result, 1)
+                    return run(line, args, argsdict, first)
                 startnumsemi = checkDepth(semiTag).index(
                     max(checkDepth(semiTag)))
                 endnumsemi = checkDepth(semiTag).index(
@@ -344,10 +342,10 @@ def run(rawline: str, args="", argsdict={}):
                 result = Tag.run(useTag, argsdict)
                 argsdict.update(Tag.argsdict)
                 Temptag = semiTag.replace(useTag, str(result), 1)
-                rawline = rawline.replace(semiTag, Temptag, 1)
-                return run(rawline, args, argsdict)
+                line = line.replace(semiTag, Temptag, 1)
+                return run(line, args, argsdict, first)
         else:
-            return rawline
+            return line
 
 
 class tagclass():
