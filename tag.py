@@ -1,14 +1,12 @@
-from discord.ext import commands
+import random
+import psycopg2
+import asyncio
+from variables import DATABASE_URL, owner, mod, prefix, pluginfolder
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))
-from variables import DATABASE_URL, owner, mod, prefix
-import asyncio
-import psycopg2
-import os
-import sys
-import random
+sys.path.append(os.path.dirname(os.path.dirname(
+    os.path.abspath(os.path.dirname(__file__)))))
 
 
 class tag:
@@ -83,7 +81,7 @@ class tag:
         def calculate(args: str, argsdict: dict):
             args = args.split()
             result = args[0]
-            for arg in args:
+            for arg in args[1:]:
                 result /= float(arg)
             try:
                 if result.is_integer():
@@ -278,139 +276,63 @@ class tag:
         return self.func(args, argsdict)
 
 
-def checkDepth(rawline):
+def checkDepth(line):
     move = 0
     depth = 0
     depthList = []
-    for letter in rawline:
+    for letter in line:
         move += 1
         if letter == '(':
+            depthList.append(depth)
             depth += 1
-            depthList.append(depth)
         elif letter == ')':
-            depthList.append(depth)
             depth -= 1
+            depthList.append(depth)
         else:
             depthList.append(-1)
     return depthList
 
 
-def declareschecker(rawline, num=0):
-    if rawline.find('(declare') != -1:
-        rawline = rawline.replace('(declare', "", 1)
-        return declareschecker(rawline, num+1)
+def declareschecker(line, num=0):
+    if line.find('(declare') != -1:
+        line = line.replace('(declare', "", 1)
+        return declareschecker(line, num+1)
     else:
         return num
 
 
-def run(rawline: str, args="", argsdict={}):
-    rawline = rawline.strip()
-    if len(rawline.split()) <= 1:
-        return rawline
+def run(name, line, args="", argsdict={}):
+    line = line.strip()
+    if len(line.split()) <= 1:
+        return line
     else:
-        if rawline.find("%smaketag " % prefix.get()) != -1:
-            rawline = rawline.replace("%smaketag " % prefix.get(), "", 1)
-            Name = nameParse(rawline)
-            rawline = rawline.replace(Name + " ", "", 1)
-            rawline = rawline.replace("rawinput", args)
-            for arg in args.split():
-                rawline = rawline.replace("input", arg, 1)
-        else:
-            Name = ""
-        depthList = checkDepth(rawline)
+        line = line.replace("rawinput", args)
+        for arg in args.split():
+            line = line.replace("input", arg, 1)
+        depthList = checkDepth(line)
         if len(depthList) == 0:
-            return rawline
+            return line
         if max(depthList) == -1:
-            return rawline
-        elif max(depthList) != -1:
-            if True:
-                semiTag = rawline[:depthList.index(
-                    1, depthList.index(1) + 1) + 1]
-                if rawline.find("(if") == 0 or rawline.find("(declare") == 0:
-                    mode = semiTag[1:-1].split()[0]
-                    Tag = tag(Name, mode, semiTag, argsdict)
-                    argsdict.update(Tag.argsdict)
-                    result = Tag.run(semiTag, argsdict)
-                    argsdict.update(Tag.argsdict)
-                    rawline = rawline.replace(semiTag, result, 1)
-                    return run(rawline, args, argsdict)
-                startnumsemi = checkDepth(semiTag).index(
-                    max(checkDepth(semiTag)))
-                endnumsemi = checkDepth(semiTag).index(
-                    max(checkDepth(semiTag)), startnumsemi+1)
-                useTag = semiTag[startnumsemi:endnumsemi+1]
-                mode = useTag[1:-1].split()[0]
-                Tag = tag(Name, mode, useTag, argsdict)
-                result = Tag.run(useTag, argsdict)
-                argsdict.update(Tag.argsdict)
-                Temptag = semiTag.replace(useTag, str(result), 1)
-                rawline = rawline.replace(semiTag, Temptag, 1)
-                return run(rawline, args, argsdict)
+            return line
         else:
-            return rawline
+            semicontent = line[depthList.index(max(depthList))+1:depthList.index(max(depthList), max(depthList) + 1)]
+            semiTag = line[depthList.index(max(depthList))+1:depthList.index(max(depthList), max(depthList) + 1)]
+            mode = semiTag.split()[0]
+            Tag = tag(name, mode, semiTag, argsdict)
+            argsdict.update(Tag.argsdict)
+            result = Tag.run(semiTag, argsdict)
+            argsdict.update(Tag.argsdict)
+            semiTag = str(result)
+            line = line.replace('(%s)' % semicontent, semiTag, 1)
+            return run(name, line, "", argsdict)
 
 
-class tagclass():
-    def __init__(self, bot):
-        self.bot = bot
-        self.tagload()
 
-    def taginit(self, name, line):
-        @commands.command(name="t%s" % name, pass_context=True)
-        async def tag(self, ctx, *, line):
-            await self.bot.send_message(ctx.message.channel, ctx.message.content)
-            result = run(inputline, inputline.split())
-            await self.bot.send_message(ctx.message.channel, result)
-            print(name)
-            print(result)
-
-    def tagload(self):
-        conn = psycopg2.connect(DATABASE_URL)
-        cur = conn.cursor()
-        cur.execute('select * from tag')
-        rows = cur.fetchall()
-        print(_('태그 로드중...'))
-        print(_('------'))
-        for row in rows:
-            try:
-                name = row[0]
-                line = row[1]
-                self.taginit(name, line)
-                print(line)
-            except Exception as e:
-                print(_('태그 로드 실패!'))
-                print(e)
-                pass
-        conn.close()
-        print(_('------'))
-        print(_('태그 로드 완료!'))
-
-    @commands.command(pass_context=True, name="maketag")
-    async def maketag(self, ctx, *, line):
-        name = line[0]
-        try:
-            await self.taginsert("tag", name, line)
-            await self.bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
-            @commands.command(name="t%s" % name, pass_context=True)
-            async def tag(self, ctx, *, inputline):
-                await self.bot.send_message(ctx.message.channel, line)      
-                result = run(inputline, inputline.split())
-                await self.bot.send_message(ctx.message.channel, result)
-                print(name)
-                print(result)
-        except Exception as e:
-            print(e)
-            await self.bot.send_message(ctx.message.channel, _("이미 있는 태그입니다."))
-
-    async def taginsert(self, table, name, line):
-        conn = psycopg2.connect(DATABASE_URL)
-        cur = conn.cursor()
-        sql = """insert into {0} ("name","tag") values (%s, %s)""".format(
-            table)
-        cur.execute(sql, (name, line))
-        conn.commit()
-        conn.close()
-
-
-def setup(bot):
-    bot.add_cog(tagclass(bot))
+async def taginsert(table, name, line):
+    conn = psycopg2.connect(DATABASE_URL)
+    cur = conn.cursor()
+    sql = """insert into {0} ("name","tag") values (%s, %s)""".format(
+        table)
+    cur.execute(sql, (name, line))
+    conn.commit()
+    conn.close()

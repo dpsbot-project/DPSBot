@@ -1,5 +1,6 @@
 import discord
 import asyncio
+from tag import *
 from variables import token, pluginfolder, gamename, prefix, owner
 from pluginlist import pluginlist
 from bot import DPSBot
@@ -9,8 +10,58 @@ from server import serverlist, server_init
 bot = DPSBot(command_prefix=prefix.get())
 
 
+@bot.command(pass_context=True, name="maketag")
+async def maketag(ctx, *, line):
+    name = line.split()[0]
+    try:
+        await taginsert("tag", name, line.replace(name + " ", "", 1))
+        await bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
+        print("t!%s" % name)
+        @bot.command(name="t!%s" % name, pass_context=True)
+        async def tag(ctx, *, inputline=""):
+            result = run(name, line.replace(name + " ", "", 1), inputline)
+            await bot.send_message(ctx.message.channel, result)
+            print(name)
+            print(result)
+    except Exception as e:
+        print(e)
+        await bot.send_message(ctx.message.channel, _("이미 있는 태그입니다."))
+
+
+def taginit(name, line):
+    @bot.command(name="t!%s" % name, pass_context=True)
+    async def tag(ctx, *, inputline=""):
+        await bot.send_message(ctx.message.channel, ctx.message.content)
+        result = run(name, line, inputline)
+        await bot.send_message(ctx.message.channel, result)
+        print(name)
+        print(result)
+
+
+def tagload():
+    conn = psycopg2.connect(DATABASE_URL)
+    cur = conn.cursor()
+    cur.execute('select * from tag')
+    rows = cur.fetchall()
+    print(_('태그 로드중...'))
+    print(_('------'))
+    for row in rows:
+        try:
+            name = row[0]
+            line = row[1]
+            taginit(name, line)
+            print(line)
+        except Exception as e:
+            print(_('태그 로드 실패!'))
+            print(e)
+            pass
+    conn.close()
+    print(_('------'))
+    print(_('태그 로드 완료!'))
+
 @bot.event
 async def on_ready():
+    tagload()
     print(_('로그인 되었습니다.'))
     print(_('------'))
     print(bot.user.name)
