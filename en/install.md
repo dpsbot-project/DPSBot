@@ -118,8 +118,7 @@ then
 sudo service postgresql restart
 ```
 
-## Set DATABASE_URL variable
-
+## create database
 ```
 su - postgres
 ```
