@@ -1,22 +1,20 @@
-![character](https://github.com/DPS0340/DPSBot/blob/unstable/front_20181224_181953.png)
 
-**another deepi-chan?!?!**
+[<img src="https://discordbots.org/api/widget/523785272693882880.svg">](https://discordbots.org/bot/523785272693882880)
 
-# DPSBot unstable
+[![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=master)](https://travis-ci.com/DPS0340/DPSBot)
+# DPSBot - 오픈 소스 다용도 디스코드 봇
 
-[![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=unstable)](https://travis-ci.com/DPS0340/DPSBot)
+**[공식 홈페이지](https://dpsbot.tk)를 봐주세요**
 
-**this version is really, really for test and update master branch!**
 
-**please use with caution!**
+## DPSBot 공개 번역
 
-## bot invite link...?
+**[도와주실래요?](https://www.transifex.com/ttakkku/dpsbot/dashboard/) :)**
 
-currently there is no invite link.
 
-## how to use?
+# DPSBot - Open source Discord bot for multiple purposes
 
-=**Please look at [official bot site](https://dpsbot.tk)**
+**Please look at [official bot site](https://dpsbot.tk)**
 
 
 ## DPSBot open translate
@@ -25,6 +23,8 @@ currently there is no invite link.
 
 
 
+
+Powered by team ttakkku
 
 
 # DPSBot unstable branch
