@@ -50,6 +50,7 @@ class postclass():
                 await self.bot.send_message(ctx.message.channel, "%s. %s - by %s\n" % (num, head, author))
             conn.close()
             await self.bot.send_message(ctx.message.channel, _("%s글 (번호)를 입력하시면 글을 보실수 있어요!") % prefix.get())
+            await self.bot.send_message(ctx.message.channel, _("글을 쓰시려면 써줘 (번호)와 제목을 한 줄에 쓰세요!"))
         else:
             conn = psycopg2.connect(DATABASE_URL)
             cur = conn.cursor()
