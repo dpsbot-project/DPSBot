@@ -359,7 +359,7 @@ class tagclass():
         @commands.command(name="t%s" % name, pass_context=True)
         async def tag(self, ctx, *, line):
             await self.bot.send_message(ctx.message.channel, ctx.message.content)
-            result = run(line.split(), line)
+            result = run(inputline, inputline.split())
             await self.bot.send_message(ctx.message.channel, result)
             print(name)
             print(result)
@@ -394,7 +394,7 @@ class tagclass():
             @commands.command(name="t%s" % name, pass_context=True)
             async def tag(self, ctx, *, inputline):
                 await self.bot.send_message(ctx.message.channel, line)      
-                result = run(line, inputline)
+                result = run(inputline, inputline.split())
                 await self.bot.send_message(ctx.message.channel, result)
                 print(name)
                 print(result)
