@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-27 14:27+0900\n"
+"POT-Creation-Date: 2018-12-27 14:58+0900\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -362,11 +362,15 @@ msgstr ""
 msgid "%s글 (번호)를 입력하시면 글을 보실수 있어요!"
 msgstr ""
 
-#: ./plugin/default/post.py:77
+#: ./plugin/default/post.py:53
+msgid "글을 쓰시려면 %s써줘 (번호)와 제목을 한 줄에 쓰세요!"
+msgstr ""
+
+#: ./plugin/default/post.py:76
 msgid "%d 글 삭제 완료!"
 msgstr ""
 
-#: ./plugin/default/post.py:79
+#: ./plugin/default/post.py:78
 msgid ""
 "당신은 권한이 없습니다.\n"
 "당신이 봇의 소유자거나 관리자인지 확인해 보세요."
