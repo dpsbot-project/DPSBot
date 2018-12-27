@@ -81,7 +81,7 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
-    @commands.command(name="addplaying", aliases=["플레이중추가"] pass_context=True)
+    @commands.command(name="addplaying", aliases=["플레이중추가"], pass_context=True)
     async def addplaying(self, ctx, *, playing=None):
         if ctx.message.author.id == owner:
             if playing != None:
