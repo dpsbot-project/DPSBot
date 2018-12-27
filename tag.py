@@ -324,7 +324,7 @@ def run(name, line, args="", argsdict={}):
             argsdict.update(Tag.argsdict)
             semiTag = str(result)
             line = line.replace('(%s)' % semicontent, semiTag, 1)
-            return run(name, line, "", argsdict)
+            return run(name, line, args, argsdict)
 
 
 
