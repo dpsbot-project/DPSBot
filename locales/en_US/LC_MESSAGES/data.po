@@ -8,7 +8,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2018-12-23 11:57+0900\n"
+"POT-Creation-Date: 2018-12-27 14:27+0900\n"
 "PO-Revision-Date: 2018-12-22 15:35+0000\n"
 "Last-Translator: jiho lee <jh001007@gmail.com>, 2018\n"
 "Language-Team: English (United States) (https://www.transifex.com/ttakkku/teams/94711/en_US/)\n"
@@ -19,36 +19,53 @@ msgstr ""
 "Language: en_US\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: ./Main.py:10
-msgid "로그인 되었습니다."
-msgstr "login complete."
+#: ./Main.py:18
+msgid "태그 생성 완료!"
+msgstr "making tag complete!"
 
-#: ./Main.py:11 ./Main.py:14 ./Main.py:26 ./Main.py:35 ./plugin/mod.py:13
-#: ./plugin/mod.py:23 ./plugin/tag.py:373 ./plugin/tag.py:385
+#: ./Main.py:28
+msgid "이미 있는 태그입니다."
+msgstr "the tag already exists."
+
+#: ./Main.py:46
+msgid "태그 로드중..."
+msgstr "tag loading..."
+
+#: ./Main.py:47 ./Main.py:59 ./Main.py:66 ./Main.py:69 ./Main.py:96
+#: ./Main.py:106 ./plugin/default/mod.py:20 ./plugin/default/mod.py:31
 msgid "------"
 msgstr "------"
 
-#: ./Main.py:30 ./plugin/transhandler.py:32
+#: ./Main.py:55
+msgid "태그 로드 실패!"
+msgstr "tag load failed!"
+
+#: ./Main.py:60
+msgid "태그 로드 완료!"
+msgstr "tag load complete!"
+
+#: ./Main.py:65
+msgid "로그인 되었습니다."
+msgstr "login complete."
+
+#: ./Main.py:101 ./plugin/default/transhandler.py:50
 msgid "%s 확장 기능을 불러왔습니다."
 msgstr "plugin %s loaded."
 
-#: ./Main.py:32 ./plugin/transhandler.py:34
+#: ./Main.py:103 ./plugin/default/transhandler.py:52
 msgid "%s 확장 기능을 불러오는데 실패했습니다."
 msgstr "plugin %s load failed."
 
-#: ./plugin/admin.py:18
-msgid "load"
-msgstr "load"
-
-#: ./plugin/admin.py:26
+#: ./plugin/default/admin.py:26
 msgid "%s 모듈 로드 완료!"
 msgstr "module %s load complete!"
 
-#: ./plugin/admin.py:28
+#: ./plugin/default/admin.py:28
 msgid "이미 로드된 모듈입니다."
 msgstr "module is already loaded."
 
-#: ./plugin/admin.py:30 ./plugin/admin.py:49 ./plugin/admin.py:67
+#: ./plugin/default/admin.py:30 ./plugin/default/admin.py:49
+#: ./plugin/default/admin.py:67
 msgid ""
 "오류 발생!\n"
 "%s"
@@ -56,81 +73,47 @@ msgstr ""
 "there was an error!\n"
 "%s"
 
-#: ./plugin/admin.py:32 ./plugin/admin.py:51 ./plugin/admin.py:69
-#: ./plugin/admin.py:86 ./plugin/admin.py:104 ./plugin/admin.py:123
-#: ./plugin/admin.py:139 ./plugin/admin.py:155
+#: ./plugin/default/admin.py:32 ./plugin/default/admin.py:51
+#: ./plugin/default/admin.py:69 ./plugin/default/admin.py:82
+#: ./plugin/default/admin.py:97 ./plugin/default/admin.py:111
+#: ./plugin/default/admin.py:127 ./plugin/default/admin.py:143
+#: ./plugin/default/admin.py:151 ./plugin/default/admin.py:175
 msgid ""
 "권한이 없습니다.\n"
-"운영자만 사용 가능합니다."
+"봇 개발자만 사용 가능합니다."
 msgstr ""
 "you've no permissons.\n"
-"admin only."
+"bot developer only."
 
-#: ./plugin/admin.py:34
-msgid "unload"
-msgstr "unload"
-
-#: ./plugin/admin.py:39
+#: ./plugin/default/admin.py:39
 msgid "어드민 모듈은 모듈을 로드하고 해제하는 기능이 있어, 해제가 불가능합니다."
 msgstr ""
 "Admin module has a function that load and unload another module. so it can't"
 " be unloaded."
 
-#: ./plugin/admin.py:45
+#: ./plugin/default/admin.py:45
 msgid "%s 모듈 해제 완료!"
 msgstr "module %s unload complete!"
 
-#: ./plugin/admin.py:47
+#: ./plugin/default/admin.py:47
 msgid "이미 해제된 모듈입니다."
 msgstr "module is already unloaded."
 
-#: ./plugin/admin.py:53
-msgid "reload"
-msgstr "reload"
-
-#: ./plugin/admin.py:58
+#: ./plugin/default/admin.py:58
 msgid "어드민 모듈은 모듈을 로드하고 해제하는 기능이 있어, 재로드가 불가능합니다."
 msgstr ""
 "Admin module has a function that load and unload another module. so it can't"
 " be reloaded."
 
-#: ./plugin/admin.py:65
+#: ./plugin/default/admin.py:65
 msgid "%s 모듈 재로드 완료!"
 msgstr "module %s reload complete!"
 
-#: ./plugin/admin.py:72
-msgid "봇소개변경"
-msgstr "introducechange"
-
-#: ./plugin/admin.py:75 ./plugin/admin.py:92
-msgid "변경할 내용을 말해주세요."
-msgstr "Please type content to change."
-
-#: ./plugin/admin.py:84
-msgid "변경 완료."
-msgstr "change complete."
-
-#: ./plugin/admin.py:89
-msgid "플레이중추가"
-msgstr "addplaying"
-
-#: ./plugin/admin.py:102 ./plugin/transhandler.py:37
+#: ./plugin/default/admin.py:95 ./plugin/default/transhandler.py:55
 msgid "%s로 변경되었습니다."
 msgstr "changed to %s."
 
-#: ./plugin/admin.py:107
-msgid "접두사변경"
-msgstr "changeprefix"
-
-#: ./plugin/admin.py:110
-msgid ""
-"변경할 내용을 말해주세요.\n"
-"공백은 _으로 대체하세요."
-msgstr ""
-"Please type content to change.\n"
-"Replace whitespace to _."
-
-#: ./plugin/admin.py:121
+#: ./plugin/default/admin.py:109
 msgid ""
 "%s로 접두사가 변경되었습니다.\n"
 "봇을 재시작시켜주세요."
@@ -138,167 +121,102 @@ msgstr ""
 "Prefix changed to %s.\n"
 "Please restart the bot."
 
-#: ./plugin/admin.py:126
-msgid "명령어삭제"
-msgstr "deletecommand"
-
-#: ./plugin/admin.py:129 ./plugin/admin.py:145
+#: ./plugin/default/admin.py:116 ./plugin/default/admin.py:132
 msgid "**경고**"
 msgstr "**Warning**"
 
-#: ./plugin/admin.py:129 ./plugin/admin.py:145
+#: ./plugin/default/admin.py:117 ./plugin/default/admin.py:133
 msgid "현재 이 기능은 불안정하므로, 주의해서 사용하시길 바랍니다."
 msgstr "This function is unstable for now, please use with caution."
 
-#: ./plugin/admin.py:134
+#: ./plugin/default/admin.py:122
 msgid "%s 명령어 삭제 완료."
 msgstr "command %s delete complete."
 
-#: ./plugin/admin.py:136 ./plugin/admin.py:152
+#: ./plugin/default/admin.py:124 ./plugin/default/admin.py:140
 msgid "오류가 발생했습니다."
 msgstr "there was an error."
 
-#: ./plugin/admin.py:142
-msgid "명령어복구"
-msgstr "restorecommand"
-
-#: ./plugin/admin.py:150
+#: ./plugin/default/admin.py:138
 msgid "%s 명령어 복구 완료."
 msgstr "command %s recover complete."
 
-#: ./plugin/aloh.py:16
-msgid "알로세이드"
-msgstr "alohsayd"
+#: ./plugin/default/admin.py:145
+msgid "exit"
+msgstr "exit"
 
-#: ./plugin/aloh.py:18
-msgid "알로세이드는 1172번까지 있습니다."
-msgstr "max number of alohsayd is 1172."
+#: ./plugin/default/admin.py:148
+msgid "봇이 종료됩니다."
+msgstr "bot is turning off."
 
-#: ./plugin/aloh.py:23
-msgid "알로세이드랜덤"
-msgstr "alohsaydrandom"
+#: ./plugin/default/admin.py:157
+msgid "%s 님이 %s님을 %s일간 밴하셨습니다."
+msgstr "%s banned %s for %s days."
 
-#: ./plugin/aloh.py:26
-msgid "랜덤 알로세이드"
-msgstr "random alohsayd"
+#: ./plugin/default/admin.py:158
+msgid "이유:%s"
+msgstr "reason:%s"
 
-#: ./plugin/aloh.py:47
-msgid "파일을 찾지 못했어요!"
-msgstr "can't find the file!"
-
-#: ./plugin/archive.py:36
-msgid "아카이브"
-msgstr "archive"
-
-#: ./plugin/archive.py:38
-msgid "%s가 %s를(을) 아카이브 했습니다.\n"
-msgstr "%s archived %s.\n"
-
-#: ./plugin/archive.py:43
-msgid ""
-"아카이브 중입니다...\n"
-"조금만 기다려 주세요!"
+#: ./plugin/default/admin.py:160
+msgid "밴 대상자가 없거나 봇에 밴 권한이 없습니다."
 msgstr ""
-"Archiving...\n"
-"Please wait!"
+"the person will be banned does not exist or the bot has no ban permission."
 
-#: ./plugin/archive.py:51
-msgid "아카이브 주소:%s\n"
-msgstr "archive url:%s\n"
+#: ./plugin/default/admin.py:166
+msgid "%s 님이 %s님을 킥하셨습니다."
+msgstr "%s kicked %s."
 
-#: ./plugin/archive.py:58
-msgid "오류가 발생했어요!"
-msgstr "there was an error!"
+#: ./plugin/default/admin.py:168
+msgid "킥 대상자가 없거나 봇에 킥 권한이 없습니다."
+msgstr ""
+"the person will be kicked does not exist or the bot has no kick permission."
 
-#: ./plugin/crypto.py:11
-msgid "암호화"
-msgstr "encrypt"
+#: ./plugin/default/admin.py:173
+msgid "서버 이름: %s 서버 id: %s 서버 인원: %s"
+msgstr "server name: %s server id: %s users: %s"
 
-#: ./plugin/crypto.py:13
-msgid "암호화시킬 내용을 말해주세요."
-msgstr "Please type contents to encrypt."
-
-#: ./plugin/crypto.py:19 ./plugin/crypto.py:29 ./plugin/transhandler.py:21
+#: ./plugin/default/crypto.py:19 ./plugin/default/crypto.py:28
+#: ./plugin/default/transhandler.py:29
 msgid "내용이 없습니다."
 msgstr "it has no contents."
 
-#: ./plugin/crypto.py:21
-msgid "복호화"
-msgstr "decrypt"
-
-#: ./plugin/crypto.py:23
-msgid "암호를 말해주세요."
-msgstr "Please type password."
-
-#: ./plugin/etc.py:13
-msgid "안녕"
-msgstr "hello"
-
-#: ./plugin/etc.py:15
+#: ./plugin/default/etc.py:20
 msgid "안녕하세요!"
 msgstr "hello!"
 
-#: ./plugin/etc.py:18
-msgid "블라인드"
-msgstr "blind"
-
-#: ./plugin/etc.py:20
+#: ./plugin/default/etc.py:24
 msgid "---------------블라인드 중입니다---------------"
 msgstr "---------------blind started---------------"
 
-#: ./plugin/etc.py:21
+#: ./plugin/default/etc.py:25
 msgid ".\n"
 msgstr ".\n"
 
-#: ./plugin/etc.py:22
+#: ./plugin/default/etc.py:26
 msgid "---------------블라인드가 끝났습니다---------------"
 msgstr "---------------blind end---------------"
 
-#: ./plugin/etc.py:24
-msgid "귓속말"
-msgstr "whisper"
-
-#: ./plugin/etc.py:26
+#: ./plugin/default/etc.py:30
 msgid "DM을 봐주세요!"
 msgstr "Please read the DM!"
 
-#: ./plugin/etc.py:27
+#: ./plugin/default/etc.py:31
 msgid "저를 부르셨나요...?"
 msgstr "did you call me...?"
 
-#: ./plugin/etc.py:28
+#: ./plugin/default/etc.py:32
 msgid "이제 눈치보지 마시고 마음껏 얘기해 주세요!"
 msgstr "Now you can talk me free!"
 
-#: ./plugin/etc.py:31
-msgid "죽어"
-msgstr "die"
-
-#: ./plugin/etc.py:33 ./plugin/etc.py:38
+#: ./plugin/default/etc.py:36 ./plugin/default/etc.py:40
 msgid "싫어요!"
 msgstr "no!"
 
-#: ./plugin/etc.py:36
-msgid "닥쳐"
-msgstr "shutup"
-
-#: ./plugin/etc.py:41
-msgid "헬로월드"
-msgstr "helloworld"
-
-#: ./plugin/etc.py:43
+#: ./plugin/default/etc.py:44
 msgid "안녕하세요....DPS봇입니다!"
 msgstr "hello....it's DPSBot!"
 
-#: ./plugin/etc.py:46
-msgid "뭐해"
-msgstr "doing"
-
-#: ./plugin/etc.py:52
-msgid "찍어"
-msgstr "random"
-
-#: ./plugin/etc.py:54
+#: ./plugin/default/etc.py:53
 msgid ""
 "마피아 게임인가요...?!\n"
 "머리를 굴려서 특정 사용자를 찍을게요!\n"
@@ -306,7 +224,7 @@ msgstr ""
 "it's like a game!\n"
 "I'll choose someone!\n"
 
-#: ./plugin/etc.py:62
+#: ./plugin/default/etc.py:61
 msgid ""
 "\n"
 "님을 찍겠습니다☆"
@@ -314,15 +232,11 @@ msgstr ""
 "\n"
 "i'll choose him☆"
 
-#: ./plugin/etc.py:65 ./plugin/etc.py:68
+#: ./plugin/default/etc.py:66
 msgid "내성위키"
 msgstr "naesungwiki"
 
-#: ./plugin/etc.py:71
-msgid "내가누구"
-msgstr "whoami"
-
-#: ./plugin/etc.py:73
+#: ./plugin/default/etc.py:71
 msgid ""
 "\n"
 "%s\n"
@@ -334,19 +248,15 @@ msgstr ""
 "\n"
 "is you?!?!"
 
-#: ./plugin/etc.py:73
+#: ./plugin/default/etc.py:71
 msgid "당신은 혹시..."
 msgstr "you are..."
 
-#: ./plugin/etc.py:78
-msgid "건의"
-msgstr "ticket"
-
-#: ./plugin/etc.py:83
+#: ./plugin/default/etc.py:80
 msgid "%s 님이 %s (이)라고 건의했습니다."
 msgstr "%s opened ticket %s."
 
-#: ./plugin/etc.py:84
+#: ./plugin/default/etc.py:81
 msgid ""
 "소식이 있어요!\n"
 " %s 님이 %s (이)라고 건의했습니다."
@@ -354,19 +264,15 @@ msgstr ""
 "i have a news!\n"
 "%s opened ticket %s."
 
-#: ./plugin/exec.py:15
-msgid "exec"
-msgstr "exec"
-
-#: ./plugin/exec.py:29
+#: ./plugin/default/exec.py:22
 msgid "명령어 실행: %s"
 msgstr "exec command: %s"
 
-#: ./plugin/exec.py:33 ./plugin/exec.py:61
+#: ./plugin/default/exec.py:27 ./plugin/default/exec.py:54
 msgid "오류가 발생했습니다!"
 msgstr "there was an error!"
 
-#: ./plugin/exec.py:35
+#: ./plugin/default/exec.py:29
 msgid ""
 "권한이 없습니다!\n"
 "개발자만 접근 가능합니다."
@@ -374,109 +280,81 @@ msgstr ""
 "you've no permissons.\n"
 "developer only."
 
-#: ./plugin/exec.py:38
-msgid "telnet"
-msgstr "telnet"
-
-#: ./plugin/exec.py:41
+#: ./plugin/default/exec.py:34
 msgid "%s:%s에 연결 중..."
 msgstr "commecting to %s:%s..."
 
-#: ./plugin/exec.py:45 ./plugin/whisperandlog.py:74
-#: ./plugin/whisperandlog.py:90 ./plugin/whisperandlog.py:105
-#: ./plugin/whisperandlog.py:121
+#: ./plugin/default/exec.py:38 ./plugin/default/whisperandlog.py:76
+#: ./plugin/default/whisperandlog.py:91 ./plugin/default/whisperandlog.py:105
+#: ./plugin/default/whisperandlog.py:120
 msgid "응답이 없어서 종료되었습니다."
 msgstr "exited because of no response."
 
-#: ./plugin/exec.py:48 ./plugin/whisperandlog.py:57
-#: ./plugin/whisperandlog.py:77 ./plugin/whisperandlog.py:93
-#: ./plugin/whisperandlog.py:107
+#: ./plugin/default/exec.py:41 ./plugin/default/whisperandlog.py:61
+#: ./plugin/default/whisperandlog.py:79 ./plugin/default/whisperandlog.py:94
+#: ./plugin/default/whisperandlog.py:107
 msgid "종료"
 msgstr "exit"
 
-#: ./plugin/exec.py:49 ./plugin/whisperandlog.py:58
-#: ./plugin/whisperandlog.py:78 ./plugin/whisperandlog.py:94
-#: ./plugin/whisperandlog.py:108
+#: ./plugin/default/exec.py:42 ./plugin/default/whisperandlog.py:62
+#: ./plugin/default/whisperandlog.py:80 ./plugin/default/whisperandlog.py:95
+#: ./plugin/default/whisperandlog.py:108
 msgid "종료되었습니다."
 msgstr "exited."
 
-#: ./plugin/gravatar.py:9
-msgid "그라바타"
-msgstr "gravatar"
-
-#: ./plugin/info.py:16
-msgid "사용자정보"
-msgstr "userinfo"
-
-#: ./plugin/info.py:30
-msgid "정보"
-msgstr "info"
-
-#: ./plugin/info.py:48
+#: ./plugin/default/info.py:48
 msgid "%s 정보"
 msgstr "%s info"
 
-#: ./plugin/info.py:50
+#: ./plugin/default/info.py:51
 msgid "봇 운영자"
 msgstr "bot admin"
 
-#: ./plugin/info.py:51
+#: ./plugin/default/info.py:52
 msgid "봇 부운영자"
 msgstr "bot moderator"
 
-#: ./plugin/info.py:52
+#: ./plugin/default/info.py:53
 msgid "서버 수"
 msgstr "server count"
 
-#: ./plugin/info.py:53
+#: ./plugin/default/info.py:55
 msgid "사용자 수"
 msgstr "user count"
 
-#: ./plugin/info.py:54
+#: ./plugin/default/info.py:56
 msgid "접두사"
 msgstr "prefix"
 
-#: ./plugin/info.py:55
-msgid "%s 플레이 중\n"
-msgstr "playing %s\n"
-
-#: ./plugin/info.py:55
-msgid "지금 플레이 중"
-msgstr "now playing"
-
-#: ./plugin/info.py:56
+#: ./plugin/default/info.py:57
 msgid "DPSBot의 나이"
 msgstr "age of DPSBot"
 
-#: ./plugin/info.py:56
+#: ./plugin/default/info.py:57
 msgid "최초 공개로부터 %s일 지났습니다."
 msgstr "It has been %s days since its initial public release."
 
-#: ./plugin/info.py:57
+#: ./plugin/default/info.py:59
 msgid "Powered by Team ttakkku"
 msgstr "Powered by Team ttakkku"
 
-#: ./plugin/mod.py:12
+#: ./plugin/default/mod.py:19
 msgid "부운영자 로드중..."
 msgstr "moderator loading..."
 
-#: ./plugin/mod.py:20
+#: ./plugin/default/mod.py:28
 msgid "부운영자 로드 실패!"
 msgstr "moderator load failed!"
 
-#: ./plugin/mod.py:24
+#: ./plugin/default/mod.py:32
 msgid "부운영자 로드 완료!"
 msgstr "moderator load succeed!"
 
-#: ./plugin/mod.py:26
-msgid "부운영자추가"
-msgstr "modadd"
-
-#: ./plugin/mod.py:37
+#: ./plugin/default/mod.py:45
 msgid "%s 부운영자 등록 완료!"
 msgstr "mod %s add complete!"
 
-#: ./plugin/mod.py:39 ./plugin/mod.py:53
+#: ./plugin/default/mod.py:47 ./plugin/default/mod.py:61
 msgid ""
 "당신은 권한이 없습니다.\n"
 "당신이 봇의 운영자거나 부운영자인지 확인해 보세요."
@@ -484,71 +362,39 @@ msgstr ""
 "you have no permission.\n"
 "please check that whether you are admin or moderator of the bot."
 
-#: ./plugin/mod.py:41
-msgid "부운영자삭제"
-msgstr "deletemod"
-
-#: ./plugin/mod.py:51
+#: ./plugin/default/mod.py:59
 msgid "%s 부운영자 삭제 완료!"
 msgstr "mod %s delete complete!"
 
-#: ./plugin/mod.py:55
-msgid "부운영자목록"
-msgstr "mod list"
-
-#: ./plugin/mod.py:57
+#: ./plugin/default/mod.py:65
 msgid "부운영자 목록\n"
 msgstr "mod list\n"
 
-#: ./plugin/osu.py:11
-msgid "오스"
-msgstr "osu"
+#: ./plugin/default/pluginsettings.py:25
+msgid "사용중인 모듈 리스트"
+msgstr "working module list"
 
-#: ./plugin/pluginsettings.py:10
-msgid "모듈"
-msgstr "module"
-
-#: ./plugin/pluginsettings.py:19
+#: ./plugin/default/pluginsettings.py:35
 msgid "사용 가능한 모듈 리스트"
 msgstr "available module list"
 
-#: ./plugin/pluginsettings.py:28
-msgid "현재 작동중인 모듈 리스트"
-msgstr "working module list"
-
-#: ./plugin/post.py:12
-msgid "써줘"
-msgstr "write"
-
-#: ./plugin/post.py:32
+#: ./plugin/default/post.py:29
 msgid "제목이 없습니다."
 msgstr "it has no title."
 
-#: ./plugin/post.py:35
+#: ./plugin/default/post.py:31
 msgid "내용을 말해주세요!"
 msgstr "plese type contents!"
 
-#: ./plugin/post.py:45
-msgid "보여줘"
-msgstr "show"
-
-#: ./plugin/post.py:57
+#: ./plugin/default/post.py:52
 msgid "%s글 (번호)를 입력하시면 글을 보실수 있어요!"
 msgstr "To read the post, please type %spost (number)!"
 
-#: ./plugin/post.py:60
-msgid "글"
-msgstr "post"
-
-#: ./plugin/post.py:75
-msgid "글삭제"
-msgstr "deletepost"
-
-#: ./plugin/post.py:83
+#: ./plugin/default/post.py:77
 msgid "%d 글 삭제 완료!"
 msgstr "post %s delete complete!"
 
-#: ./plugin/post.py:85
+#: ./plugin/default/post.py:79
 msgid ""
 "당신은 권한이 없습니다.\n"
 "당신이 봇의 소유자거나 관리자인지 확인해 보세요."
@@ -556,63 +402,19 @@ msgstr ""
 "you have no permission.\n"
 "please check that whether you are admin or moderator of the bot."
 
-#: ./plugin/tag.py:358 ./plugin/tag.py:396
-msgid "t%s"
-msgstr "t%s"
-
-#: ./plugin/tag.py:372
-msgid "태그 로드중..."
-msgstr "tag loading..."
-
-#: ./plugin/tag.py:381
-msgid "태그 로드 실패!"
-msgstr "tag load failed!"
-
-#: ./plugin/tag.py:386
-msgid "태그 로드 완료!"
-msgstr "tag load complete!"
-
-#: ./plugin/tag.py:389
-msgid "maketag"
-msgstr "maketag"
-
-#: ./plugin/tag.py:395
-msgid "태그 생성 완료!"
-msgstr "making tag complete!"
-
-#: ./plugin/tag.py:399
-msgid "디피 t%s"
-msgstr "DiPi t%s"
-
-#: ./plugin/tag.py:405
-msgid "이미 있는 태그입니다."
-msgstr "the tag already exists."
-
-#: ./plugin/transhandler.py:11
-msgid "번역"
-msgstr "translate"
-
-#: ./plugin/transhandler.py:13
+#: ./plugin/default/transhandler.py:21
 msgid "번역할 내용을 말해주세요."
 msgstr "Please type contents to translate."
 
-#: ./plugin/transhandler.py:19
+#: ./plugin/default/transhandler.py:27
 msgid "잘못된 언어코드입니다."
 msgstr "wrong language code."
 
-#: ./plugin/whisperandlog.py:16
-msgid "전해줘"
-msgstr "send"
-
-#: ./plugin/whisperandlog.py:24
+#: ./plugin/default/whisperandlog.py:30
 msgid "멘션과 메시지를 입력해주세요."
 msgstr "please type mention and message."
 
-#: ./plugin/whisperandlog.py:27
-msgid "익명"
-msgstr "anon"
-
-#: ./plugin/whisperandlog.py:36
+#: ./plugin/default/whisperandlog.py:41
 msgid ""
 "누군가가 익명으로 대화를 시작합니다!\n"
 " 답장하시려면 %s답장과 암호를 한번에 쳐주세요. 암호:\n"
@@ -620,52 +422,48 @@ msgstr ""
 "someone starts talk with anon!\n"
 "if you want to reply, please type %sreply and password in the same line. password:\n"
 
-#: ./plugin/whisperandlog.py:40
-msgid "답장"
-msgstr "reply"
-
-#: ./plugin/whisperandlog.py:43
+#: ./plugin/default/whisperandlog.py:48
 msgid "암호가 확인되었습니다."
 msgstr "password is right."
 
-#: ./plugin/whisperandlog.py:52
+#: ./plugin/default/whisperandlog.py:56
 msgid "채팅을 시도합니다.\n"
 msgstr "trying to chat.\n"
 
-#: ./plugin/whisperandlog.py:56
+#: ./plugin/default/whisperandlog.py:60
 msgid "%s님이 %s님에게 %s라 말합니다."
 msgstr "%s say to %s that %s."
 
-#: ./plugin/whisperandlog.py:60 ./plugin/whisperandlog.py:111
+#: ./plugin/default/whisperandlog.py:64 ./plugin/default/whisperandlog.py:111
 msgid "%s 씨가 %s(이)라고 전해달라고 말하던데요?"
 msgstr "Mr.%s said to me that please send %s?"
 
-#: ./plugin/whisperandlog.py:61 ./plugin/whisperandlog.py:83
-#: ./plugin/whisperandlog.py:98 ./plugin/whisperandlog.py:112
+#: ./plugin/default/whisperandlog.py:65 ./plugin/default/whisperandlog.py:85
+#: ./plugin/default/whisperandlog.py:99 ./plugin/default/whisperandlog.py:112
 msgid "메시지가 전해졌습니다."
 msgstr "A message has been sent."
 
-#: ./plugin/whisperandlog.py:67
+#: ./plugin/default/whisperandlog.py:69
 msgid "익명 채팅을 시도합니다.\n"
 msgstr "trying to anonymous chat.\n"
 
-#: ./plugin/whisperandlog.py:80 ./plugin/whisperandlog.py:96
+#: ./plugin/default/whisperandlog.py:82 ./plugin/default/whisperandlog.py:97
 msgid "%s가 %s에게 %s라 말합니다.(익명)\n"
 msgstr "%s say to %s that %s. (anonymous)\n"
 
-#: ./plugin/whisperandlog.py:82 ./plugin/whisperandlog.py:97
+#: ./plugin/default/whisperandlog.py:84 ./plugin/default/whisperandlog.py:98
 msgid "익명으로 메시지가 왔어요! %s(이)라고 전해달라고 말하던데요?"
 msgstr "message come with anon! said to me please send %s?"
 
-#: ./plugin/whisperandlog.py:110
+#: ./plugin/default/whisperandlog.py:110
 msgid "%s가 %s에게 %s라 말합니다.\n"
 msgstr "%s says to %s that %s.\n"
 
-#: ./plugin/whisperandlog.py:125
+#: ./plugin/default/whisperandlog.py:124
 msgid "비밀번호 입력으로 인해 종료되었습니다."
 msgstr "exited because you typed the password."
 
-#: ./plugin/whisperandlog.py:129
+#: ./plugin/default/whisperandlog.py:128
 msgid ""
 "\n"
 "서버:%s\n"
@@ -679,7 +477,7 @@ msgstr ""
 "writer:%s\n"
 "%s\n"
 
-#: ./plugin/whisperandlog.py:130
+#: ./plugin/default/whisperandlog.py:129
 msgid ""
 "\n"
 "서버:%s\n"
@@ -699,25 +497,61 @@ msgstr ""
 "\n"
 "%s"
 
-#: ./plugin/whisperandlog.py:130
+#: ./plugin/default/whisperandlog.py:129
 msgid "log"
 msgstr "log"
 
-#: ./plugin/whisperandlog.py:137
-msgid "로그켜"
-msgstr "log"
-
-#: ./plugin/whisperandlog.py:141
+#: ./plugin/default/whisperandlog.py:140
 msgid "종료 코드를 봇이 있는 채널이나 DM에 입력하면 꺼집니다. 종료 코드:"
 msgstr "log off when type exit code to channel or DM. exit code:"
 
-#: ./plugin/whisperandlog.py:143
+#: ./plugin/default/whisperandlog.py:142
 msgid ""
 "\n"
 "listener is: %s\n"
 msgstr ""
 "\n"
 "listener is: %s\n"
+
+#: ./plugin/half-abandoned/aloh.py:19
+msgid "알로세이드는 1172번까지 있습니다."
+msgstr "max number of alohsayd is 1172."
+
+#: ./plugin/half-abandoned/aloh.py:26
+msgid "랜덤 알로세이드"
+msgstr "random alohsayd"
+
+#: ./plugin/half-abandoned/aloh.py:46
+msgid "파일을 찾지 못했어요!"
+msgstr "can't find the file!"
+
+#: ./plugin/half-abandoned/archive.py:45
+msgid "%s가 %s를(을) 아카이브 했습니다.\n"
+msgstr "%s archived %s.\n"
+
+#: ./plugin/half-abandoned/archive.py:50
+msgid ""
+"아카이브 중입니다...\n"
+"조금만 기다려 주세요!"
+msgstr ""
+"Archiving...\n"
+"Please wait!"
+
+#: ./plugin/half-abandoned/archive.py:59
+msgid "아카이브 주소:%s\n"
+msgstr "archive url:%s\n"
+
+#: ./plugin/half-abandoned/archive.py:66
+msgid "오류가 발생했어요!"
+msgstr "there was an error!"
+
+#: ./pluginlist.py:31
+msgid "잘못된 접근입니다."
+msgstr "wrong access."
+
+#: ./pluginlist.py:33
+msgid "상위 디렉토리 접근은 불가합니다."
+msgstr "access to parent directory is not authorized."
 
 #: ./variables.py:5
 msgid ""
@@ -752,35 +586,3 @@ msgstr "i came to library! archive of Real life!"
 #: ./variables.py:6
 msgid "주인님의 블로그에 들일 가구들을 고르고 있어요!"
 msgstr "Choosing furniture for master's blog!"
-
-#: ./variables.py:59
-msgid "DPSBot!"
-msgstr "DPSBot!"
-
-#: ./variables.py:60
-msgid "%shelp를 쳐보세요!"
-msgstr "type %shelp!"
-
-#: ./variables.py:61
-msgid "%s정보를 쳐보세요!"
-msgstr "type %sinfo!"
-
-#: ./variables.py:62
-msgid "제작자: DPS0340"
-msgstr "Made by DPS0340"
-
-#: ./variables.py:63
-msgid "dpsbot.tk"
-msgstr "dpsbot.tk"
-
-#: ./variables.py:64
-msgid "github.com/DPS0340/DPSbot"
-msgstr "github.com/DPS0340/DPSbot"
-
-#: ./variables.py:65
-msgid "teamttakkku.tk"
-msgstr "teamttakkku.tk"
-
-#: ./variables.py:66
-msgid "Proudly Powered by Team ttakkku"
-msgstr "Proudly Powered by Team ttakkku"
