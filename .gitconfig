@@ -1,1 +1,2 @@
-git config --global merge.ours.driver true
+[merge "ours"]
+        driver = true
