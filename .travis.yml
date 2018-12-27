@@ -6,6 +6,8 @@ script: python3 Main.py -test
 env: DB=postgres
 services:
   - postgresql
+before_script:
+  - psql -c 'create database DPSBot;' -U postgres
 after_success:
   - wget https://raw.githubusercontent.com/DiscordHooks/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
