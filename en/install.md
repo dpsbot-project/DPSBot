@@ -4,6 +4,8 @@ deploy via Heroku or ubuntu server.
 
 # Deploy via heroku
 
+**deploy via heroku not recommended!**
+
 ## Cloning git & make heroku app
 
 open terminal, and cd to folder you want to clone.
