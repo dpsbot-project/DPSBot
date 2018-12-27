@@ -28,6 +28,7 @@ heroku create (앱_이름)
 
 ```
 heroku addons:create heroku-postgresql:hobby-dev -a (앱_이름)
+heroku addons:create heroku-redis:hobby-dev -a (앱_이름)
 heroku pg:backups:restore 'https://github.com/DPS0340/DPSBot/raw/master/db-dump/backup.dump' DATABASE_URL -a (앱_이름)
 python3 ./db-init/db-init.py -url (데이터베이스_url)
 ```
