@@ -2,8 +2,6 @@ import random
 import psycopg2
 import asyncio
 from variables import DATABASE_URL, owner, mod, prefix, pluginfolder
-from discord.ext import commands
-from Main import bot
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
@@ -83,7 +81,7 @@ class tag:
         def calculate(args: str, argsdict: dict):
             args = args.split()
             result = args[0]
-            for arg in args:
+            for arg in args[1:]:
                 result /= float(arg)
             try:
                 if result.is_integer():
@@ -285,11 +283,11 @@ def checkDepth(line):
     for letter in line:
         move += 1
         if letter == '(':
+            depthList.append(depth)
             depth += 1
-            depthList.append(depth)
         elif letter == ')':
-            depthList.append(depth)
             depth -= 1
+            depthList.append(depth)
         else:
             depthList.append(-1)
     return depthList
@@ -303,100 +301,31 @@ def declareschecker(line, num=0):
         return num
 
 
-def run(name, line, args="", argsdict={}, first=True):
+def run(name, line, args="", argsdict={}):
     line = line.strip()
     if len(line.split()) <= 1:
         return line
     else:
-        if first:
-            first = False
-            line = line.replace("rawinput", args)
-            for arg in args.split():
-                line = line.replace("input", arg, 1)
-        else:
-            pass
+        line = line.replace("rawinput", args)
+        for arg in args.split():
+            line = line.replace("input", arg, 1)
         depthList = checkDepth(line)
         if len(depthList) == 0:
             return line
         if max(depthList) == -1:
             return line
-        elif max(depthList) != -1:
-            if True:
-                semiTag = line[:depthList.index(
-                    1, depthList.index(1) + 1) + 1]
-                if line.find("(if") == 0 or line.find("(declare") == 0:
-                    mode = semiTag[1:-1].split()[0]
-                    Tag = tag(name, mode, semiTag, argsdict)
-                    argsdict.update(Tag.argsdict)
-                    result = Tag.run(semiTag, argsdict)
-                    argsdict.update(Tag.argsdict)
-                    line = line.replace(semiTag, result, 1)
-                    return run(line, args, argsdict, first)
-                startnumsemi = checkDepth(semiTag).index(
-                    max(checkDepth(semiTag)))
-                endnumsemi = checkDepth(semiTag).index(
-                    max(checkDepth(semiTag)), startnumsemi+1)
-                useTag = semiTag[startnumsemi:endnumsemi+1]
-                mode = useTag[1:-1].split()[0]
-                Tag = tag(name, mode, useTag, argsdict)
-                result = Tag.run(useTag, argsdict)
-                argsdict.update(Tag.argsdict)
-                Temptag = semiTag.replace(useTag, str(result), 1)
-                line = line.replace(semiTag, Temptag, 1)
-                return run(line, args, argsdict, first)
         else:
-            return line
+            semicontent = line[depthList.index(max(depthList))+1:depthList.index(max(depthList), max(depthList) + 1)]
+            semiTag = line[depthList.index(max(depthList))+1:depthList.index(max(depthList), max(depthList) + 1)]
+            mode = semiTag.split()[0]
+            Tag = tag(name, mode, semiTag, argsdict)
+            argsdict.update(Tag.argsdict)
+            result = Tag.run(semiTag, argsdict)
+            argsdict.update(Tag.argsdict)
+            semiTag = str(result)
+            line = line.replace('(%s)' % semicontent, semiTag, 1)
+            return run(name, line, "", argsdict)
 
-
-def taginit(name, line):
-    @commands.command(name="t!%s" % name, pass_context=True)
-    async def tag(ctx, *, line):
-        await bot.send_message(ctx.message.channel, ctx.message.content)
-        result = run(line, line.split())
-        await bot.send_message(ctx.message.channel, result)
-        print(name)
-        print(result)
-
-
-def tagload():
-    conn = psycopg2.connect(DATABASE_URL)
-    cur = conn.cursor()
-    cur.execute('select * from tag')
-    rows = cur.fetchall()
-    print(_('태그 로드중...'))
-    print(_('------'))
-    for row in rows:
-        try:
-            name = row[0]
-            line = row[1]
-            taginit(name, line)
-            print(line)
-        except Exception as e:
-            print(_('태그 로드 실패!'))
-            print(e)
-            pass
-    conn.close()
-    print(_('------'))
-    print(_('태그 로드 완료!'))
-
-
-@commands.command(pass_context=True, name="maketag")
-async def maketag(ctx, *, line):
-    name = line.split()[0]
-    try:
-        await taginsert("tag", name, line)
-        await bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
-        print("t!%s")
-        @commands.command(name="t!%s" % name, pass_context=True)
-        async def tag(ctx, *, inputline):
-            await bot.send_message(ctx.message.channel, line)
-            result = run(inputline, inputline.split())
-            await bot.send_message(ctx.message.channel, result)
-            print(name)
-            print(result)
-    except Exception as e:
-        print(e)
-        await bot.send_message(ctx.message.channel, _("이미 있는 태그입니다."))
 
 
 async def taginsert(table, name, line):
