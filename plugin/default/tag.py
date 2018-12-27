@@ -389,7 +389,7 @@ class tagclass():
         try:
             await self.taginsert("tag", name, line)
             await self.bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
-            @commands.command(name="t%s" % name, pass_context=True)
+            @commands.command(name="t!%s" % name, pass_context=True)
             async def tag(self, ctx, *, inputline):
                 await self.bot.send_message(ctx.message.channel, line)      
                 result = run(inputline, inputline.split())
