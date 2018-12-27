@@ -314,8 +314,8 @@ def run(rawline: str, args="", argsdict={}):
     if len(rawline.split()) <= 1:
         return rawline
     else:
-        if rawline.find("%s maketag " % prefix.get()) != -1:
-            rawline = rawline.replace("%s maketag " % prefix.get(), "", 1)
+        if rawline.find("%smaketag " % prefix.get()) != -1:
+            rawline = rawline.replace("%smaketag " % prefix.get(), "", 1)
             Name = nameParse(rawline)
             rawline = rawline.replace(Name + " ", "", 1)
             rawline = rawline.replace("rawinput", args)
