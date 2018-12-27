@@ -120,7 +120,7 @@ host    replication     all             ::1/128                 trust
 sudo service postgresql restart
 ```
 
-## DATABASE_URL 변수 설정
+## create database
 
 ```
 su - postgres
