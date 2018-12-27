@@ -36,35 +36,33 @@ class postclass():
                 author, body), color=0xE0FFFF)
             await self.bot.send_message(ctx.message.channel, embed=embed)
             await self.postinsert("post", num, author, head, body)
-
-    @commands.command(name="show", aliases=["보여줘"], pass_context=True)
-    async def show(self, ctx):
-        conn = psycopg2.connect(DATABASE_URL)
-        cur = conn.cursor()
-        cur.execute('select * from post')
-        rows = cur.fetchall()
-        for row in rows:
+    @commands.command(name="post", aliases=["글"], pass_context=True)
+    async def post(self, ctx, select=0):
+        if select == 0:
+            conn = psycopg2.connect(DATABASE_URL)
+            cur = conn.cursor()
+            cur.execute('select * from post')
+            rows = cur.fetchall()
+            for row in rows:
+                num = row[0]
+                author = row[1]
+                head = row[2]
+                await self.bot.send_message(ctx.message.channel, "%s. %s - by %s\n" % (num, head, author))
+            conn.close()
+            await self.bot.send_message(ctx.message.channel, _("%s글 (번호)를 입력하시면 글을 보실수 있어요!") % prefix.get())
+        else:
+            conn = psycopg2.connect(DATABASE_URL)
+            cur = conn.cursor()
+            cur.execute('select * from post where num = {0}'.format(select))
+            row = cur.fetchone()
             num = row[0]
             author = row[1]
             head = row[2]
-            await self.bot.send_message(ctx.message.channel, "%s. %s - by %s\n" % (num, head, author))
-        conn.close()
-        await self.bot.send_message(ctx.message.channel, _("%s글 (번호)를 입력하시면 글을 보실수 있어요!") % prefix.get())
-
-    @commands.command(name="post", aliases=["글"], pass_context=True)
-    async def post(self, ctx, select: int):
-        conn = psycopg2.connect(DATABASE_URL)
-        cur = conn.cursor()
-        cur.execute('select * from post where num = {0}'.format(select))
-        row = cur.fetchone()
-        num = row[0]
-        author = row[1]
-        head = row[2]
-        body = row[3]
-        conn.close()
-        embed = Embed(title="%s. %s" % (
-            num, head), description="\nby %s\n%s" % (author, body), color=0xE0FFFF)
-        await self.bot.send_message(ctx.message.channel, embed=embed)
+            body = row[3]
+            conn.close()
+            embed = Embed(title="%s. %s" % (
+                num, head), description="\nby %s\n%s" % (author, body), color=0xE0FFFF)
+            await self.bot.send_message(ctx.message.channel, embed=embed)
 
     @commands.command(name="deletepost", aliases=["글삭제"], pass_context=True)
     async def deletepost(self, ctx, select: int):

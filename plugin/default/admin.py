@@ -87,7 +87,7 @@ class adminclass():
             conn = psycopg2.connect(DATABASE_URL)
             conn.autocommit = True
             cur = conn.cursor()
-            sql = cur.mogrify("update settings set body = '%s' where name='game'", (playing,))
+            sql = cur.mogrify("update settings set body = %s where name='game'", (playing,))
             cur.execute(sql)
             conn.close()
             gamename.append(playing)
@@ -102,7 +102,7 @@ class adminclass():
             conn = psycopg2.connect(DATABASE_URL)
             conn.autocommit = True
             cur = conn.cursor()
-            sql = cur.mogrify("update settings set body = '%s' where name='prefix'", (change))
+            sql = cur.mogrify("update settings set body = %s where name='prefix'", (change))
             cur.execute(sql)
             conn.close()
             prefix.set(change)
