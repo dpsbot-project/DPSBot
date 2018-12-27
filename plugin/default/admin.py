@@ -81,7 +81,7 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
-    @commands.command(name="addplaying", aliases=["플레이중추가"], hidden=True, pass_context=True)
+    @commands.command(name="addplaying", aliases=["플레이중추가"] pass_context=True)
     async def addplaying(self, ctx, *, playing=None):
         if ctx.message.author.id == owner:
             if playing != None:
@@ -90,7 +90,7 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
-    @commands.command(name="deleteplaying", aliases=["플레이중삭제"], hidden=True, pass_context=True)
+    @commands.command(name="deleteplaying", aliases=["플레이중삭제"],pass_context=True)
     async def deleteplaying(self, ctx, *, playing=None):
         if ctx.message.author.id == owner:
             if playing != None:
@@ -99,7 +99,7 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
             
-    @commands.command(name="changeprefix", aliases=["접두사변경"], hidden=True, pass_context=True)
+    @commands.command(name="changeprefix", aliases=["접두사변경"],pass_context=True)
     async def changeprefix(self, ctx, *, change=None):
         if ctx.message.author.id == owner:
             conn = psycopg2.connect(DATABASE_URL)
@@ -153,7 +153,7 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
-    @commands.has_permissions(ban_members=True)
+    @commands.command(ban_members=True)
     async def ban(self, member: discord.Member, days: int = 1, *, reason):
         try:
             await self.bot.ban(member, days)
