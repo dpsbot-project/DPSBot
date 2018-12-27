@@ -385,7 +385,7 @@ class tagclass():
 
     @commands.command(pass_context=True, name="maketag")
     async def maketag(self, ctx, *, line):
-        name = line[0]
+        name = line.split()[0]
         try:
             await self.taginsert("tag", name, line)
             await self.bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
