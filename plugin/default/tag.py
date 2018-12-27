@@ -278,12 +278,6 @@ class tag:
         return self.func(args, argsdict)
 
 
-def nameParse(rawline):
-    rawline = rawline.replace("%smaketag " % prefix.get(), "", 1)
-    name = rawline.split()[0]
-    return name
-
-
 def checkDepth(rawline):
     move = 0
     depth = 0
@@ -362,12 +356,10 @@ class tagclass():
         self.tagload()
 
     def taginit(self, name, line):
-        @commands.command(name=_("t%s") % name, pass_context=True)
-        async def tag(self, ctx):
+        @commands.command(name="t%s" % name, pass_context=True)
+        async def tag(self, ctx, *, line):
             await self.bot.send_message(ctx.message.channel, ctx.message.content)
-            inputline = ctx.message.content.replace(
-                "%s t%s " % (prefix.get(), name), "")
-            result = run(line, inputline)
+            result = run(inputline, inputline.split())
             await self.bot.send_message(ctx.message.channel, result)
             print(name)
             print(result)
@@ -394,16 +386,15 @@ class tagclass():
         print(_('태그 로드 완료!'))
 
     @commands.command(pass_context=True, name="maketag")
-    async def maketag(self, ctx, *words):
-        name = nameParse(ctx.message.content)
-        line = ctx.message.content
+    async def maketag(self, ctx, *, line):
+        name = line[0]
         try:
             await self.taginsert("tag", name, line)
             await self.bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
             @commands.command(name="t%s" % name, pass_context=True)
             async def tag(self, ctx, *, inputline):
-                await self.bot.send_message(ctx.message.channel, line)
-                result = run(line, inputline)
+                await self.bot.send_message(ctx.message.channel, line)      
+                result = run(inputline, inputline.split())
                 await self.bot.send_message(ctx.message.channel, result)
                 print(name)
                 print(result)
