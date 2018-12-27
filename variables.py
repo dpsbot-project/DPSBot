@@ -56,9 +56,6 @@ class Prefix():
 
     def set(self, value):
         self.value = value
-games = ["DPSBot!","type %shelp!" % prefixvalue,"type %sinfo!" % prefixvalue,"Made by DPS0340","dpsbot.tk","github.com/DPS0340/DPSbot","ttakkku.tk","Proudly Powered by Team ttakkku"]
-with open("./gamelist", "wb") as w:
-    pickle.dump(games, w)
 instructions = Instructions(instructionsvalue)
 gamename = Game()
 prefix = Prefix(prefixvalue)
