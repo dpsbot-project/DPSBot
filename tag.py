@@ -1,14 +1,14 @@
+import random
+import psycopg2
+import asyncio
+from variables import DATABASE_URL, owner, mod, prefix, pluginfolder
 from discord.ext import commands
+from Main import bot
 import os
 import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(os.path.dirname(__file__)))))
-from variables import DATABASE_URL, owner, mod, prefix
-import asyncio
-import psycopg2
-import os
-import sys
-import random
+sys.path.append(os.path.dirname(os.path.dirname(
+    os.path.abspath(os.path.dirname(__file__)))))
 
 
 class tag:
@@ -326,7 +326,7 @@ def run(name, line, args="", argsdict={}, first=True):
                     1, depthList.index(1) + 1) + 1]
                 if line.find("(if") == 0 or line.find("(declare") == 0:
                     mode = semiTag[1:-1].split()[0]
-                    Tag = tag(Name, mode, semiTag, argsdict)
+                    Tag = tag(name, mode, semiTag, argsdict)
                     argsdict.update(Tag.argsdict)
                     result = Tag.run(semiTag, argsdict)
                     argsdict.update(Tag.argsdict)
@@ -338,7 +338,7 @@ def run(name, line, args="", argsdict={}, first=True):
                     max(checkDepth(semiTag)), startnumsemi+1)
                 useTag = semiTag[startnumsemi:endnumsemi+1]
                 mode = useTag[1:-1].split()[0]
-                Tag = tag(Name, mode, useTag, argsdict)
+                Tag = tag(name, mode, useTag, argsdict)
                 result = Tag.run(useTag, argsdict)
                 argsdict.update(Tag.argsdict)
                 Temptag = semiTag.replace(useTag, str(result), 1)
@@ -348,67 +348,62 @@ def run(name, line, args="", argsdict={}, first=True):
             return line
 
 
-class tagclass():
-    def __init__(self, bot):
-        self.bot = bot
-        self.tagload()
+def taginit(name, line):
+    @commands.command(name="t!%s" % name, pass_context=True)
+    async def tag(ctx, *, line):
+        await bot.send_message(ctx.message.channel, ctx.message.content)
+        result = run(line, line.split())
+        await bot.send_message(ctx.message.channel, result)
+        print(name)
+        print(result)
 
-    def taginit(self, name, line):
-        @commands.command(name="t%s" % name, pass_context=True)
-        async def tag(self, ctx, *, line):
-            await self.bot.send_message(ctx.message.channel, ctx.message.content)
+
+def tagload():
+    conn = psycopg2.connect(DATABASE_URL)
+    cur = conn.cursor()
+    cur.execute('select * from tag')
+    rows = cur.fetchall()
+    print(_('태그 로드중...'))
+    print(_('------'))
+    for row in rows:
+        try:
+            name = row[0]
+            line = row[1]
+            taginit(name, line)
+            print(line)
+        except Exception as e:
+            print(_('태그 로드 실패!'))
+            print(e)
+            pass
+    conn.close()
+    print(_('------'))
+    print(_('태그 로드 완료!'))
+
+
+@commands.command(pass_context=True, name="maketag")
+async def maketag(ctx, *, line):
+    name = line.split()[0]
+    try:
+        await taginsert("tag", name, line)
+        await bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
+        print("t!%s")
+        @commands.command(name="t!%s" % name, pass_context=True)
+        async def tag(ctx, *, inputline):
+            await bot.send_message(ctx.message.channel, line)
             result = run(inputline, inputline.split())
-            await self.bot.send_message(ctx.message.channel, result)
+            await bot.send_message(ctx.message.channel, result)
             print(name)
             print(result)
-
-    def tagload(self):
-        conn = psycopg2.connect(DATABASE_URL)
-        cur = conn.cursor()
-        cur.execute('select * from tag')
-        rows = cur.fetchall()
-        print(_('태그 로드중...'))
-        print(_('------'))
-        for row in rows:
-            try:
-                name = row[0]
-                line = row[1]
-                self.taginit(name, line)
-                print(line)
-            except Exception as e:
-                print(_('태그 로드 실패!'))
-                print(e)
-                pass
-        conn.close()
-        print(_('------'))
-        print(_('태그 로드 완료!'))
-
-    @commands.command(pass_context=True, name="maketag")
-    async def maketag(self, ctx, *, line):
-        name = line.split()[0]
-        try:
-            await self.taginsert("tag", name, line)
-            await self.bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
-            @commands.command(name="t!%s" % name, pass_context=True)
-            async def tag(self, ctx, *, inputline):
-                await self.bot.send_message(ctx.message.channel, line)      
-                result = run(inputline, inputline.split())
-                await self.bot.send_message(ctx.message.channel, result)
-                print(name)
-                print(result)
-        except Exception as e:
-            print(e)
-            await self.bot.send_message(ctx.message.channel, _("이미 있는 태그입니다."))
-
-    async def taginsert(self, table, name, line):
-        conn = psycopg2.connect(DATABASE_URL)
-        cur = conn.cursor()
-        sql = """insert into {0} ("name","tag") values (%s, %s)""".format(
-            table)
-        cur.execute(sql, (name, line))
-        conn.commit()
-        conn.close()
+    except Exception as e:
+        print(e)
+        await bot.send_message(ctx.message.channel, _("이미 있는 태그입니다."))
 
 
-def setup(bot):
-    bot.add_cog(tagclass(bot))
+async def taginsert(table, name, line):
+    conn = psycopg2.connect(DATABASE_URL)
+    cur = conn.cursor()
+    sql = """insert into {0} ("name","tag") values (%s, %s)""".format(
+        table)
+    cur.execute(sql, (name, line))
+    conn.commit()
+    conn.close()

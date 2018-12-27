@@ -1,5 +1,6 @@
 import discord
 import asyncio
+import tag
 from variables import token, pluginfolder, gamename, prefix, owner
 from pluginlist import pluginlist
 from bot import DPSBot
@@ -53,4 +54,5 @@ if __name__ == '__main__':
             print(e)
             raise
     print(_("------"))
+    tag.tagload()
     bot.run(token)
