@@ -24,7 +24,6 @@
 
 
 
-Powered by team ttakkku
 
 
 # DPSBot unstable branch
