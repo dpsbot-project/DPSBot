@@ -155,7 +155,7 @@ class adminclass():
         try:
             await self.bot.ban(member, days)
             await self.bot.say(_('%s 님이 %s님을 %s일간 밴하셨습니다.') % (message.author.name, member.name, days))
-            await self.bot.say(_('이유:%s' % reason))
+            await self.bot.say(_('이유:%s') % reason)
         except:
             await self.bot.say(_('밴 대상자가 없거나 봇에 밴 권한이 없습니다.'))
 
@@ -170,7 +170,7 @@ class adminclass():
     async def serverlist(self, ctx):
         if ctx.message.author.id == owner:
             for server in self.bot.servers:
-                await self.bot.say(_('서버 이름: %s 서버 id: %s') % (server.name, server.id))
+                await self.bot.say(_('서버 이름: %s 서버 id: %s 서버 인원: %s') % (server.name, server.id, server.members))
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
