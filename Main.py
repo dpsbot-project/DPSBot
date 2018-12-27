@@ -28,6 +28,11 @@ async def maketag(ctx, *, line):
         await bot.send_message(ctx.message.channel, _("이미 있는 태그입니다."))
 
 
+@bot.command(pass_context=True, name="tag", aliases=["태그"])
+async def tag(ctx):
+    await bot.say("english guide:https://gist.github.com/DPS0340/8eb28271b75e4956717c7038ad57f528\nkorean guide:https://gist.github.com/DPS0340/fa7d1e1333e6c5bcabcc0c5cd03003f5")
+
+
 def taginit(name, line):
     @bot.command(name="t!%s" % name, pass_context=True)
     async def tag(ctx, *, inputline=""):

@@ -8,7 +8,7 @@ from discord.ext import commands
 from translate import trans
 from trans_open import opentrans
 from pluginlist import pluginlist
-from variables import pluginfolder, gamerefresh
+from variables import pluginfolder
 from server import serverlist
 
 
