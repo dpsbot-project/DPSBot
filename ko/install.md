@@ -32,6 +32,7 @@ heroku addons:create heroku-redis:hobby-dev -a (앱_이름)
 heroku pg:backups:restore 'https://github.com/DPS0340/DPSBot/raw/master/db-dump/backup.dump' DATABASE_URL -a (앱_이름)
 python3 ./db-init/db-init.py -url (데이터베이스_url)
 ```
+그리고 heroku 대시보드로 가서, 'DPSBOT_URL' 환경 변수를 당신의 DATABASE_URL로 설정하세요.
 
 
 ![db-setup-heroku](https://github.com/DPS0340/DPSBot/blob/gh-pages/Screenshot_20181223_162759.png)
