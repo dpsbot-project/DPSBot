@@ -84,18 +84,21 @@ class adminclass():
     @commands.command(name="addplaying", aliases=["플레이중추가"], hidden=True, pass_context=True)
     async def addplaying(self, ctx, *, playing=None):
         if ctx.message.author.id == owner:
-            conn = psycopg2.connect(DATABASE_URL)
-            conn.autocommit = True
-            cur = conn.cursor()
-            sql = cur.mogrify("update settings set body = %s where name='game'", (playing,))
-            cur.execute(sql)
-            conn.close()
-            gamename.append(playing)
-            await self.bot.change_presence(game=discord.Game(name=gamename.get()))
-            await self.bot.say(_("%s로 변경되었습니다.") % playing)
+            if playing != None:
+                gamename.append(playing)
+                await self.bot.say(_("%s가 추가되었습니다.") % playing)
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
+    @commands.command(name="deleteplaying", aliases=["플레이중삭제"], hidden=True, pass_context=True)
+    async def addplaying(self, ctx, *, playing=None):
+        if ctx.message.author.id == owner:
+            if playing != None:
+                gamename.list.remove(playing)
+                await self.bot.say(_("%s가 삭제되었습니다.") % playing)
+        else:
+            await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
+            
     @commands.command(name="changeprefix", aliases=["접두사변경"], hidden=True, pass_context=True)
     async def changeprefix(self, ctx, *, change=None):
         if ctx.message.author.id == owner:
