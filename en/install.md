@@ -132,13 +132,6 @@ su - (your username)
 ```
 then type your password to change account.
 ```
-export DATABASE_URL=postgres://postgres@localhost/DPSBot
-sudo nano ~/.bashrc
-```
-then add this:
-```
-export DATABASE_URL=postgres://postgres@localhost/DPSBot
-```
 
 
 ## DB initialization
