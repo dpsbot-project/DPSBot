@@ -58,9 +58,4 @@ class Prefix():
         self.value = value
 instructions = Instructions(instructionsvalue)
 gamename = Game()
-gamename.append("DPSBot!")
-gamename.append("type d!info!")
-gamename.append("type d!help!")
-gamename.append("made by DPS0340")
-gamename.append("github.com/DPS0340/DPSBot")
 prefix = Prefix(prefixvalue)
