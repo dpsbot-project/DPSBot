@@ -78,8 +78,8 @@ class etcclass():
         me = await self.bot.get_user_info(owner)
         channel = self.bot.get_channel(ticketchannel)
         mention = ctx.message.author.name
-        await self.bot.send_message(channel, _('%s 님이 %s (이)라고 건의했습니다.') % mention, msg)
-        await self.bot.send_message(me, _('소식이 있어요!\n %s 님이 %s (이)라고 건의했습니다.') % mention, msg)
+        await self.bot.send_message(channel, _('%s 님이 %s (이)라고 건의했습니다.') % (mention, msg))
+        await self.bot.send_message(me, _('소식이 있어요!\n %s 님이 %s (이)라고 건의했습니다.') % (mention, msg))
 
 
 def setup(bot):
