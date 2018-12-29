@@ -7,7 +7,8 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(
     os.path.abspath(os.path.dirname(__file__)))))
-from variables import doinglist, owner, doinglist, ticketchannel
+from variables import doinglist, owner, doinglist
+from variables import channel as ticketchannel
 from embed import Embed
 
 
@@ -15,7 +16,7 @@ class etcclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="hello", aliases=["안녕"], pass_context=True)
+    @commands.command(name="hello", aliases=["안녕"], pats_context=True)
     async def hello(self, ctx):
         await self.bot.say(_("안녕하세요!"))
 
