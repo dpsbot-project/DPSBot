@@ -7,7 +7,8 @@ import sys
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 sys.path.append(os.path.dirname(os.path.dirname(
     os.path.abspath(os.path.dirname(__file__)))))
-from variables import doinglist, owner, doinglist, channel
+from variables import doinglist, owner, doinglist
+from variables import channel as ticketchannel
 from embed import Embed
 
 
@@ -15,7 +16,7 @@ class etcclass():
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="hello", aliases=["안녕"], pass_context=True)
+    @commands.command(name="hello", aliases=["안녕"], pats_context=True)
     async def hello(self, ctx):
         await self.bot.say(_("안녕하세요!"))
 
@@ -73,12 +74,12 @@ class etcclass():
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
     @commands.command(name="ticket", aliases=["건의"], pass_context=True)
-    async def ticket(self, ctx, msg):
+    async def ticket(self, ctx, *, msg):
         me = await self.bot.get_user_info(owner)
-        channel = self.bot.get_channel(int(channel))
+        channel = self.bot.get_channel(ticketchannel)
         mention = ctx.message.author.name
-        await self.bot.send_message(channel, _('%s 님이 %s (이)라고 건의했습니다.') % mention, msg)
-        await self.bot.send_message(me, _('소식이 있어요!\n %s 님이 %s (이)라고 건의했습니다.') % mention, msg)
+        await self.bot.send_message(channel, _('%s 님이 %s (이)라고 건의했습니다.') % (mention, msg))
+        await self.bot.send_message(me, _('소식이 있어요!\n %s 님이 %s (이)라고 건의했습니다.') % (mention, msg))
 
 
 def setup(bot):
