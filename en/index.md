@@ -1,6 +1,6 @@
 # DPSBot - a Discord bot
 
-It is a Discord bot for a murtiple purposes.
+It is a Discord bot for mutiple purposes.
 
 Now supports English! please help [open translate](https://www.transifex.com/ttakkku/dpsbot/dashboard/).
 
