@@ -184,7 +184,10 @@ class adminclass():
     @commands.command(pass_context=True, hidden=True)
     async def deleteinvite(self, ctx, line):
         if ctx.message.author == owner:
-            await self.bot.delete_invite(line)
+            try:
+                await self.bot.delete_invite(line)
+            except:
+                await self.bot.say("실패했습니다!")
         else:
             pass
 
