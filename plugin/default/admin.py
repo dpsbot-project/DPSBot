@@ -154,9 +154,10 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
 
     @commands.command(hidden=False, pass_context=True)
-    async def ban(self, ctx, member: discord.Member, days: int = 1, *, reason="None"):
+    async def ban(self, ctx, member: str, days: int = 100, *, reason="None"):
         try:
             if ctx.message.author.id == owner:
+                member = await client.get_user_info(member)
                 await self.bot.ban(member, days)
                 await self.bot.say(_('%s 님이 %s님을 %s일간 밴하셨습니다.') % (ctx.message.author.name, member.name, days))
                 await self.bot.say(_('이유:%s') % reason)
