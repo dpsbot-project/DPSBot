@@ -156,7 +156,7 @@ class adminclass():
     @commands.command(hidden=False, pass_context=True)
     async def ban(self, ctx, member: discord.Member, days: int = 1, *, reason="None"):
         try:
-            if ctx.message.author == owner:
+            if ctx.message.author.id == owner:
                 await self.bot.ban(member, days)
                 await self.bot.say(_('%s 님이 %s님을 %s일간 밴하셨습니다.') % (ctx.message.author.name, member.name, days))
                 await self.bot.say(_('이유:%s') % reason)
@@ -183,7 +183,7 @@ class adminclass():
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
     @commands.command(pass_context=True, hidden=True)
     async def deleteinvite(self, ctx, line: str):
-        if ctx.message.author == owner:
+        if ctx.message.author.id == owner:
             try:
                 await self.bot.delete_invite(line)
                 await self.bot.say("성공했습니다!")
