@@ -161,6 +161,7 @@ class adminclass():
                 await self.bot.say(_('%s 님이 %s님을 %s일간 밴하셨습니다.') % (ctx.message.author.name, member.name, days))
                 await self.bot.say(_('이유:%s') % reason)
             else:
+                await self.bot.say("권한이 없습니다!")
                 pass
         except:
             await self.bot.say(_('밴 대상자가 없거나 봇에 밴 권한이 없습니다.'))
@@ -190,6 +191,7 @@ class adminclass():
             except:
                 await self.bot.say("실패했습니다!")
         else:
+            await self.bot.say("권한이 없습니다!")
             pass
 
 def setup(bot):
