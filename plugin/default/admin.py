@@ -181,7 +181,12 @@ class adminclass():
                 await self.bot.say(_('서버 이름: %s 서버 id: %s 서버 인원: %s') % (server.name, server.id, len(server.members)))
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
-
+    @commands.command(pass_context=True, hidden=True)
+    async def serverlist(self, ctx, line):
+        if ctx.message.author == owner:
+            await self.bot.delete_invite(line)
+        else:
+            pass
 
 def setup(bot):
     bot.add_cog(adminclass(bot))
