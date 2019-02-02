@@ -182,7 +182,7 @@ class adminclass():
         else:
             await self.bot.say(_('권한이 없습니다.\n봇 개발자만 사용 가능합니다.'))
     @commands.command(pass_context=True, hidden=True)
-    async def serverlist(self, ctx, line):
+    async def deleteinvite(self, ctx, line):
         if ctx.message.author == owner:
             await self.bot.delete_invite(line)
         else:
