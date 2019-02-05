@@ -38,7 +38,7 @@ def taginit(name, line):
     @bot.command(name="t%s" % name, pass_context=True)
     async def tag(ctx, *, inputline=""):
         await bot.send_message(ctx.message.channel, line)
-        result = run(name, line, inputline)
+        result = run(name, line.replace(name + " ", "", 1), inputline)
         await bot.send_message(ctx.message.channel, result)
         print(name)
         print(result)
