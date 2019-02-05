@@ -51,12 +51,7 @@ class tag:
     def plus(self):
         def calculate(args: str, argsdict: dict):
             args = args.split()
-            result = 0
-            for arg in args:
-                if args[0] == "-":
-                    result -= float(arg)
-                else:
-                    result += float(arg)
+            result = float(args[0]) + float(args[1])
             try:
                 if result.is_integer():
                     result = int(result)
@@ -203,7 +198,7 @@ class tag:
                 return ""
             elif len(args.split()) == 2:
                 args = args.split()
-                name = args[0]
+                name = args[0]  
                 value = args[1]
                 self.argsdict.update({name: str(value)})
                 return ""
