@@ -12,15 +12,15 @@ bot = DPSBot(command_prefix=prefix.get())
 
 @bot.command(pass_context=True, name="maketag")
 async def maketag(ctx, *, line):
-    name = line.split()[1]
+    name = line.split()[0]
     try:
-        await taginsert("tag", name, line.replace(line.split()[0] + " " + name + " ", "", 1))
+        await taginsert("tag", name, line.replace(name, "", 1))
         await bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
         print("t!%s" % name)
         @bot.command(name="t%s" % name, pass_context=True)
         async def tag(ctx, *, inputline=""):
-            await bot.send_message(ctx.message.channel, line.replace(line.split()[0] + " " + name + " ", "", 1))
-            result = run(name, line.replace(line.split()[0] + " " + name + " ", "", 1), inputline)
+            await bot.send_message(ctx.message.channel, line.replace(name, "", 1))
+            result = run(name, line.replace(name, "", 1), inputline)
             await bot.send_message(ctx.message.channel, result)
             print(name)
             print(result)
