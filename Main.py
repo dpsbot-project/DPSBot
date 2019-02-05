@@ -19,7 +19,7 @@ async def maketag(ctx, *, line):
         print("t!%s" % name)
         @bot.command(name="t%s" % name, pass_context=True)
         async def tag(ctx, *, inputline=""):
-            await bot.send_message(ctx.message.channel, inputline)
+            await bot.send_message(ctx.message.channel, line)
             result = run(name, line.replace(name + " ", "", 1), inputline)
             await bot.send_message(ctx.message.channel, result)
             print(name)
@@ -37,7 +37,7 @@ async def tag(ctx):
 def taginit(name, line):
     @bot.command(name="t%s" % name, pass_context=True)
     async def tag(ctx, *, inputline=""):
-        await bot.send_message(ctx.message.channel, inputline)
+        await bot.send_message(ctx.message.channel, line)
         result = run(name, line, inputline)
         await bot.send_message(ctx.message.channel, result)
         print(name)
