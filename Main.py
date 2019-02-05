@@ -17,8 +17,9 @@ async def maketag(ctx, *, line):
         await taginsert("tag", name, line.replace(name + " ", "", 1))
         await bot.send_message(ctx.message.channel, _("태그 생성 완료!"))
         print("t!%s" % name)
-        @bot.command(name="t!%s" % name, pass_context=True)
+        @bot.command(name="t%s" % name, pass_context=True)
         async def tag(ctx, *, inputline=""):
+            await bot.send_message(ctx.message.channel, inputline)
             result = run(name, line.replace(name + " ", "", 1), inputline)
             await bot.send_message(ctx.message.channel, result)
             print(name)
@@ -34,9 +35,9 @@ async def tag(ctx):
 
 
 def taginit(name, line):
-    @bot.command(name="t!%s" % name, pass_context=True)
+    @bot.command(name="t%s" % name, pass_context=True)
     async def tag(ctx, *, inputline=""):
-        await bot.send_message(ctx.message.channel, ctx.message.content)
+        await bot.send_message(ctx.message.channel, inputline)
         result = run(name, line, inputline)
         await bot.send_message(ctx.message.channel, result)
         print(name)
