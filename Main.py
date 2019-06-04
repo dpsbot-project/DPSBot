@@ -10,7 +10,6 @@ bot = DPSBot(command_prefix=prefix.get())
 
 @bot.event
 async def on_ready():
-    tagload()
     print(_('로그인 되었습니다.'))
     print(_('------'))
     print(bot.user.name)
