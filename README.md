@@ -1,5 +1,6 @@
+**Preparing Re-Open bot**
 
-[<img src="https://discordbots.org/api/widget/523785272693882880.svg">](https://discordbots.org/bot/523785272693882880)
+**봇 재개장 준비중**
 
 [![Build Status](https://travis-ci.com/DPS0340/DPSBot.svg?branch=master)](https://travis-ci.com/DPS0340/DPSBot)
 # DPSBot - 오픈 소스 다용도 디스코드 봇
