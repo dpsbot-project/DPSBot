@@ -29,7 +29,7 @@ to make app.
 heroku addons:create heroku-postgresql:hobby-dev -a (Your_app_name)
 heroku addons:create heroku-redis:hobby-dev -a (Your_app_name)
 heroku pg:backups:restore 'https://github.com/DPS0340/DPSBot/raw/master/db-dump/backup.dump' DATABASE_URL -a (Your_app_name)
-heroku run python ./db-init/db-init.py -url (Your_database_url)
+heroku run python ./db-init/db-init.py -url (Your_database_url) -a (Your_app_name)
 ```
 and go heroku dashboard, set the variable 'DPSBOT_URL' to your DATABASE_URL
 
