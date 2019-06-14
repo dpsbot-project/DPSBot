@@ -56,7 +56,7 @@ class infoclass():
         embed.add_field(name=_("접두사"), value=prefix.get(), inline=True)
         embed.add_field(name=_("DPSBot의 나이"), value=_(
             "최초 공개로부터 %s일 지났습니다.") % str(result.days), inline=True)
-        embed.set_footer(text=_("Powered by Team ttakkku"))
+        embed.set_footer(text=_("DPSbot X Naesungbot"))
         await self.bot.send_message(ctx.message.channel, embed=embed)
 
 
