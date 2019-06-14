@@ -54,6 +54,10 @@ class infoclass():
             self.bot.servers), inline=True)
         embed.add_field(name=_("사용자 수"), value=users, inline=True)
         embed.add_field(name=_("접두사"), value=prefix.get(), inline=True)
+        embed.add_field(name="Bot Official site", value="https://dps0340.xyz", inline=True)
+        embed.add_field(name="Bot Official git", value="https://github.com/dpsbot-project/DPSBot", inline=True)
+        embed.add_field(name="Bot Official server", value="https://discordapp.com/invite/b9aEEaE", inline=True)
+        embed.add_field(name="invite this bot", value="https://discordapp.com/oauth2/authorize?client_id=588671532944064524&permissions=8&scope=bot", inline=True)
         embed.add_field(name=_("DPSBot의 나이"), value=_(
             "최초 공개로부터 %s일 지났습니다.") % str(result.days), inline=True)
         embed.set_footer(text=_("DPSbot X Naesungbot"))
