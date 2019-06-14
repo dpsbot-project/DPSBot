@@ -27,4 +27,4 @@
 
 
 ---
-Now With [Naesungbot](naesung.xyz)!
+Now With [Naesungbot](http://naesung.xyz)!
