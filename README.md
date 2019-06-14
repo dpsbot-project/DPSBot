@@ -22,3 +22,6 @@
 ## DPSBot open translate
 
 **[Would you help me?](https://www.transifex.com/ttakkku/dpsbot/dashboard/) :)**
+
+
+Now With [Naesungbot](naesung.xyz)!
