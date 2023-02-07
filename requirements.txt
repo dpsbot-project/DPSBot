@@ -6,7 +6,7 @@ archiveis == 0.0.6
 
 # requirements.py: 2
 # variables.py: 1
-cryptography == 2.3.1
+cryptography == 39.0.1
 
 # Main.py: 1,2
 # plugin\aloh.py: 4,6
